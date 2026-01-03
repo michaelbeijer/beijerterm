@@ -20,6 +20,7 @@ GLOSSARIES_DIR = Path("glossaries")
 SITE_DIR = Path("site")
 OUTPUT_DIR = Path("_site")
 GITHUB_BASE_URL = "https://github.com/michaelbeijer/superlookup/blob/main/glossaries"
+MIN_GLOSSARY_TERMS = 10  # Minimum terms to be considered a glossary (not a single-term entry)
 
 # Scroll to top button HTML snippet
 SCROLL_TO_TOP_HTML = '''
@@ -152,6 +153,7 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
         }
 
         # Determine type: ONLY files in the "terms" folder are terms
+        # Also treat "glossaries" with fewer than MIN_GLOSSARY_TERMS as terms
         if md_file.parent.name == "terms":
             item["type"] = "term"
             item["html_content"] = markdown_to_html(body)
@@ -160,7 +162,14 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
             item["type"] = "glossary"
             item["terms"] = parse_markdown_table(body)
             item["term_count"] = len(item["terms"])
-            glossaries.append(item)
+            
+            # If too few terms, treat as a term page instead of glossary
+            if item["term_count"] < MIN_GLOSSARY_TERMS:
+                item["type"] = "term"
+                item["html_content"] = markdown_to_html(body)
+                terms.append(item)
+            else:
+                glossaries.append(item)
 
     return glossaries, terms
 
