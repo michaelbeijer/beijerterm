@@ -1,7 +1,4 @@
-﻿# Sidebar Content
-# This file contains content for the left sidebar
-
-## About Superlookup
+﻿## About Superlookup
 
 Welcome to **Superlookup**, one of the world's largest collections of specialist multilingual terminology.
 
@@ -21,7 +18,7 @@ The data is organised using two main categories: **Terms** and **Glossaries**.
 Browse glossaries by category:
 
 - Aviation
-- Automotive  
+- Automotive
 - Medical
 - Legal
 - Technical
