@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build script for Superlookup Glossaries.
+Build script for Superlookup.
 
 Reads all Markdown glossary files, generates HTML pages, and creates
 a JSON index for search functionality.
@@ -186,13 +186,13 @@ def generate_html_index(glossaries: list[dict], categories: dict) -> str:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superlookup Glossaries - Open Source Multilingual Terminology</title>
+    <title>Superlookup - Open Source Multilingual Terminology</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pagefind/pagefind-ui.css">
 </head>
 <body>
     <header>
-        <h1>📚 Superlookup Glossaries</h1>
+        <h1>📚 Superlookup</h1>
         <p>Open source multilingual terminology database</p>
     </header>
     
@@ -256,7 +256,7 @@ def generate_html_index(glossaries: list[dict], categories: dict) -> str:
             searchContainer.addEventListener('click', (e) => {{
                 const link = e.target.closest('a');
                 if (link && link.href && currentQuery) {{
-                    sessionStorage.setItem('Superlookup Glossaries_highlight', currentQuery);
+                    sessionStorage.setItem('Superlookup_highlight', currentQuery);
                 }}
             }});
             
@@ -301,7 +301,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{glossary['title']} - Superlookup Glossaries</title>
+    <title>{glossary['title']} - Superlookup</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
 </head>
@@ -374,10 +374,10 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
             
             // Fall back to sessionStorage (set by index page when clicking search results)
             if (!query) {{
-                query = sessionStorage.getItem('Superlookup Glossaries_highlight');
+                query = sessionStorage.getItem('Superlookup_highlight');
                 // Clear it so it doesn't persist forever
                 if (query) {{
-                    sessionStorage.removeItem('Superlookup Glossaries_highlight');
+                    sessionStorage.removeItem('Superlookup_highlight');
                 }}
             }}
             
@@ -442,7 +442,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 
 def build_site():
     """Main build function."""
-    print("🏗️  Building Superlookup Glossaries site...")
+    print("🏗️  Building Superlookup site...")
     
     # Clean output directory
     if OUTPUT_DIR.exists():

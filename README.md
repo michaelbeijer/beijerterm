@@ -1,4 +1,4 @@
-# Superlookup Glossaries
+# Superlookup
 
 **An open-source, GitHub-hosted multilingual terminology database.**
 
@@ -16,7 +16,7 @@ Every glossary is a Markdown file. Full-text search powered by Pagefind.
 ## 📂 Structure
 
 ```
-Superlookup Glossaries/
+Superlookup/
 ├── glossaries/
 │   ├── automotive/
 │   │   ├── _category.yaml          # Category metadata
