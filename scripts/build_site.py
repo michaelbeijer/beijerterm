@@ -1,13 +1,14 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Build script for Superlookup.
 
-Reads all Markdown glossary and term files, generates HTML pages, 
+Reads all Markdown glossary and term files, generates HTML pages,
 and creates a JSON index for search functionality.
 
 Updated to handle:
 - Glossaries: Table format with extracted terms
 - Terms: Rich content (definitions, examples, links)
+- Tabbed interface on main page
 """
 
 import os
@@ -72,7 +73,6 @@ def parse_markdown_table(body: str) -> list[dict]:
 
 def markdown_to_html(md_content: str) -> str:
     """Convert Markdown to HTML."""
-    # Use Python markdown library
     html = markdown.markdown(md_content, extensions=['tables', 'fenced_code'])
     return html
 
@@ -110,12 +110,10 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
 
         # Check if it's a Term (dictionary entry) or Glossary (table)
         if frontmatter.get("type") == "term" or md_file.parent.name == "terms":
-            # Term page - rich content
             item["type"] = "term"
             item["html_content"] = markdown_to_html(body)
             terms.append(item)
         else:
-            # Glossary page - table format
             item["type"] = "glossary"
             item["terms"] = parse_markdown_table(body)
             item["term_count"] = len(item["terms"])
@@ -129,35 +127,13 @@ def load_sidebar_content() -> str:
     sidebar_file = SITE_DIR / "sidebar.md"
     if not sidebar_file.exists():
         return ""
-
     with open(sidebar_file, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    html = content
-    html = re.sub(r'^## (.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
-    html = re.sub(r'^### (.+)$', r'<h4>\1</h4>', html, flags=re.MULTILINE)
-    html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
-    html = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', html)
-    html = re.sub(r'^- (.+)$', r'<li>\1</li>', html, flags=re.MULTILINE)
-    html = re.sub(r'((?:<li>.+</li>\n?)+)', r'<ul>\1</ul>', html)
-
-    lines = html.split('\n')
-    result = []
-    for line in lines:
-        line = line.strip()
-        if line and not line.startswith('<') and not line.startswith('#'):
-            line = f'<p>{line}</p>'
-        result.append(line)
-    html = '\n'.join(result)
-
-    return html
+        return f.read()
 
 
 def generate_search_index(glossaries: list[dict], terms: list[dict]) -> list[dict]:
     """Generate search index for all content."""
     index = []
-
-    # Index glossary terms
     for glossary in glossaries:
         for term in glossary.get("terms", []):
             entry = {
@@ -171,7 +147,6 @@ def generate_search_index(glossaries: list[dict], terms: list[dict]) -> list[dic
             }
             index.append(entry)
 
-    # Index term pages
     for term in terms:
         entry = {
             "type": "term",
@@ -181,21 +156,13 @@ def generate_search_index(glossaries: list[dict], terms: list[dict]) -> list[dic
             "description": term.get("description", ""),
         }
         index.append(entry)
-
     return index
 
 
-def generate_html_index(glossaries: list[dict], terms: list[dict], categories: dict) -> str:
-    """Generate the main index.html page."""
-    # Combine all items for alphabetical listing
-    all_items = []
-    for g in glossaries:
-        all_items.append({**g, "item_type": "glossary"})
-    for t in terms:
-        all_items.append({**t, "item_type": "term", "term_count": 0})
-
-    sorted_items = sorted(all_items, key=lambda x: x["title"].upper())
-
+def generate_table_for_items(items: list[dict], categories: dict, item_type: str) -> tuple[str, str]:
+    """Generate HTML table sections for a list of items (glossaries or terms)."""
+    sorted_items = sorted(items, key=lambda x: x["title"].upper())
+    
     by_letter = {}
     for item in sorted_items:
         first_letter = item["title"][0].upper()
@@ -206,64 +173,99 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
         by_letter[first_letter].append(item)
 
     all_letters = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    
+    # Alphabet nav
     alphabet_nav = ""
     for letter in all_letters:
         if letter in by_letter:
-            alphabet_nav += f'<a href="#letter-{letter}" class="alphabet-link">{letter}</a>'
+            alphabet_nav += f'<a href="#letter-{item_type}-{letter}" class="alphabet-link">{letter}</a>'
         else:
             alphabet_nav += f'<span class="alphabet-link disabled">{letter}</span>'
 
-    glossary_sections = ""
+    # Sections
+    sections = ""
     for letter in all_letters:
         if letter not in by_letter:
             continue
 
-        glossary_sections += f'''
-        <section class="letter-section" id="letter-{letter}">
-            <h3 class="letter-heading">{letter}</h3>
-            <table class="glossary-table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>Category</th>
-                        <th>Languages</th>
-                        <th>Terms</th>
-                    </tr>
-                </thead>
-                <tbody>'''
-
-        for item in by_letter[letter]:
-            cat_info = categories.get(item["category"], {"name": item["category"], "color": "#666"})
-            item_type = item.get("item_type", "glossary")
+        if item_type == "glossary":
+            sections += f'''
+            <section class="letter-section" id="letter-{item_type}-{letter}">
+                <h3 class="letter-heading">{letter}</h3>
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Languages</th>
+                            <th>Terms</th>
+                        </tr>
+                    </thead>
+                    <tbody>'''
             
-            if item_type == "term":
-                link = f"term/{item['slug']}.html"
-                type_badge = '<span class="type-badge term">Term</span>'
-            else:
+            for item in by_letter[letter]:
+                cat_info = categories.get(item["category"], {"name": item["category"], "color": "#666"})
                 link = f"glossary/{item['slug']}.html"
-                type_badge = '<span class="type-badge glossary">Glossary</span>'
+                sections += f'''
+                        <tr data-category="{item['category']}" data-source="{item.get('source_lang', '')}" data-target="{item.get('target_lang', '')}">
+                            <td><a href="{link}">{item['title']}</a></td>
+                            <td><span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', item['category'])}</span></td>
+                            <td>{item.get('source_lang', '')} → {item.get('target_lang', '')}</td>
+                            <td>{item.get('term_count', 0):,}</td>
+                        </tr>'''
 
-            glossary_sections += f'''
-                    <tr data-category="{item['category']}" data-source="{item.get('source_lang', '')}" data-target="{item.get('target_lang', '')}">
-                        <td><a href="{link}">{item['title']}</a></td>
-                        <td>{type_badge}</td>
-                        <td><span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', item['category'])}</span></td>
-                        <td>{item.get('source_lang', '')}  {item.get('target_lang', '')}</td>
-                        <td>{item.get('term_count', '-'):,}</td>
-                    </tr>'''
+            sections += '''
+                    </tbody>
+                </table>
+            </section>'''
+        
+        else:  # terms
+            sections += f'''
+            <section class="letter-section" id="letter-{item_type}-{letter}">
+                <h3 class="letter-heading">{letter}</h3>
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Languages</th>
+                        </tr>
+                    </thead>
+                    <tbody>'''
+            
+            for item in by_letter[letter]:
+                link = f"term/{item['slug']}.html"
+                desc = item.get('description', '')[:100]
+                if len(item.get('description', '')) > 100:
+                    desc += '...'
+                sections += f'''
+                        <tr>
+                            <td><a href="{link}">{item['title']}</a></td>
+                            <td>{desc}</td>
+                            <td>{item.get('source_lang', 'nl')} → {item.get('target_lang', 'en')}</td>
+                        </tr>'''
 
-        glossary_sections += '''
-                </tbody>
-            </table>
-        </section>'''
+            sections += '''
+                    </tbody>
+                </table>
+            </section>'''
 
+    return alphabet_nav, sections
+
+
+def generate_html_index(glossaries: list[dict], terms: list[dict], categories: dict) -> str:
+    """Generate the main index.html page with tabs."""
+    
     sidebar_html = load_sidebar_content()
     total_glossaries = len(glossaries)
     total_terms_pages = len(terms)
     total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
 
-    return f"""<!DOCTYPE html>
+    # Generate tables for each tab
+    glossary_nav, glossary_sections = generate_table_for_items(glossaries, categories, "glossary")
+    terms_nav, terms_sections = generate_table_for_items(terms, categories, "term")
+
+    return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -272,6 +274,54 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="pagefind/pagefind-ui.css">
+    <style>
+        .tabs {{
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 1.5rem;
+        }}
+        .tab-button {{
+            padding: 12px 24px;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            border-radius: 8px 8px 0 0;
+            margin-right: 4px;
+            transition: all 0.2s;
+        }}
+        .tab-button:hover {{
+            background: #e8e8e8;
+        }}
+        .tab-button.active {{
+            background: #3498db;
+            color: white;
+        }}
+        .tab-button .count {{
+            background: rgba(0,0,0,0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+        }}
+        .tab-button.active .count {{
+            background: rgba(255,255,255,0.2);
+        }}
+        .tab-content {{
+            display: none;
+        }}
+        .tab-content.active {{
+            display: block;
+        }}
+        .tab-description {{
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }}
+    </style>
 </head>
 <body>
     <div class="page-layout">
@@ -309,20 +359,37 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                     </div>
                 </section>
 
-                <section class="glossary-list">
-                    <h2>All Content</h2>
+                <section class="content-browser">
+                    <div class="tabs">
+                        <button class="tab-button active" onclick="showTab('glossaries', this)">
+                            📚 Glossaries<span class="count">{total_glossaries}</span>
+                        </button>
+                        <button class="tab-button" onclick="showTab('terms', this)">
+                            📖 Terms<span class="count">{total_terms_pages:,}</span>
+                        </button>
+                    </div>
 
-                    <nav class="alphabet-nav">
-                        {alphabet_nav}
-                    </nav>
+                    <div id="tab-glossaries" class="tab-content active">
+                        <p class="tab-description">Terminology lists and glossaries with multiple term entries each.</p>
+                        <nav class="alphabet-nav">
+                            {glossary_nav}
+                        </nav>
+                        {glossary_sections}
+                    </div>
 
-                    {glossary_sections}
+                    <div id="tab-terms" class="tab-content">
+                        <p class="tab-description">Individual term pages with definitions, examples, and reference links.</p>
+                        <nav class="alphabet-nav">
+                            {terms_nav}
+                        </nav>
+                        {terms_sections}
+                    </div>
                 </section>
             </main>
 
             <footer>
                 <p>Data is open source and available on <a href="https://github.com/michaelbeijer/superlookup">GitHub</a></p>
-                <p>Built with  by <a href="https://michaelbeijer.co.uk">Michael Beijer</a></p>
+                <p>Built with ❤️ by <a href="https://michaelbeijer.co.uk">Michael Beijer</a></p>
             </footer>
         </div>
     </div>
@@ -336,9 +403,23 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                 showImages: false
             }});
         }});
+
+        function showTab(tabName, btn) {{
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {{
+                tab.classList.remove('active');
+            }});
+            document.querySelectorAll('.tab-button').forEach(b => {{
+                b.classList.remove('active');
+            }});
+            
+            // Show selected tab
+            document.getElementById('tab-' + tabName).classList.add('active');
+            btn.classList.add('active');
+        }}
     </script>
 </body>
-</html>"""
+</html>'''
 
 
 def generate_glossary_page(glossary: dict, categories: dict) -> str:
@@ -360,7 +441,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 
     sidebar_html = load_sidebar_content()
 
-    return f"""<!DOCTYPE html>
+    return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -378,7 +459,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 
         <div class="main-content">
             <header>
-                <nav><a href="../index.html"> Back to all glossaries</a></nav>
+                <nav><a href="../index.html">← Back to all glossaries</a></nav>
                 <h1>{glossary['title']}</h1>
                 <p>{glossary.get('description', '')}</p>
             </header>
@@ -386,7 +467,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
             <main>
                 <section class="glossary-meta">
                     <span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', '')}</span>
-                    <span class="lang-badge">{glossary.get('source_lang', '')}  {glossary.get('target_lang', '')}</span>
+                    <span class="lang-badge">{glossary.get('source_lang', '')} → {glossary.get('target_lang', '')}</span>
                     <span class="term-count">{glossary.get('term_count', 0):,} terms</span>
                 </section>
 
@@ -416,18 +497,18 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 
     <script src="../pagefind/pagefind-ui.js"></script>
 </body>
-</html>"""
+</html>'''
 
 
 def generate_term_page(term: dict, categories: dict) -> str:
     """Generate an individual term page (rich content)."""
     cat_info = categories.get(term.get("category", "terms"), {"name": "Terms", "color": "#34495e"})
     sidebar_html = load_sidebar_content()
-    
+
     # The body is already converted to HTML
     html_content = term.get("html_content", "")
 
-    return f"""<!DOCTYPE html>
+    return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -445,7 +526,7 @@ def generate_term_page(term: dict, categories: dict) -> str:
 
         <div class="main-content">
             <header>
-                <nav><a href="../index.html"> Back to all content</a></nav>
+                <nav><a href="../index.html">← Back to all content</a></nav>
                 <h1>{term['title']}</h1>
                 <p>{term.get('description', '')}</p>
             </header>
@@ -454,7 +535,7 @@ def generate_term_page(term: dict, categories: dict) -> str:
                 <section class="term-meta">
                     <span class="type-badge term">Term</span>
                     <span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', 'Terms')}</span>
-                    <span class="lang-badge">{term.get('source_lang', 'nl')}  {term.get('target_lang', 'en')}</span>
+                    <span class="lang-badge">{term.get('source_lang', 'nl')} → {term.get('target_lang', 'en')}</span>
                 </section>
 
                 <section class="term-content" data-pagefind-body>
@@ -476,12 +557,12 @@ def generate_term_page(term: dict, categories: dict) -> str:
 
     <script src="../pagefind/pagefind-ui.js"></script>
 </body>
-</html>"""
+</html>'''
 
 
 def build_site():
     """Main build function."""
-    print(" Building Superlookup site...")
+    print("📦 Building Superlookup site...")
 
     # Clean output directory
     if OUTPUT_DIR.exists():
@@ -491,20 +572,20 @@ def build_site():
     (OUTPUT_DIR / "term").mkdir()
 
     # Load data
-    print(" Loading content...")
+    print("📂 Loading content...")
     categories = load_categories()
     glossaries, terms = load_all_content()
     print(f"   Found {len(glossaries)} glossaries and {len(terms)} terms in {len(categories)} categories")
 
     # Generate search index
-    print(" Generating search index...")
+    print("🔍 Generating search index...")
     search_index = generate_search_index(glossaries, terms)
     with open(OUTPUT_DIR / "search-index.json", "w", encoding="utf-8") as f:
         json.dump(search_index, f, ensure_ascii=False, indent=2)
     print(f"   Indexed {len(search_index)} entries")
 
     # Generate index page
-    print(" Generating HTML pages...")
+    print("📝 Generating HTML pages...")
     index_html = generate_html_index(glossaries, terms, categories)
     with open(OUTPUT_DIR / "index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
@@ -524,7 +605,7 @@ def build_site():
             f.write(page_html)
 
     # Copy static assets
-    print(" Copying static assets...")
+    print("📁 Copying static assets...")
     if (SITE_DIR / "styles.css").exists():
         shutil.copy(SITE_DIR / "styles.css", OUTPUT_DIR / "styles.css")
     if (SITE_DIR / "sv-icon.svg").exists():
@@ -532,12 +613,12 @@ def build_site():
     if (SITE_DIR / "favicon.ico").exists():
         shutil.copy(SITE_DIR / "favicon.ico", OUTPUT_DIR / "favicon.ico")
 
-    print(f" Site built successfully in {OUTPUT_DIR}/")
-    print(f"\n Summary:")
+    print(f"✅ Site built successfully in {OUTPUT_DIR}/")
+    print(f"\n📊 Summary:")
     print(f"   - Glossaries: {len(glossaries)}")
     print(f"   - Term pages: {len(terms)}")
     print(f"   - Total term entries: {sum(g.get('term_count', 0) for g in glossaries):,}")
-    print(f"\n Next steps:")
+    print(f"\n🚀 Next steps:")
     print(f"   1. Run: npx pagefind --site {OUTPUT_DIR}")
     print(f"   2. Run: npx serve {OUTPUT_DIR}")
     print(f"   3. Open: http://localhost:3000")
