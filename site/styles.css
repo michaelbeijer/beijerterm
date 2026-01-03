@@ -460,6 +460,17 @@ footer p {
     height: 32px;
 }
 
+.version-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+}
+
 .header-nav {
     display: flex;
     gap: 1.5rem;
@@ -666,6 +677,17 @@ main {
     height: 32px;
 }
 
+.version-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+}
+
 .header-nav {
     display: flex;
     gap: 1.5rem;
@@ -870,6 +892,17 @@ main {
 .site-brand .site-logo {
     width: 32px;
     height: 32px;
+}
+
+.version-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    margin-left: 0.25rem;
+    vertical-align: middle;
 }
 
 .header-nav {

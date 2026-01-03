@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-01-03
+
 ### Added
+- **Search result highlighting**: When clicking through from search results, matching terms are highlighted in yellow on the destination page
+- **Navigation bar for highlights**: Shows match count with Previous/Next navigation buttons
+- **Keyboard shortcuts**: Press N (next), P (previous), or Esc (close) to navigate between highlighted matches
+- **Auto-scroll to first match**: Page automatically scrolls to the first highlighted match
+- **Version badge**: Header now displays "Superlookup v1.0.1"
+
+### Changed
 - Minimum term count filter (10 terms) to distinguish glossaries from single-term entries
 - Single-term entries (< 10 terms) now appear in Terms tab instead of Glossaries tab
 

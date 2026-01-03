@@ -384,6 +384,7 @@ def generate_site_header(current_page: str = "home") -> str:
                 <a href="/superlookup/" class="site-brand">
                     <img src="{'../' if current_page != 'home' else ''}sv-icon.svg" alt="" class="site-logo">
                     <span>Superlookup</span>
+                    <span class="version-badge">v1.0.1</span>
                 </a>
                 {tagline}
             </div>
