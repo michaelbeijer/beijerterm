@@ -1,4 +1,4 @@
-/* OpenGlossary Styles */
+﻿/* OpenGlossary Styles */
 
 :root {
     --primary-color: #2563eb;
@@ -417,5 +417,182 @@ footer p {
     
     .highlight-banner button:hover {
         background: #854d0e;
+    }
+}
+
+
+/* Sidebar Layout */
+.page-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: #f8f9fa;
+    border-right: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.sidebar h3:first-child {
+    margin-top: 0;
+}
+
+.sidebar h4 {
+    color: #34495e;
+    font-size: 0.95rem;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.sidebar p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.sidebar li {
+    padding: 0.4rem 0;
+}
+
+.sidebar a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.sidebar a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive sidebar */
+@media (max-width: 900px) {
+    .page-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+}
+
+/* Sidebar layout */
+.page-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: linear-gradient(180deg, #f8f9fa 0%, #f0f2f4 100%);
+    border-right: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.sidebar h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4a90d9;
+}
+
+.sidebar h3:not(:first-child) {
+    margin-top: 1.5rem;
+}
+
+.sidebar p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0.5rem 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.sidebar li {
+    padding: 0.4rem 0;
+}
+
+.sidebar a {
+    color: #4a90d9;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.sidebar a:hover {
+    color: #2d6cb5;
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive: hide sidebar on small screens */
+@media (max-width: 900px) {
+    .page-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 1rem;
+    }
+    
+    .sidebar h3:not(:first-child) {
+        margin-top: 1rem;
     }
 }

@@ -108,61 +108,38 @@ def load_sidebar_content() -> str:
     sidebar_file = SITE_DIR / "sidebar.md"
     if not sidebar_file.exists():
         return ""
-
+    
     with open(sidebar_file, "r", encoding="utf-8") as f:
         content = f.read()
-
-    # Remove BOM if present
-    content = content.lstrip('\ufeff')
     
-    # Remove comment lines (lines starting with # followed by space and lowercase)
-    lines = content.split('\n')
-    filtered_lines = []
-    for line in lines:
-        # Skip lines that look like comments (# followed by sentence-like text)
-        if line.startswith('# ') and line[2:3].isupper() and 'sidebar' in line.lower():
-            continue
-        if line.startswith('# ') and 'file contains' in line.lower():
-            continue
-        filtered_lines.append(line)
-    content = '\n'.join(filtered_lines)
-
-    # Convert markdown to HTML
+    # Simple markdown to HTML conversion
     html = content
-
-    # Headers (## becomes h3, ### becomes h4)
+    
+    # Headers
     html = re.sub(r'^## (.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
     html = re.sub(r'^### (.+)$', r'<h4>\1</h4>', html, flags=re.MULTILINE)
     
     # Bold
     html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
-
+    
     # Links
-    html = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank">\1</a>', html)
-
-    # List items - convert to proper list structure
-    in_list = False
-    result_lines = []
-    for line in html.split('\n'):
+    html = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', html)
+    
+    # List items
+    html = re.sub(r'^- (.+)$', r'<li>\1</li>', html, flags=re.MULTILINE)
+    
+    # Wrap consecutive <li> in <ul>
+    html = re.sub(r'((?:<li>.+</li>\n?)+)', r'<ul>\1</ul>', html)
+    
+    # Paragraphs (lines that aren't tags)
+    lines = html.split('\n')
+    result = []
+    for line in lines:
         line = line.strip()
-        if line.startswith('- '):
-            if not in_list:
-                result_lines.append('<ul>')
-                in_list = True
-            result_lines.append(f'<li>{line[2:]}</li>')
-        else:
-            if in_list:
-                result_lines.append('</ul>')
-                in_list = False
-            if line and not line.startswith('<'):
-                result_lines.append(f'<p>{line}</p>')
-            elif line:
-                result_lines.append(line)
-    
-    if in_list:
-        result_lines.append('</ul>')
-    
-    html = '\n'.join(result_lines)
+        if line and not line.startswith('<') and not line.startswith('#'):
+            line = f'<p>{line}</p>'
+        result.append(line)
+    html = '\n'.join(result)
     
     return html
 
@@ -262,13 +239,13 @@ def generate_html_index(glossaries: list[dict], categories: dict) -> str:
         <aside class="sidebar">
             {sidebar_html}
         </aside>
-
+        
         <div class="main-content">
             <header>
                 <h1> Superlookup</h1>
                 <p>Open source multilingual terminology database</p>
             </header>
-
+            
             <main>
                 <section class="search-section">
                     <div id="search"></div>
@@ -371,7 +348,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
         cells = "".join(f"<td>{term.get(h, '')}</td>" for h in headers)
         term_rows += f"<tr>{cells}</tr>\n"
 
-    # Load sidebar content (with adjusted paths for subpage)
+    # Load sidebar content
     sidebar_html = load_sidebar_content()
 
     return f"""<!DOCTYPE html>
@@ -388,7 +365,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
         <aside class="sidebar">
             {sidebar_html}
         </aside>
-
+        
         <div class="main-content">
             <header>
                 <nav><a href="../index.html"> Back to all glossaries</a></nav>
@@ -528,7 +505,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 
 def build_site():
     """Main build function."""
-    print(" Building Superlookup site...")
+    print("  Building Superlookup site...")
 
     # Clean output directory
     if OUTPUT_DIR.exists():
@@ -576,3 +553,4 @@ def build_site():
 
 if __name__ == "__main__":
     build_site()
+
