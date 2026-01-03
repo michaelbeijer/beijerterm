@@ -63,6 +63,214 @@ SCROLL_TO_TOP_HTML = '''
     </script>
 '''
 
+# Search highlight and navigation HTML snippet
+SEARCH_HIGHLIGHT_HTML = '''
+    <!-- Search highlight navigation -->
+    <div id="searchNav" class="search-nav" style="display: none;">
+        <div class="search-nav-content">
+            <span class="search-nav-info">
+                "<span id="searchTerm"></span>": 
+                <span id="matchCount">0</span> matches
+            </span>
+            <div class="search-nav-buttons">
+                <button onclick="prevMatch()" title="Previous match">
+                    <span class="key-hint">P</span> &#9650;
+                </button>
+                <span id="matchPosition">0/0</span>
+                <button onclick="nextMatch()" title="Next match">
+                    &#9660; <span class="key-hint">N</span>
+                </button>
+                <button onclick="closeSearchNav()" title="Close (Esc)" class="close-btn">&times;</button>
+            </div>
+        </div>
+    </div>
+    <style>
+        .search-nav {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 14px;
+        }
+        .search-nav-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .search-nav-info {
+            color: #9ca3af;
+        }
+        #searchTerm {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+        .search-nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .search-nav button {
+            background: #374151;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: background 0.2s;
+        }
+        .search-nav button:hover {
+            background: #4b5563;
+        }
+        .search-nav .close-btn {
+            padding: 6px 10px;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+        .key-hint {
+            background: #1f2937;
+            border: 1px solid #4b5563;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-family: monospace;
+        }
+        #matchPosition {
+            color: #9ca3af;
+            min-width: 50px;
+            text-align: center;
+        }
+        .search-highlight {
+            background-color: #fef08a !important;
+            color: #1f2937 !important;
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+        .search-highlight.current {
+            background-color: #f97316 !important;
+            color: white !important;
+            box-shadow: 0 0 0 2px #f97316;
+        }
+    </style>
+    <script>
+        let highlights = [];
+        let currentIndex = -1;
+        
+        function initSearchHighlight() {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            if (!query) return;
+            
+            const searchTerm = query.trim();
+            if (searchTerm.length < 2) return;
+            
+            // Find and highlight matches in tables and content
+            const container = document.querySelector('[data-pagefind-body]') || document.querySelector('main');
+            if (!container) return;
+            
+            highlightText(container, searchTerm);
+            
+            if (highlights.length > 0) {
+                document.getElementById('searchNav').style.display = 'block';
+                document.getElementById('searchTerm').textContent = searchTerm;
+                document.getElementById('matchCount').textContent = highlights.length;
+                currentIndex = 0;
+                goToMatch(0);
+            }
+        }
+        
+        function highlightText(element, searchTerm) {
+            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+            const textNodes = [];
+            const lowerSearch = searchTerm.toLowerCase();
+            
+            while (walker.nextNode()) {
+                if (walker.currentNode.textContent.toLowerCase().includes(lowerSearch)) {
+                    textNodes.push(walker.currentNode);
+                }
+            }
+            
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const regex = new RegExp('(' + escapeRegex(searchTerm) + ')', 'gi');
+                const parts = text.split(regex);
+                
+                if (parts.length > 1) {
+                    const fragment = document.createDocumentFragment();
+                    parts.forEach(part => {
+                        if (part.toLowerCase() === searchTerm.toLowerCase()) {
+                            const mark = document.createElement('mark');
+                            mark.className = 'search-highlight';
+                            mark.textContent = part;
+                            highlights.push(mark);
+                            fragment.appendChild(mark);
+                        } else {
+                            fragment.appendChild(document.createTextNode(part));
+                        }
+                    });
+                    node.parentNode.replaceChild(fragment, node);
+                }
+            });
+        }
+        
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');
+        }
+        
+        function goToMatch(index) {
+            if (highlights.length === 0) return;
+            
+            highlights.forEach(h => h.classList.remove('current'));
+            
+            currentIndex = index;
+            if (currentIndex < 0) currentIndex = highlights.length - 1;
+            if (currentIndex >= highlights.length) currentIndex = 0;
+            
+            const current = highlights[currentIndex];
+            current.classList.add('current');
+            current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            document.getElementById('matchPosition').textContent = 
+                (currentIndex + 1) + '/' + highlights.length;
+        }
+        
+        function nextMatch() { goToMatch(currentIndex + 1); }
+        function prevMatch() { goToMatch(currentIndex - 1); }
+        
+        function closeSearchNav() {
+            document.getElementById('searchNav').style.display = 'none';
+            highlights.forEach(h => {
+                const text = h.textContent;
+                h.parentNode.replaceChild(document.createTextNode(text), h);
+            });
+            highlights = [];
+            const url = new URL(window.location);
+            url.searchParams.delete('q');
+            window.history.replaceState({}, '', url);
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (highlights.length === 0) return;
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            
+            if (e.key === 'n' || e.key === 'N') { e.preventDefault(); nextMatch(); }
+            else if (e.key === 'p' || e.key === 'P') { e.preventDefault(); prevMatch(); }
+            else if (e.key === 'Escape') { closeSearchNav(); }
+        });
+        
+        document.addEventListener('DOMContentLoaded', initSearchHighlight);
+    </script>
+'''
+
 
 def parse_frontmatter(content: str) -> tuple[dict, str]:
     """Extract YAML frontmatter and body from Markdown content."""
@@ -471,6 +679,20 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                 showSubResults: true,
                 showImages: false
             }});
+
+            // Intercept Pagefind result link clicks to pass search query
+            document.getElementById('search').addEventListener('click', function(e) {{
+                const link = e.target.closest('a');
+                if (link && link.href) {{
+                    const searchInput = document.querySelector('.pagefind-ui__search-input');
+                    if (searchInput && searchInput.value.trim()) {{
+                        e.preventDefault();
+                        const query = encodeURIComponent(searchInput.value.trim());
+                        const separator = link.href.includes('?') ? '&' : '?';
+                        window.location.href = link.href + separator + 'q=' + query;
+                    }}
+                }}
+            }});
         }});
 
         function showTab(tabName, btn) {{
@@ -562,6 +784,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
     {site_footer}
 
     <script src="../pagefind/pagefind-ui.js"></script>
+{SEARCH_HIGHLIGHT_HTML}
 {SCROLL_TO_TOP_HTML}
 </body>
 </html>'''
@@ -620,6 +843,7 @@ def generate_term_page(term: dict, categories: dict) -> str:
     {site_footer}
 
     <script src="../pagefind/pagefind-ui.js"></script>
+{SEARCH_HIGHLIGHT_HTML}
 {SCROLL_TO_TOP_HTML}
 </body>
 </html>'''
