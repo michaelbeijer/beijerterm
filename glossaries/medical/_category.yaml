@@ -1,5 +1,6 @@
 name: Medical
 slug: medical
-description: Medical, healthcare, and biomedical terminology
+description: Medical terminology and glossaries
 icon: 🏥
-color: "#2ecc71"
+color: "#e74c3c"
+glossary_count: 5

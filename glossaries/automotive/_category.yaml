@@ -1,5 +1,6 @@
 name: Automotive
 slug: automotive
-description: Glossaries related to cars, vehicles, and automotive technology
+description: Automotive terminology and glossaries
 icon: 🚗
-color: "#e74c3c"
+color: "#e67e22"
+glossary_count: 2

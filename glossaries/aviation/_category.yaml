@@ -1,5 +1,6 @@
 name: Aviation
 slug: aviation
-description: Glossaries related to aviation, airports, and aerospace
+description: Aviation terminology and glossaries
 icon: ✈️
-color: "#3498db"
+color: "#1abc9c"
+glossary_count: 1
