@@ -166,15 +166,49 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
     return glossaries, terms
 
 
-def load_sidebar_content() -> str:
-    """Load and convert sidebar markdown to HTML."""
-    sidebar_file = SITE_DIR / "sidebar.md"
-    if not sidebar_file.exists():
-        return ""
-    with open(sidebar_file, "r", encoding="utf-8") as f:
-        md_content = f.read()
-    html = markdown.markdown(md_content, extensions=['tables', 'fenced_code'])
-    return html
+def generate_site_header(current_page: str = "home") -> str:
+    """Generate the site header with navigation."""
+    home_active = 'class="active"' if current_page == "home" else ''
+    return f'''<header class="site-header">
+        <div class="header-content">
+            <a href="/superlookup/" class="site-brand">
+                <img src="{'../' if current_page != 'home' else ''}sv-icon.svg" alt="" class="site-logo">
+                <span>Superlookup</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/superlookup/" {home_active}>Home</a>
+                <a href="https://github.com/michaelbeijer/superlookup" target="_blank">GitHub</a>
+                <a href="https://supervertaler.com" target="_blank">Supervertaler</a>
+            </nav>
+        </div>
+    </header>'''
+
+
+def generate_site_footer() -> str:
+    """Generate the site footer."""
+    return '''<footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Superlookup</h4>
+                <p>Open source multilingual terminology database for translators.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="https://github.com/michaelbeijer/superlookup">GitHub Repository</a></li>
+                    <li><a href="https://supervertaler.com">Supervertaler</a></li>
+                    <li><a href="https://michaelbeijer.co.uk">Michael Beijer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>License</h4>
+                <p>All data is open source and freely available.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Michael Beijer. Built with ❤️ for the translation community.</p>
+        </div>
+    </footer>'''
 
 
 def generate_search_index(glossaries: list[dict], terms: list[dict]) -> list[dict]:
@@ -300,7 +334,8 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
 def generate_html_index(glossaries: list[dict], terms: list[dict], categories: dict) -> str:
     """Generate the main index.html page with tabs."""
     
-    sidebar_html = load_sidebar_content()
+    site_header = generate_site_header("home")
+    site_footer = generate_site_footer()
     total_glossaries = len(glossaries)
     total_terms_pages = len(terms)
     total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
@@ -367,18 +402,15 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
     </style>
 </head>
 <body>
-    <div class="page-layout">
-        <aside class="sidebar">
-            {sidebar_html}
-        </aside>
+    {site_header}
 
-        <div class="main-content">
-            <header>
-                <h1><img src="sv-icon.svg" alt="Sv" class="site-logo"> Superlookup</h1>
-                <p>Open source multilingual terminology database</p>
-            </header>
+    <div class="page-container">
+        <div class="hero-section">
+            <h1>Superlookup</h1>
+            <p>Open source multilingual terminology database</p>
+        </div>
 
-            <main>
+        <main>
                 <section class="search-section">
                     <div id="search"></div>
                 </section>
@@ -428,14 +460,10 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                         {terms_sections}
                     </div>
                 </section>
-            </main>
-
-            <footer>
-                <p>Data is open source and available on <a href="https://github.com/michaelbeijer/superlookup">GitHub</a></p>
-                <p>Built with love by <a href="https://michaelbeijer.co.uk">Michael Beijer</a></p>
-            </footer>
-        </div>
+        </main>
     </div>
+
+    {site_footer}
 
     <script src="pagefind/pagefind-ui.js"></script>
     <script>
@@ -480,7 +508,8 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
         cells = "".join(f"<td>{term.get(h, '')}</td>" for h in headers)
         term_rows += f"<tr>{cells}</tr>\n"
 
-    sidebar_html = load_sidebar_content()
+    site_header = generate_site_header("glossary")
+    site_footer = generate_site_footer()
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -493,48 +522,46 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
     <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
 </head>
 <body>
-    <div class="page-layout">
-        <aside class="sidebar">
-            {sidebar_html}
-        </aside>
+    {site_header}
 
-        <div class="main-content">
-            <header>
-                <nav><a href="../index.html">&larr; Back to all glossaries</a></nav>
-                <h1>{glossary['title']}</h1>
-                <p>{glossary.get('description', '')}</p>
-            </header>
-
-            <main>
-                <section class="glossary-meta">
-                    <span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', '')}</span>
-                    <span class="lang-badge">{glossary.get('source_lang', '')} &rarr; {glossary.get('target_lang', '')}</span>
-                    <span class="term-count">{glossary.get('term_count', 0):,} terms</span>
-                </section>
-
-                <section class="glossary-content" data-pagefind-body>
-                    <table class="terms-table">
-                        <thead>
-                            <tr>{header_row}</tr>
-                        </thead>
-                        <tbody>
-                            {term_rows}
-                        </tbody>
-                    </table>
-                </section>
-
-                <section class="glossary-info">
-                    <h3>About this glossary</h3>
-                    <dl>
-                        <dt>Source</dt>
-                        <dd><a href="{glossary.get('source_url', '#')}">{glossary.get('source_url', 'Unknown')}</a></dd>
-                        <dt>Last Updated</dt>
-                        <dd>{glossary.get('last_updated', 'Unknown')}</dd>
-                    </dl>
-                </section>
-            </main>
+    <div class="page-container">
+        <div class="page-header">
+            <nav class="breadcrumb"><a href="../index.html">&larr; Back to all glossaries</a></nav>
+            <h1>{glossary['title']}</h1>
+            <p class="page-description">{glossary.get('description', '')}</p>
         </div>
+
+        <main>
+            <section class="glossary-meta">
+                <span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', '')}</span>
+                <span class="lang-badge">{glossary.get('source_lang', '')} &rarr; {glossary.get('target_lang', '')}</span>
+                <span class="term-count">{glossary.get('term_count', 0):,} terms</span>
+            </section>
+
+            <section class="glossary-content" data-pagefind-body>
+                <table class="terms-table">
+                    <thead>
+                        <tr>{header_row}</tr>
+                    </thead>
+                    <tbody>
+                        {term_rows}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="glossary-info">
+                <h3>About this glossary</h3>
+                <dl>
+                    <dt>Source</dt>
+                    <dd><a href="{glossary.get('source_url', '#')}">{glossary.get('source_url', 'Unknown')}</a></dd>
+                    <dt>Last Updated</dt>
+                    <dd>{glossary.get('last_updated', 'Unknown')}</dd>
+                </dl>
+            </section>
+        </main>
     </div>
+
+    {site_footer}
 
     <script src="../pagefind/pagefind-ui.js"></script>
 {SCROLL_TO_TOP_HTML}
@@ -545,8 +572,9 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 def generate_term_page(term: dict, categories: dict) -> str:
     """Generate an individual term page."""
     cat_info = categories.get(term.get("category", "terms"), {"name": "Terms", "color": "#34495e"})
-    sidebar_html = load_sidebar_content()
     html_content = term.get("html_content", "")
+    site_header = generate_site_header("term")
+    site_footer = generate_site_footer()
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -559,41 +587,39 @@ def generate_term_page(term: dict, categories: dict) -> str:
     <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
 </head>
 <body>
-    <div class="page-layout">
-        <aside class="sidebar">
-            {sidebar_html}
-        </aside>
+    {site_header}
 
-        <div class="main-content">
-            <header>
-                <nav><a href="../index.html">&larr; Back to all content</a></nav>
-                <h1>{term['title']}</h1>
-                <p>{term.get('description', '')}</p>
-            </header>
-
-            <main>
-                <section class="term-meta">
-                    <span class="type-badge term">Term</span>
-                    <span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', 'Terms')}</span>
-                    <span class="lang-badge">{term.get('source_lang', 'nl')} &rarr; {term.get('target_lang', 'en')}</span>
-                </section>
-
-                <section class="term-content" data-pagefind-body>
-                    {html_content}
-                </section>
-
-                <section class="term-info">
-                    <h3>About this term</h3>
-                    <dl>
-                        <dt>Source</dt>
-                        <dd><a href="{term.get('source_url', '#')}">{term.get('source_url', 'Unknown')}</a></dd>
-                        <dt>Last Updated</dt>
-                        <dd>{term.get('last_updated', 'Unknown')}</dd>
-                    </dl>
-                </section>
-            </main>
+    <div class="page-container">
+        <div class="page-header">
+            <nav class="breadcrumb"><a href="../index.html">&larr; Back to all content</a></nav>
+            <h1>{term['title']}</h1>
+            <p class="page-description">{term.get('description', '')}</p>
         </div>
+
+        <main>
+            <section class="term-meta">
+                <span class="type-badge term">Term</span>
+                <span class="category-badge" style="background-color: {cat_info.get('color', '#666')}">{cat_info.get('name', 'Terms')}</span>
+                <span class="lang-badge">{term.get('source_lang', 'nl')} &rarr; {term.get('target_lang', 'en')}</span>
+            </section>
+
+            <section class="term-content" data-pagefind-body>
+                {html_content}
+            </section>
+
+            <section class="term-info">
+                <h3>About this term</h3>
+                <dl>
+                    <dt>Source</dt>
+                    <dd><a href="{term.get('source_url', '#')}">{term.get('source_url', 'Unknown')}</a></dd>
+                    <dt>Last Updated</dt>
+                    <dd>{term.get('last_updated', 'Unknown')}</dd>
+                </dl>
+            </section>
+        </main>
     </div>
+
+    {site_footer}
 
     <script src="../pagefind/pagefind-ui.js"></script>
 {SCROLL_TO_TOP_HTML}
