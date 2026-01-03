@@ -1,6 +1,5 @@
 name: Medical
 slug: medical
 description: Medical terminology and glossaries
-icon: 🏥
 color: "#e74c3c"
 glossary_count: 5
