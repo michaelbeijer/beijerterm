@@ -4,7 +4,6 @@ slug: afkapwaarde
 description: Dutch term for cut-off value, threshold value
 source_lang: nl
 target_lang: en
-domain: medical
 last_updated: 2026-01-04
 tags:
   - medical
