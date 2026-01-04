@@ -785,7 +785,7 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Description</th>
+                            <th>Tags</th>
                             <th>Languages</th>
                         </tr>
                     </thead>
@@ -793,13 +793,19 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
             
             for item in by_letter[letter]:
                 link = f"term/{item['slug']}.html"
-                desc = item.get('description', '')[:100]
-                if len(item.get('description', '')) > 100:
-                    desc += '...'
+                # Generate tag badges for all tags
+                tags = item.get('tags', [])
+                tags_data_attr = ','.join(t.lower() for t in tags) if tags else ''
+                if tags:
+                    tag_badges = ' '.join(f'<span class="tag-badge clickable-tag" data-tag="{t.lower()}">{t}</span>' for t in tags[:3])
+                    if len(tags) > 3:
+                        tag_badges += f' <span class="tag-more">+{len(tags) - 3}</span>'
+                else:
+                    tag_badges = '<span class="tag-badge">—</span>'
                 sections += f'''
-                        <tr>
+                        <tr data-tags="{tags_data_attr}">
                             <td><a href="{link}">{item['title']}</a></td>
-                            <td>{desc}</td>
+                            <td class="tags-cell">{tag_badges}</td>
                             <td>{item.get('source_lang', 'nl')} &rarr; {item.get('target_lang', 'en')}</td>
                         </tr>'''
 
@@ -1111,7 +1117,13 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                     </div>
 
                     <div id="tab-terms" class="tab-content">
-                        <p class="tab-description">Individual term pages with definitions, examples, and reference links.</p>
+                        <p class="tab-description">Individual term pages with definitions, examples, and reference links. Click any tag to filter.</p>
+                        <div id="term-tag-filter-bar" class="tag-filter-bar">
+                            <span class="tag-filter-label">Filtering by:</span>
+                            <span id="term-tag-filter-value" class="tag-filter-value"></span>
+                            <span id="term-tag-filter-count" class="tag-filter-count"></span>
+                            <button class="tag-filter-clear" onclick="clearTermTagFilter()">Clear filter</button>
+                        </div>
                         <nav class="alphabet-nav">
                             {terms_nav}
                         </nav>
@@ -1201,11 +1213,20 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
 
         // Tag filtering functionality
         let activeTagFilter = null;
+        let activeTermTagFilter = null;
         
         document.addEventListener('click', function(e) {{
             if (e.target.classList.contains('clickable-tag')) {{
                 const tag = e.target.dataset.tag;
-                filterByTag(tag);
+                // Determine which tab we're in
+                const glossaryTab = e.target.closest('#tab-glossaries');
+                const termsTab = e.target.closest('#tab-terms');
+                
+                if (glossaryTab) {{
+                    filterByTag(tag);
+                }} else if (termsTab) {{
+                    filterTermsByTag(tag);
+                }}
             }}
         }});
         
@@ -1240,7 +1261,7 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
             }});
             
             // Update alphabet nav
-            updateAlphabetNav();
+            updateAlphabetNav('glossary');
             
             filterCount.textContent = `(${{visibleCount}} glossar${{visibleCount === 1 ? 'y' : 'ies'}})`;
         }}
@@ -1261,13 +1282,70 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
             }});
             
             // Update alphabet nav
-            updateAlphabetNav();
+            updateAlphabetNav('glossary');
         }}
         
-        function updateAlphabetNav() {{
-            document.querySelectorAll('#tab-glossaries .alphabet-nav a').forEach(link => {{
-                const letter = link.getAttribute('href').replace('#letter-glossary-', '');
-                const section = document.getElementById('letter-glossary-' + letter);
+        // Terms tab filtering
+        function filterTermsByTag(tag) {{
+            activeTermTagFilter = tag;
+            const filterBar = document.getElementById('term-tag-filter-bar');
+            const filterValue = document.getElementById('term-tag-filter-value');
+            const filterCount = document.getElementById('term-tag-filter-count');
+            
+            // Show filter bar
+            filterBar.classList.add('active');
+            filterValue.textContent = tag;
+            
+            // Filter rows
+            const rows = document.querySelectorAll('#tab-terms tr[data-tags]');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {{
+                const tags = row.dataset.tags.split(',');
+                if (tags.includes(tag)) {{
+                    row.style.display = '';
+                    visibleCount++;
+                }} else {{
+                    row.style.display = 'none';
+                }}
+            }});
+            
+            // Hide empty letter sections
+            document.querySelectorAll('#tab-terms .letter-section').forEach(section => {{
+                const visibleRows = section.querySelectorAll('tr[data-tags]:not([style*=\"display: none\"])');
+                section.style.display = visibleRows.length > 0 ? '' : 'none';
+            }});
+            
+            // Update alphabet nav
+            updateAlphabetNav('term');
+            
+            filterCount.textContent = `(${{visibleCount}} term${{visibleCount === 1 ? '' : 's'}})`;
+        }}
+        
+        function clearTermTagFilter() {{
+            activeTermTagFilter = null;
+            const filterBar = document.getElementById('term-tag-filter-bar');
+            filterBar.classList.remove('active');
+            
+            // Show all rows
+            document.querySelectorAll('#tab-terms tr[data-tags]').forEach(row => {{
+                row.style.display = '';
+            }});
+            
+            // Show all letter sections
+            document.querySelectorAll('#tab-terms .letter-section').forEach(section => {{
+                section.style.display = '';
+            }});
+            
+            // Update alphabet nav
+            updateAlphabetNav('term');
+        }}
+        
+        function updateAlphabetNav(itemType) {{
+            const tabId = itemType === 'glossary' ? '#tab-glossaries' : '#tab-terms';
+            document.querySelectorAll(tabId + ' .alphabet-nav a').forEach(link => {{
+                const letter = link.getAttribute('href').replace('#letter-' + itemType + '-', '');
+                const section = document.getElementById('letter-' + itemType + '-' + letter);
                 if (section && section.style.display === 'none') {{
                     link.classList.add('disabled');
                     link.style.opacity = '0.3';
@@ -1360,6 +1438,8 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
                     <dd>{glossary.get('description', 'No description available')}</dd>
                     <dt>Languages</dt>
                     <dd>{glossary.get('source_lang', '?')} → {glossary.get('target_lang', '?')}</dd>
+                    <dt>Tags</dt>
+                    <dd>{', '.join(tags) if tags else '—'}</dd>
                     <dt>Terms</dt>
                     <dd>{glossary.get('term_count', 0):,}</dd>
                     <dt>Source</dt>
@@ -1436,6 +1516,8 @@ def generate_term_page(term: dict, categories: dict) -> str:
                     <dd>{term.get('description', 'No description available')}</dd>
                     <dt>Languages</dt>
                     <dd>{term.get('source_lang', 'nl')} → {term.get('target_lang', 'en')}</dd>
+                    <dt>Tags</dt>
+                    <dd>{', '.join(tags) if tags else '—'}</dd>
                     <dt>Source</dt>
                     <dd><a href="{term.get('source_url', '#')}" target="_blank">{term.get('source_url', 'Unknown')}</a></dd>
                     <dt>Last Updated</dt>
