@@ -37,9 +37,6 @@ jobs:
       - name: Build site
         run: python scripts/build_site.py
 
-      - name: Copy static assets
-        run: cp site/styles.css _site/
-
       - name: Create Pagefind index
         run: npx pagefind --site _site
 
