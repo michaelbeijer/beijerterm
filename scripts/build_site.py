@@ -423,7 +423,7 @@ def generate_site_header(current_page: str = "home") -> str:
                 <a href="/beijerterm/" class="site-brand" title="Beijerterm homepage">
                     <img src="{'../' if current_page != 'home' else ''}mb-icon.svg" alt="Beijerterm" class="site-logo">
                     <span>Beijerterm</span>
-                    <span class="version-badge">v1.0.4</span>
+                    <span class="version-badge">v1.0.5</span>
                 </a>
                 {tagline}
             </div>
@@ -1022,8 +1022,18 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
             <section class="glossary-info">
                 <h3>About this glossary</h3>
                 <dl>
+                    <dt>Title</dt>
+                    <dd>{glossary.get('title', 'Unknown')}</dd>
+                    <dt>Description</dt>
+                    <dd>{glossary.get('description', 'No description available')}</dd>
+                    <dt>Languages</dt>
+                    <dd>{glossary.get('source_lang', '?')} → {glossary.get('target_lang', '?')}</dd>
+                    <dt>Domain</dt>
+                    <dd>{glossary.get('domain', 'general').title()}</dd>
+                    <dt>Terms</dt>
+                    <dd>{glossary.get('term_count', 0):,}</dd>
                     <dt>Source</dt>
-                    <dd><a href="{glossary.get('source_url', '#')}">{glossary.get('source_url', 'Unknown')}</a></dd>
+                    <dd><a href="{glossary.get('source_url', '#')}" target="_blank">{glossary.get('source_url', 'Unknown')}</a></dd>
                     <dt>Last Updated</dt>
                     <dd>{glossary.get('last_updated', 'Unknown')}</dd>
                 </dl>
@@ -1090,8 +1100,16 @@ def generate_term_page(term: dict, categories: dict) -> str:
             <section class="term-info">
                 <h3>About this term</h3>
                 <dl>
+                    <dt>Title</dt>
+                    <dd>{term.get('title', 'Unknown')}</dd>
+                    <dt>Description</dt>
+                    <dd>{term.get('description', 'No description available')}</dd>
+                    <dt>Languages</dt>
+                    <dd>{term.get('source_lang', 'nl')} → {term.get('target_lang', 'en')}</dd>
+                    <dt>Domain</dt>
+                    <dd>{term.get('domain', 'general').title()}</dd>
                     <dt>Source</dt>
-                    <dd><a href="{term.get('source_url', '#')}">{term.get('source_url', 'Unknown')}</a></dd>
+                    <dd><a href="{term.get('source_url', '#')}" target="_blank">{term.get('source_url', 'Unknown')}</a></dd>
                     <dt>Last Updated</dt>
                     <dd>{term.get('last_updated', 'Unknown')}</dd>
                 </dl>

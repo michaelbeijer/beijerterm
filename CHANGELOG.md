@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.5] - 2026-01-04
+
+### Changed
+- **Expanded "About" sections**: Glossary and term pages now show more metadata from YAML frontmatter:
+  - Title, Description, Languages, Domain, Terms count, Source URL, Last Updated
+- Source links now open in new tab (`target="_blank"`)
+
 ## [1.0.4] - 2026-01-04
 
 ### Added

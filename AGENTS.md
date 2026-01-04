@@ -1,7 +1,7 @@
 # Beijerterm - AI Agent Documentation
 
 > **This is the single source of truth for AI coding assistants working on this project.**
-> **Last Updated:** January 4, 2026 | **Version:** v1.0.4
+> **Last Updated:** January 4, 2026 | **Version:** v1.0.5
 
 ---
 
