@@ -1,6 +1,6 @@
 # Beijerterm
 
-[![Version](https://img.shields.io/badge/version-v1.0.8-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
+[![Version](https://img.shields.io/badge/version-v1.0.9-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-orange.svg)](https://michaelbeijer.github.io/beijerterm/)
 
@@ -125,7 +125,7 @@ Beijerterm uses [Semantic Versioning](https://semver.org/):
 - **MINOR** (x.1.x): New features (backward compatible)
 - **PATCH** (x.x.1): Bug fixes and minor improvements
 
-Current version: **v1.0.1** (see [CHANGELOG.md](CHANGELOG.md))
+Current version: **v1.0.9** (see [CHANGELOG.md](CHANGELOG.md))
 
 ##  License
 

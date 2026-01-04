@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.9] - 2026-01-04
+
+### Fixed
+- **Tags page header**: Icon path and tagline now display correctly on tags.html
+  - Icon was pointing to `../mb-icon.svg` instead of `mb-icon.svg` (tags.html is in root)
+  - Tagline was only showing on home page, now shows on all pages
+- **Root page detection**: `generate_site_header()` now correctly identifies root-level pages (home, tags)
+
 ## [1.0.8] - 2026-01-04
 
 ### Changed
