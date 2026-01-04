@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-01-04
+
+### Changed
+- **License change to CC0**: All glossary data now released under CC0 (Public Domain Dedication)
+  - Terminology should be free — facts about language cannot and should not be owned
+  - No attribution required (though still appreciated)
+  - Code remains MIT licensed
+- **LICENSE.md**: Renamed from LICENSE for better GitHub rendering
+
+### Added
+- **LICENSE.md**: Comprehensive dual-license file (CC0 for data, MIT for code)
+- **Philosophy statement**: "We believe terminology should be free" added to README and footer
+
 ## [1.0.9] - 2026-01-04
 
 ### Fixed

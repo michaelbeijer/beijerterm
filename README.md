@@ -1,7 +1,7 @@
 # Beijerterm
 
-[![Version](https://img.shields.io/badge/version-v1.0.9-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
-[![License](https://img.shields.io/badge/license-CC0-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v1.1.0-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
+[![License](https://img.shields.io/badge/license-CC0-green.svg)](LICENSE.md)
 [![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-orange.svg)](https://michaelbeijer.github.io/beijerterm/)
 
 **An open-source, GitHub-hosted multilingual terminology database.**
@@ -127,7 +127,7 @@ Beijerterm uses [Semantic Versioning](https://semver.org/):
 - **MINOR** (x.1.x): New features (backward compatible)
 - **PATCH** (x.x.1): Bug fixes and minor improvements
 
-Current version: **v1.0.9** (see [CHANGELOG.md](CHANGELOG.md))
+Current version: **v1.1.0** (see [CHANGELOG.md](CHANGELOG.md))
 
 ## 📜 License & Philosophy
 
