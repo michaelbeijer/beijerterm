@@ -1337,3 +1337,158 @@ main {
         display: none;
     }
 }
+
+/* Tags Tab Header */
+.tags-tab-header {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tags-tab-header p {
+    color: #475569;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.tag-reference-link {
+    background: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.tag-reference-link:hover {
+    background: #2563eb;
+}
+
+/* Tag Reference Page */
+.tag-conventions {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.tag-conventions h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #334155;
+}
+
+.tag-conventions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tag-conventions li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tag-conventions li:last-child {
+    border-bottom: none;
+}
+
+.tag-conventions code {
+    background: #e2e8f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.tag-table-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #334155;
+}
+
+.tag-reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tag-reference-table th {
+    background: #3b82f6;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.tag-reference-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tag-reference-table tr:last-child td {
+    border-bottom: none;
+}
+
+.tag-reference-table tr:hover {
+    background: #f8fafc;
+}
+
+/* Dark mode for tag reference */
+@media (prefers-color-scheme: dark) {
+    .tags-tab-header {
+        background: linear-gradient(135deg, #1e293b, #334155);
+    }
+    
+    .tags-tab-header p {
+        color: #94a3b8;
+    }
+    
+    .tag-conventions {
+        background: #1e293b;
+    }
+    
+    .tag-conventions h2 {
+        color: #e2e8f0;
+    }
+    
+    .tag-conventions li {
+        border-bottom-color: #334155;
+    }
+    
+    .tag-conventions code {
+        background: #334155;
+        color: #e2e8f0;
+    }
+    
+    .tag-table-section h2 {
+        color: #e2e8f0;
+    }
+    
+    .tag-reference-table {
+        background: #1e293b;
+    }
+    
+    .tag-reference-table th {
+        background: #2563eb;
+    }
+    
+    .tag-reference-table td {
+        border-bottom-color: #334155;
+        color: #e2e8f0;
+    }
+    
+    .tag-reference-table tr:hover {
+        background: #334155;
+    }
+}

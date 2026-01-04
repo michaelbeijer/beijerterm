@@ -1,7 +1,7 @@
 # Beijerterm - AI Agent Documentation
 
 > **This is the single source of truth for AI coding assistants working on this project.**
-> **Last Updated:** January 4, 2026 | **Version:** v1.0.5
+> **Last Updated:** January 4, 2026 | **Version:** v1.0.6
 
 ---
 
@@ -256,6 +256,35 @@ Parses MediaWiki markup:
 ---
 
 ## 🔄 Recent Development History
+
+### January 4, 2026 - Tag Reference System (v1.0.6)
+
+**Auto-generated tag documentation and multi-tag discovery:**
+
+- **TAGS.md**: Human-readable tag reference file at repository root (viewable on GitHub)
+- **tags.json**: Machine-readable JSON registry of all tags with counts
+- **tags.html**: Dedicated webpage listing all 168 tags with naming conventions
+- **"View Tag Reference" button**: Added to Tags tab header, links to tags.html
+- **Multi-tag discovery**: Tags tab now indexes actual YAML `tags` field instead of folder categories
+  - Glossaries/terms with multiple tags appear under ALL their tags
+  - Same glossary can appear under "Medical", "Abbreviations", and "EU" simultaneously
+- **Tag naming conventions**: Documented lowercase for generic subjects, capitalize proper nouns only
+- **Build summary**: Now shows unique tag count
+
+**Files Modified:**
+- `scripts/build_site.py` - Added `collect_all_tags()`, `generate_tags_reference()`, `generate_tags_json()`, rewrote `generate_categories_content()`, updated `build_site()`
+- `site/styles.css` - Added styles for `.tags-tab-header`, `.tag-reference-link`, `.tag-conventions`, `.tag-table-section`, `.tag-reference-table`
+
+**Files Generated:**
+- `TAGS.md` - At repo root
+- `_site/tags.json` - In build output
+- `_site/tags.html` - In build output
+
+### January 4, 2026 - Expanded About Sections (v1.0.5)
+
+- Glossary and term pages now show more metadata from YAML frontmatter:
+  - Title, Description, Languages, Domain, Terms count, Source URL, Last Updated
+- Source links now open in new tab (`target="_blank"`)
 
 ### January 4, 2026 - URL Search Parameter (v1.0.4)
 

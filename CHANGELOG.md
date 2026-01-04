@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.6] - 2026-01-04
+
+### Added
+- **Tag Reference System**: Auto-generated comprehensive tag documentation
+  - `TAGS.md`: Human-readable tag reference file at repository root (viewable on GitHub)
+  - `tags.json`: Machine-readable JSON registry of all tags with counts
+  - `tags.html`: Dedicated webpage listing all 168 tags with naming conventions
+  - "View Tag Reference" button in Tags tab header linking to tags.html
+
+### Changed
+- **Multi-tag discovery**: Tags tab now indexes actual YAML `tags` field instead of folder categories
+  - Glossaries/terms with multiple tags appear under ALL their tags
+  - Same glossary can appear under "Medical", "Abbreviations", and "EU" simultaneously
+- **Tag naming conventions documented**: Lowercase for generic subjects, capitalize proper nouns only
+- Build summary now shows unique tag count
+
 ## [1.0.5] - 2026-01-04
 
 ### Changed
