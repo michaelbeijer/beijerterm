@@ -10,7 +10,8 @@ term_count: 738
 source_url: "https://superlookup.wiki/wiki/Glossary_of_Mechanical_Engineering_and_Industrial_Equipment_(Dutch,_German,_English,_French;_800_terms)"
 last_updated: 2026-01-03
 tags:
-  - Technical
+  - "technical"
+
 ---
 
 # Glossary of Mechanical Engineering and Industrial Equipment (Dutch, German, English, French; 800 terms)

@@ -10,8 +10,8 @@ term_count: 132
 source_url: "https://superlookup.wiki/wiki/Terminologie_Elektronica_Producerende_Industrie_(piektraining.com)"
 last_updated: 2026-01-03
 tags:
-  - piektraining.com
-  - IT
+  - "IT"
+
 ---
 
 # Terminologie Elektronica Producerende Industrie (piektraining.com)

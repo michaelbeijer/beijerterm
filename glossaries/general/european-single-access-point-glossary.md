@@ -10,10 +10,9 @@ term_count: 139
 source_url: "https://superlookup.wiki/wiki/European_Single_Access_Point_(ESAP)_Glossary"
 last_updated: 2026-01-03
 tags:
-  - EU
-  - European Single Access Point (ESAP)
-  - TermFolders 2.0
-  - TermCoord
+  - "EU"
+  - "ESAP"
+
 ---
 
 # European Single Access Point (ESAP) Glossary

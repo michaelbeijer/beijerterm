@@ -14,9 +14,8 @@ extra_languages:
   - de
   - fr
 tags:
-  - off-road
-  - 4x4
-  - vehicles
+  - "automotive"
+
 ---
 
 # The Land Rover Dictionary

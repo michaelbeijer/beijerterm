@@ -10,7 +10,8 @@ term_count: 32
 source_url: "https://superlookup.wiki/wiki/Brouw_Terminologie_in_het_Engels_en_Duits_(brouwblog.nl)"
 last_updated: 2026-01-03
 tags:
-  - Brewing
+  - "brewing"
+
 ---
 
 # Brouw Terminologie in het Engels en Duits (brouwblog.nl)

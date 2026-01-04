@@ -10,9 +10,9 @@ term_count: 416
 source_url: "https://superlookup.wiki/wiki/Pinkhof_Medisch_Engels_-_Clinical_Abbreviations_and_Acronyms"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Pinkhof
-  - Medical
+  - "abbreviations"
+  - "medical"
+
 ---
 
 # Pinkhof Medisch Engels - Clinical Abbreviations and Acronyms

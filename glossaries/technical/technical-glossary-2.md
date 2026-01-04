@@ -10,8 +10,8 @@ term_count: 1670
 source_url: "https://superlookup.wiki/wiki/Technical_glossary_(1,674_Dutch-English_terms)"
 last_updated: 2026-01-03
 tags:
-  - Technical
-  - Origin unknown
+  - "technical"
+
 ---
 
 # Technical glossary (1,674 Dutch-English terms)

@@ -10,8 +10,9 @@ term_count: 3516
 source_url: "https://superlookup.wiki/wiki/Statistics_Glossary_(3,517_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Statistics
-  - Mathematics
+  - "statistics"
+  - "mathematics"
+
 ---
 
 # Statistics Glossary (3,517 Dutch-English entries)

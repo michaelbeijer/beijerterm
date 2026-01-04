@@ -10,10 +10,10 @@ term_count: 81
 source_url: "https://superlookup.wiki/wiki/CINOP_terminologielijst_NL-EN_(81_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Education
-  - CINOP
-  - Abbreviations
-  - Centrum voor Innovatie van Opleidingen (CINOP)
+  - "education"
+  - "CINOP"
+  - "abbreviations"
+
 ---
 
 # CINOP terminologielijst NL-EN (81 Dutch-English entries)

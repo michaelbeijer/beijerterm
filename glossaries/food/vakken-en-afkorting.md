@@ -10,8 +10,9 @@ term_count: 36
 source_url: "https://superlookup.wiki/wiki/Vakken_en_afkorting_(Hubertus_&_Berkhoff_-_De_Culinaire_Vakschool)"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Education
+  - "abbreviations"
+  - "education"
+
 ---
 
 # Vakken en afkorting (Hubertus & Berkhoff - De Culinaire Vakschool)

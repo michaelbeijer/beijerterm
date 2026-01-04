@@ -10,8 +10,8 @@ term_count: 91
 source_url: "https://superlookup.wiki/wiki/German,_English,_Spanish,_Dutch,_Portuguese,_Chinese_glossary_(93_terms)"
 last_updated: 2026-01-03
 tags:
-  - Misc.
-  - Origin unknown
+
+
 ---
 
 # German, English, Spanish, Dutch, Portuguese, Chinese glossary (93 terms)

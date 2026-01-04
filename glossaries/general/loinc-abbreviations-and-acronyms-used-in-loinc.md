@@ -10,8 +10,9 @@ term_count: 920
 source_url: "https://superlookup.wiki/wiki/LOINC:_Abbreviations_and_acronyms_used_in_LOINC"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - LOINC
+  - "abbreviations"
+  - "LOINC"
+
 ---
 
 # LOINC: Abbreviations and acronyms used in LOINC

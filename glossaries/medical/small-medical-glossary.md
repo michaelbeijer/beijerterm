@@ -10,8 +10,8 @@ term_count: 75
 source_url: "https://superlookup.wiki/wiki/Small_medical_glossary_(77_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Medical
-  - Terminology resources: S
+  - "medical"
+
 ---
 
 # Small medical glossary (77 Dutch-English entries)

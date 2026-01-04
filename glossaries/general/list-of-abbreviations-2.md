@@ -10,8 +10,8 @@ term_count: 296
 source_url: "https://superlookup.wiki/wiki/List_of_Abbreviations_2_(Origin_unknown)"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Origin unknown
+  - "abbreviations"
+
 ---
 
 # List of Abbreviations 2 (Origin unknown)

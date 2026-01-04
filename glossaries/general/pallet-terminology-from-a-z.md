@@ -10,8 +10,8 @@ term_count: 37
 source_url: "https://superlookup.wiki/wiki/Pallet_Terminology_from_A-Z_(Palletconsultants.com)"
 last_updated: 2026-01-03
 tags:
-  - Palletising
-  - Terminology resources: P
+  - "palletising"
+
 ---
 
 # Pallet Terminology from A-Z (Palletconsultants.com)

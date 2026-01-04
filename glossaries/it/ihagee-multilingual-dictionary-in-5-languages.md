@@ -10,8 +10,8 @@ term_count: 431
 source_url: "https://superlookup.wiki/wiki/Ihagee_Multilingual_Dictionary_in_5_Languages_(nl-en-fr-de-sp)(432_entries)"
 last_updated: 2026-01-03
 tags:
-  - Cameras
-  - Ihagee
+  - "photography"
+
 ---
 
 # Ihagee Multilingual Dictionary in 5 Languages (nl-en-fr-de-sp)(432 entries)

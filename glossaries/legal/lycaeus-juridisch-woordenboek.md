@@ -10,8 +10,8 @@ term_count: 3965
 source_url: "https://superlookup.wiki/wiki/Lycaeus_Juridisch_Woordenboek"
 last_updated: 2026-01-03
 tags:
-  - Law
-  - Lycaeus Juridisch Woordenboek
+  - "legal"
+
 ---
 
 # Lycaeus Juridisch Woordenboek

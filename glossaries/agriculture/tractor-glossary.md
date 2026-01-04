@@ -10,8 +10,9 @@ term_count: 288
 source_url: "https://superlookup.wiki/wiki/Tractor_Glossary_(English-Dutch)"
 last_updated: 2026-01-03
 tags:
-  - Agriculture
-  - Tractors
+  - "agriculture"
+  - "tractors"
+
 ---
 
 # Tractor Glossary (English-Dutch)

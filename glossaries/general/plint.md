@@ -9,8 +9,8 @@ term_count: 11
 source_url: "https://superlookup.wiki/wiki/plint"
 last_updated: 2026-01-03
 tags:
-  - OGL
-  - Onroerend Goed Lexicon
+  - "OGL"
+
 ---
 
 # plint

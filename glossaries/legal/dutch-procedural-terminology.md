@@ -11,9 +11,9 @@ author: Netherlands Commercial Court
 license: CC-BY-4.0
 last_updated: 2025-08-22
 tags:
-  - court
-  - procedure
-  - Netherlands
+  - "legal"
+  - "Netherlands"
+
 ---
 
 # Glossary of Dutch Procedural Terminology

@@ -10,8 +10,9 @@ term_count: 1656
 source_url: "https://superlookup.wiki/wiki/Tilburg_University_-_Dutch-English_Glossary_of_University_related_terms_(1,657_entries)"
 last_updated: 2026-01-03
 tags:
-  - Education
-  - Tilburg University
+  - "education"
+  - "Tilburg University"
+
 ---
 
 # Tilburg University - Dutch-English Glossary of University related terms (1,657 entries)

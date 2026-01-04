@@ -10,9 +10,8 @@ term_count: 13
 source_url: "https://superlookup.wiki/wiki/Puzzelwoordenboek"
 last_updated: 2026-01-03
 tags:
-  - Puzzelwoordenboek
-  - Crossword puzzles
-  - Terminology resources: P
+  - "puzzles"
+
 ---
 
 # Puzzelwoordenboek

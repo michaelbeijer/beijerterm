@@ -10,9 +10,8 @@ term_count: 6181
 source_url: "https://superlookup.wiki/wiki/Patitia.net:_Multilingual_Glossary_of_Nice_Classification_System_of_goods_and_services_relating_to_trademarks)(6,264_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Patitia.net
-  - NICE
-  - Terminology resources: P
+  - "NICE"
+
 ---
 
 # Patitia.net: Multilingual Glossary of Nice Classification System of goods and services relating to trademarks)(6,264 Dutch-English entries)

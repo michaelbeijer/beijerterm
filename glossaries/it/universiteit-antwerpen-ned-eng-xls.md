@@ -10,8 +10,9 @@ term_count: 1117
 source_url: "https://superlookup.wiki/wiki/Universiteit_Antwerpen_-_Ned-Eng.xls"
 last_updated: 2026-01-03
 tags:
-  - Education
-  - Universiteit Antwerpen
+  - "education"
+  - "University of Antwerp"
+
 ---
 
 # Universiteit Antwerpen - Ned-Eng.xls

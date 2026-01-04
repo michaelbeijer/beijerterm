@@ -10,8 +10,9 @@ term_count: 562
 source_url: "https://superlookup.wiki/wiki/Glossary_of_Dutch_Procedural_Terminology_(Netherlands_Commercial_Court,_NCC)"
 last_updated: 2026-01-03
 tags:
-  - Law
-  - NCC
+  - "legal"
+  - "NCC"
+
 ---
 
 # Glossary of Dutch Procedural Terminology (Netherlands Commercial Court, NCC)

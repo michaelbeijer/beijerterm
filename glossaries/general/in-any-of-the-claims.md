@@ -9,8 +9,8 @@ term_count: 16
 source_url: "https://superlookup.wiki/wiki/in_any_of_the_claims"
 last_updated: 2026-01-03
 tags:
-  - Michael Beijer
-  - Patents
+  - "patents"
+
 ---
 
 # in any of the claims

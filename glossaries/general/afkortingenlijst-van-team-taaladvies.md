@@ -10,8 +10,9 @@ term_count: 3580
 source_url: "https://superlookup.wiki/wiki/Afkortingenlijst_van_Team_Taaladvies_(de_taaladviesdienst_van_de_Vlaamse_overheid)"
 last_updated: 2026-01-03
 tags:
-  - Flemish
-  - Abbreviations
+  - "Flemish"
+  - "abbreviations"
+
 ---
 
 # Afkortingenlijst van Team Taaladvies (de taaladviesdienst van de Vlaamse overheid)

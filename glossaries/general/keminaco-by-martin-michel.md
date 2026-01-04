@@ -10,8 +10,8 @@ term_count: 477
 source_url: "https://superlookup.wiki/wiki/Keminaco,_by_Martin_Michel_(Risk_&_Safety_Phrases_+_Hazard_&_Precautionary_Statements)"
 last_updated: 2026-01-03
 tags:
-  - R-Phrases
-  - Risk phrases
+  - "R-phrases"
+
 ---
 
 # Keminaco, by Martin Michel (Risk & Safety Phrases + Hazard & Precautionary Statements)

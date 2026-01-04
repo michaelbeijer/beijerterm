@@ -9,9 +9,10 @@ term_count: 1387
 source_url: "https://superlookup.wiki/wiki/Eurydice_multilingual_glossary_of_education_terms_(1,388_terms)(nl,_en,_de,_fr)"
 last_updated: 2026-01-03
 tags:
-  - EU
-  - Education
-  - Eurydice
+  - "EU"
+  - "education"
+  - "Eurydice"
+
 ---
 
 # Eurydice multilingual glossary of education terms (1,388 terms)(nl, en, de, fr)

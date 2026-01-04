@@ -10,8 +10,9 @@ term_count: 59
 source_url: "https://superlookup.wiki/wiki/list-of-acronyms.pdf"
 last_updated: 2026-01-03
 tags:
-  - Voting
-  - Abbreviations
+  - "voting"
+  - "abbreviations"
+
 ---
 
 # list-of-acronyms.pdf

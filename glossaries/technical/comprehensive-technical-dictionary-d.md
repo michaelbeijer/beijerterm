@@ -10,7 +10,7 @@ term_count: 7888
 source_url: "https://superlookup.wiki/wiki/Comprehensive_Technical_Dictionary_(Dutch-English)_-_D"
 last_updated: 2026-01-03
 tags:
-  - Glossaries:C
+  - "technical"
 ---
 
 # Comprehensive Technical Dictionary (Dutch-English) - D

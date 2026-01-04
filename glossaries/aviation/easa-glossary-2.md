@@ -10,9 +10,9 @@ term_count: 419
 source_url: "https://superlookup.wiki/wiki/EASA_Glossary_(European_Union_Aviation_Safety_Agency)(419_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - EU
-  - European Union Aviation Safety Agency (EASA)
-  - EASA
+  - "EU"
+  - "EASA"
+
 ---
 
 # EASA Glossary (European Union Aviation Safety Agency)(419 Dutch-English entries)

@@ -10,7 +10,8 @@ term_count: 15665
 source_url: "https://superlookup.wiki/wiki/Dutch-English_glossary_(31224_entries)(Part_1)"
 last_updated: 2026-01-03
 tags:
-  - Misc.
+
+
 ---
 
 # Dutch-English glossary (31224 entries)(Part 1)

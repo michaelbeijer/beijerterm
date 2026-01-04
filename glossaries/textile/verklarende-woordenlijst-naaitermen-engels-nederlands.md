@@ -10,8 +10,9 @@ term_count: 471
 source_url: "https://superlookup.wiki/wiki/Verklarende_woordenlijst_naaitermen_Engels-Nederlands_(naaipatronen.nl)"
 last_updated: 2026-01-03
 tags:
-  - Sewing
-  - Textile
+  - "sewing"
+  - "textiles"
+
 ---
 
 # Verklarende woordenlijst naaitermen Engels-Nederlands (naaipatronen.nl)

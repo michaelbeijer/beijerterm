@@ -10,8 +10,9 @@ term_count: 585
 source_url: "https://superlookup.wiki/wiki/Utrecht_University:_Glossary_of_university-related_terms_(585_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Utrecht University
-  - Education
+  - "Utrecht University"
+  - "education"
+
 ---
 
 # Utrecht University: Glossary of university-related terms (585 Dutch-English entries)

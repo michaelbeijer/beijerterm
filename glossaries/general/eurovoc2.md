@@ -10,9 +10,8 @@ term_count: 2476
 source_url: "https://superlookup.wiki/wiki/EuroVoc2"
 last_updated: 2026-01-03
 tags:
-  - EuroVoc
-  - EuroVoc
-  - Glossaries: E
+  - "EuroVoc"
+  - "EU"
 ---
 
 # EuroVoc2

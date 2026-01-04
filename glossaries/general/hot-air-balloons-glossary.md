@@ -10,7 +10,8 @@ term_count: 83
 source_url: "https://superlookup.wiki/wiki/Hot_Air_Balloons_Glossary_(bized.co.uk)"
 last_updated: 2026-01-03
 tags:
-  - Ballooning
+  - "aviation"
+
 ---
 
 # Hot Air Balloons Glossary (bized.co.uk)

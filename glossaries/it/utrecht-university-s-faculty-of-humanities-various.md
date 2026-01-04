@@ -10,8 +10,9 @@ term_count: 51
 source_url: "https://superlookup.wiki/wiki/Utrecht_University’s_Faculty_of_Humanities’_various_departments"
 last_updated: 2026-01-03
 tags:
-  - Education
-  - Utrecht University
+  - "education"
+  - "Utrecht University"
+
 ---
 
 # Utrecht University’s Faculty of Humanities’ various departments

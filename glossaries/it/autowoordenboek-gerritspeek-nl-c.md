@@ -10,9 +10,8 @@ term_count: 3142
 source_url: "https://superlookup.wiki/wiki/autowoordenboek_gerritspeek.nl_c"
 last_updated: 2026-01-03
 tags:
-  - Automotive
-  - gerritspeek.nl
-  - Autowoordenboek
+  - "automotive"
+
 ---
 
 # autowoordenboek gerritspeek.nl c

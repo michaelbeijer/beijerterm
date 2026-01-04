@@ -9,7 +9,8 @@ term_count: 10
 source_url: "https://superlookup.wiki/wiki/kleefbreker"
 last_updated: 2026-01-03
 tags:
-  - Geotechnical engineering
+  - "geotechnical"
+
 ---
 
 # kleefbreker

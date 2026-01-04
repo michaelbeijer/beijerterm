@@ -10,9 +10,9 @@ term_count: 30
 source_url: "https://superlookup.wiki/wiki/Rangtelwoorden_(Ordinal_numerals)_-_in_Dutch_and_English"
 last_updated: 2026-01-03
 tags:
-  - Rangtelwoorden
-  - Ordinal numerals
-  - Mathematics
+  - "numerals"
+  - "mathematics"
+
 ---
 
 # Rangtelwoorden (Ordinal numerals) - in Dutch and English

@@ -10,7 +10,8 @@ term_count: 88
 source_url: "https://superlookup.wiki/wiki/handboek_geotechnisch_bodemonderzoek_ondergrond"
 last_updated: 2026-01-03
 tags:
-  - Geotechnical engineering
+  - "geotechnical"
+
 ---
 
 # handboek geotechnisch bodemonderzoek ondergrond

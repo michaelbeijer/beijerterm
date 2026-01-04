@@ -10,7 +10,8 @@ term_count: 2330
 source_url: "https://superlookup.wiki/wiki/2,335_Dutch_abbreviations"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
+  - "abbreviations"
+
 ---
 
 # 2,335 Dutch abbreviations

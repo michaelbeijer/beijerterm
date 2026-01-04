@@ -10,7 +10,8 @@ term_count: 1111
 source_url: "https://superlookup.wiki/wiki/TT-Software_-_Dut7Translations_1111.xls"
 last_updated: 2026-01-03
 tags:
-  - TT-Software
+
+
 ---
 
 # TT-Software - Dut7Translations 1111.xls

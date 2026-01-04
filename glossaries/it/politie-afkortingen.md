@@ -10,9 +10,9 @@ term_count: 345
 source_url: "https://superlookup.wiki/wiki/Politie_afkortingen_(regio17.info)_(345_Dutch_acronyms)"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Terminology resources: P
-  - Police
+  - "abbreviations"
+  - "Police"
+
 ---
 
 # Politie afkortingen (regio17.info) (345 Dutch acronyms)

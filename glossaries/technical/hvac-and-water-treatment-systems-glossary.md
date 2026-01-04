@@ -10,7 +10,8 @@ term_count: 683
 source_url: "https://superlookup.wiki/wiki/HVAC_and_water_treatment_systems_glossary"
 last_updated: 2026-01-03
 tags:
-  - Technical
+  - "technical"
+
 ---
 
 # HVAC and water treatment systems glossary

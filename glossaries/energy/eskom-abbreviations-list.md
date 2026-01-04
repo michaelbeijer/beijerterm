@@ -10,8 +10,9 @@ term_count: 294
 source_url: "https://superlookup.wiki/wiki/Eskom_Abbreviations_List"
 last_updated: 2026-01-03
 tags:
-  - Eskom
-  - Abbreviations
+  - "Eskom"
+  - "abbreviations"
+
 ---
 
 # Eskom Abbreviations List

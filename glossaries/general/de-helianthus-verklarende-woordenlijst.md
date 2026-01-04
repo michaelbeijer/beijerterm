@@ -10,7 +10,8 @@ term_count: 5729
 source_url: "https://superlookup.wiki/wiki/De_Helianthus_-_Verklarende_woordenlijst"
 last_updated: 2026-01-03
 tags:
-  - Alternative medicine
+  - "alternative medicine"
+
 ---
 
 # De Helianthus - Verklarende woordenlijst

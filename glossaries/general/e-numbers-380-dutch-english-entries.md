@@ -10,7 +10,8 @@ term_count: 379
 source_url: "https://superlookup.wiki/wiki/E-numbers_-_380_Dutch-English_entries"
 last_updated: 2026-01-03
 tags:
-  - E-numbers
+  - "food additives"
+
 ---
 
 # E-numbers - 380 Dutch-English entries

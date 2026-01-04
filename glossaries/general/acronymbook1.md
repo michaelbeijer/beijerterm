@@ -10,10 +10,8 @@ term_count: 21657
 source_url: "https://superlookup.wiki/wiki/acronymbook1"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Acronymbook
-  - Acronymbook.com
-  - Michael Beijer
+  - "abbreviations"
+
 ---
 
 # acronymbook1

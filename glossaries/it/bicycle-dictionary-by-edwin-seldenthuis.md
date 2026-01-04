@@ -10,7 +10,8 @@ term_count: 145
 source_url: "https://superlookup.wiki/wiki/Bicycle_Dictionary_(Dutch-English)_by_Edwin_Seldenthuis"
 last_updated: 2026-01-03
 tags:
-  - Bicycles
+  - "cycling"
+
 ---
 
 # Bicycle Dictionary (Dutch-English) by Edwin Seldenthuis

@@ -9,8 +9,8 @@ term_count: 12
 source_url: "https://superlookup.wiki/wiki/keldergat_-_kelkvormig"
 last_updated: 2026-01-03
 tags:
-  - Terms: K
-  - Kramers
+  - "Kramers"
+  - "dictionaries"
 ---
 
 # keldergat - kelkvormig

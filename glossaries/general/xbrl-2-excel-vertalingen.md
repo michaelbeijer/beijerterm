@@ -10,8 +10,8 @@ term_count: 257
 source_url: "https://superlookup.wiki/wiki/XBRL_2_Excel:_Vertalingen_(in_Dutch,_English,_French_and_German)"
 last_updated: 2026-01-03
 tags:
-  - Excel
-  - Terminology resources: X
+  - "Microsoft Excel"
+
 ---
 
 # XBRL 2 Excel: Vertalingen (in Dutch, English, French and German)

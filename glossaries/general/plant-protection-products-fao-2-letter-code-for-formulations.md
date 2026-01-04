@@ -10,8 +10,8 @@ term_count: 91
 source_url: "https://superlookup.wiki/wiki/Plant_Protection_Products_-_FAO_2-letter_code_for_formulations"
 last_updated: 2026-01-03
 tags:
-  - Plants
-  - Terminology resources: P
+  - "botany"
+
 ---
 
 # Plant Protection Products - FAO 2-letter code for formulations

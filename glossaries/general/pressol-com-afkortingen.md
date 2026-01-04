@@ -10,8 +10,8 @@ term_count: 282
 source_url: "https://superlookup.wiki/wiki/Pressol.com_-_Afkortingen"
 last_updated: 2026-01-03
 tags:
-  - Terminology resources: P
-  - Abbreviations
+  - "abbreviations"
+
 ---
 
 # Pressol.com - Afkortingen

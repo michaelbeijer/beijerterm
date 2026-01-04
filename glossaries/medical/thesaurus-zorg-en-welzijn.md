@@ -10,8 +10,9 @@ term_count: 1828
 source_url: "https://superlookup.wiki/wiki/Thesaurus_Zorg_en_Welzijn_(TZW)(extract)"
 last_updated: 2026-01-03
 tags:
-  - Thesaurus Zorg en Welzijn (TZW)
-  - Medical
+  - "TZW"
+  - "medical"
+
 ---
 
 # Thesaurus Zorg en Welzijn (TZW)(extract)

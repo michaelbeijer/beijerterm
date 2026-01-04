@@ -10,7 +10,8 @@ term_count: 1825
 source_url: "https://superlookup.wiki/wiki/1,826_3-letter_acronyms_(TLAs)"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
+  - "abbreviations"
+
 ---
 
 # 1,826 3-letter acronyms (TLAs)

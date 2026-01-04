@@ -10,9 +10,9 @@ term_count: 1107
 source_url: "https://superlookup.wiki/wiki/TU/e_Terminology_list"
 last_updated: 2026-01-03
 tags:
-  - TU/e
-  - Eindhoven University of Technology (TU/e)
-  - Education
+  - "TU/e"
+  - "education"
+
 ---
 
 # TU/e Terminology list

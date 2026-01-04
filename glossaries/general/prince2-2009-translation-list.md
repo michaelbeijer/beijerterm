@@ -10,9 +10,9 @@ term_count: 426
 source_url: "https://superlookup.wiki/wiki/PRINCE2:2009_–_Translation_List_(Dutch)"
 last_updated: 2026-01-03
 tags:
-  - Business
-  - Terminology resources: P
-  - PRINCE2
+  - "business"
+  - "PRINCE2"
+
 ---
 
 # PRINCE2:2009 – Translation List (Dutch)

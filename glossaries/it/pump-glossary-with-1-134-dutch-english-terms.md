@@ -10,8 +10,8 @@ term_count: 1127
 source_url: "https://superlookup.wiki/wiki/Pump_glossary_with_1,134_Dutch-English_terms"
 last_updated: 2026-01-03
 tags:
-  - Pumps
-  - Terminology resources: P
+  - "pumps"
+
 ---
 
 # Pump glossary with 1,134 Dutch-English terms

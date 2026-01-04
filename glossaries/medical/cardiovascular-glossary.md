@@ -11,9 +11,8 @@ author: Adapted from various sources
 license: CC-BY-4.0
 last_updated: 2025-09-10
 tags:
-  - cardiology
-  - heart
-  - medical
+  - "medical"
+
 ---
 
 # Dutch-English Cardiovascular Glossary

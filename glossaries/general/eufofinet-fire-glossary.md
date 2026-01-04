@@ -10,8 +10,9 @@ term_count: 41
 source_url: "https://superlookup.wiki/wiki/EUFOFINET_Fire_Glossary_(List_of_Abbreviations_and_Acronyms)"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Firefighting
+  - "abbreviations"
+  - "firefighting"
+
 ---
 
 # EUFOFINET Fire Glossary (List of Abbreviations and Acronyms)

@@ -10,7 +10,8 @@ term_count: 1250
 source_url: "https://superlookup.wiki/wiki/IMF_Glossary_Web_2015_(imf.org)"
 last_updated: 2026-01-03
 tags:
-  - International Monetary Fund (IMF)
+  - "IMF"
+
 ---
 
 # IMF Glossary Web 2015 (imf.org)

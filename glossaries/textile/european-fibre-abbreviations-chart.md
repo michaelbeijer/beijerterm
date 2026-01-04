@@ -10,7 +10,8 @@ term_count: 41
 source_url: "https://superlookup.wiki/wiki/European_fibre_abbreviations_chart_(joelandsonfabrics.com)"
 last_updated: 2026-01-03
 tags:
-  - Textile
+  - "textiles"
+
 ---
 
 # European fibre abbreviations chart (joelandsonfabrics.com)

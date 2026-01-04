@@ -10,7 +10,8 @@ term_count: 1201
 source_url: "https://superlookup.wiki/wiki/digitalSkillsCollection_(ESCO_classification)"
 last_updated: 2026-01-03
 tags:
-  - ESCO classification
+  - "ESCO"
+
 ---
 
 # digitalSkillsCollection (ESCO classification)

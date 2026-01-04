@@ -10,8 +10,9 @@ term_count: 832
 source_url: "https://superlookup.wiki/wiki/Centraal_Register_Opleidingen_Hoger_Onderwijs_(CROHO)(Dutch-English)"
 last_updated: 2026-01-03
 tags:
-  - Education
-  - CROHO
+  - "education"
+  - "CROHO"
+
 ---
 
 # Centraal Register Opleidingen Hoger Onderwijs (CROHO)(Dutch-English)

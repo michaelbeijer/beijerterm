@@ -9,8 +9,9 @@ term_count: 10316
 source_url: "https://superlookup.wiki/wiki/Common_Procurement_Vocabulary_(CPV)_(Dutch-English_glossary)"
 last_updated: 2026-01-03
 tags:
-  - Tenders
-  - CPV
+  - "tenders"
+  - "CPV"
+
 ---
 
 # Common Procurement Vocabulary (CPV) (Dutch-English glossary)

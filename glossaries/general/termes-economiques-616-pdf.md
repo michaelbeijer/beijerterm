@@ -10,9 +10,9 @@ term_count: 6827
 source_url: "https://superlookup.wiki/wiki/TERMES_ECONOMIQUES_616.pdf"
 last_updated: 2026-01-03
 tags:
-  - French
-  - Languages: nl, fr
-  - Economics
+  - "French"
+  - "economics"
+
 ---
 
 # TERMES ECONOMIQUES 616.pdf

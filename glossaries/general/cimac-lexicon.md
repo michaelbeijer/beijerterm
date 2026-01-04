@@ -10,8 +10,8 @@ term_count: 567
 source_url: "https://superlookup.wiki/wiki/CIMAC_Lexicon"
 last_updated: 2026-01-03
 tags:
-  - CIMAC
-  - Combustion engines
+  - "engines"
+
 ---
 
 # CIMAC Lexicon

@@ -10,9 +10,8 @@ term_count: 370
 source_url: "https://superlookup.wiki/wiki/autowoordenboek_gerritspeek.nl_u"
 last_updated: 2026-01-03
 tags:
-  - Automotive
-  - gerritspeek.nl
-  - Autowoordenboek
+  - "automotive"
+
 ---
 
 # autowoordenboek gerritspeek.nl u

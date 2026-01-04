@@ -10,7 +10,8 @@ term_count: 219
 source_url: "https://superlookup.wiki/wiki/Glossary_of_important_terms_used_in_the_Dutch_Income_Tax_Act_2001_(tax-consultants-international.com)"
 last_updated: 2026-01-03
 tags:
-  - Tax
+  - "finance"
+
 ---
 
 # Glossary of important terms used in the Dutch Income Tax Act 2001 (tax-consultants-international.com)

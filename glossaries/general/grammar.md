@@ -9,7 +9,8 @@ term_count: 10
 source_url: "https://superlookup.wiki/wiki/Grammar"
 last_updated: 2026-01-03
 tags:
-  - Grammar
+  - "grammar"
+
 ---
 
 # Grammar

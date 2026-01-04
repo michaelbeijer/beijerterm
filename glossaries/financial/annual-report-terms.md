@@ -10,7 +10,8 @@ term_count: 230
 source_url: "https://superlookup.wiki/wiki/Annual_report_terms_(251_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Finance
+  - "finance"
+
 ---
 
 # Annual report terms (251 Dutch-English entries)

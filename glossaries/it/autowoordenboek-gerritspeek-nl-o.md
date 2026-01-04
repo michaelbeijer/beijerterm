@@ -10,9 +10,8 @@ term_count: 740
 source_url: "https://superlookup.wiki/wiki/autowoordenboek_gerritspeek.nl_o"
 last_updated: 2026-01-03
 tags:
-  - Automotive
-  - gerritspeek.nl
-  - Autowoordenboek
+  - "automotive"
+
 ---
 
 # autowoordenboek gerritspeek.nl o

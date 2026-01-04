@@ -10,8 +10,8 @@ term_count: 41
 source_url: "https://superlookup.wiki/wiki/Palletiser_glossary_(Palletizing.com)"
 last_updated: 2026-01-03
 tags:
-  - Terminology resources: P
-  - Palletising
+  - "palletising"
+
 ---
 
 # Palletiser glossary (Palletizing.com)

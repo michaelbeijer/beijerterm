@@ -9,8 +9,9 @@ term_count: 15
 source_url: "https://superlookup.wiki/wiki/puntenwolk"
 last_updated: 2026-01-03
 tags:
-  - Computer vision
-  - Statistics
+  - "IT"
+  - "statistics"
+
 ---
 
 # puntenwolk

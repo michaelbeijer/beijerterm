@@ -10,8 +10,9 @@ term_count: 1269
 source_url: "https://superlookup.wiki/wiki/Avans_University_of_Applied_Sciences_-_Terminologielijst_Avans_Hogeschool"
 last_updated: 2026-01-03
 tags:
-  - Avans University of Applied Sciences
-  - Education
+  - "Avans"
+  - "education"
+
 ---
 
 # Avans University of Applied Sciences - Terminologielijst Avans Hogeschool

@@ -10,9 +10,9 @@ term_count: 58
 source_url: "https://superlookup.wiki/wiki/KMEHR_glossary_of_drug_administration_units,_in_English,_Dutch,_Frech_and_German"
 last_updated: 2026-01-03
 tags:
-  - KMEHR
-  - Medical
-  - Terminology resources: K
+  - "KMEHR"
+  - "medical"
+
 ---
 
 # KMEHR glossary of drug administration units, in English, Dutch, Frech and German

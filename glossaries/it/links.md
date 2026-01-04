@@ -10,11 +10,9 @@ term_count: 30
 source_url: "https://superlookup.wiki/wiki/links"
 last_updated: 2026-01-03
 tags:
-  - Pages with broken file links
-  - Links
-  - Admin
-  - Dictionaries
-  - Terminology
+  - "dictionaries"
+  - "terminology"
+
 ---
 
 # links

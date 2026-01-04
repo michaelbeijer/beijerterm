@@ -10,8 +10,9 @@ term_count: 37
 source_url: "https://superlookup.wiki/wiki/Afkortingen_vakken_(Huygens_College)"
 last_updated: 2026-01-03
 tags:
-  - Abbreviations
-  - Education
+  - "abbreviations"
+  - "education"
+
 ---
 
 # Afkortingen vakken (Huygens College)

@@ -10,7 +10,8 @@ term_count: 448
 source_url: "https://superlookup.wiki/wiki/Wiskundige_woordenlijst_Engels-Nederlands_(M._Keizer,_1994)"
 last_updated: 2026-01-03
 tags:
-  - Mathematics
+  - "mathematics"
+
 ---
 
 # Wiskundige woordenlijst Engels-Nederlands (M. Keizer, 1994)

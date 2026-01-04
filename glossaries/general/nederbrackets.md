@@ -10,9 +10,9 @@ term_count: 88
 source_url: "https://superlookup.wiki/wiki/nederbrackets"
 last_updated: 2026-01-03
 tags:
-  - (Neder)brackets
-  - Dunglish
-  - Translation
+  - "Dunglish"
+  - "translation"
+
 ---
 
 # nederbrackets

@@ -10,9 +10,9 @@ term_count: 399
 source_url: "https://superlookup.wiki/wiki/PRADO_glossary_(Technical_terms_related_to_security_features_and_documents)(nl-en)(Council_of_the_European_Union)"
 last_updated: 2026-01-03
 tags:
-  - Council of the European Union
-  - Terminology resources: P
-  - Consilium
+  - "EU Council"
+  - "Consilium"
+
 ---
 
 # PRADO glossary (Technical terms related to security features and documents)(nl-en)(Council of the European Union)

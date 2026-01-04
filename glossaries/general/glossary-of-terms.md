@@ -10,8 +10,8 @@ term_count: 17
 source_url: "https://superlookup.wiki/wiki/Glossary_of_Terms_(Brillopak.co.uk)"
 last_updated: 2026-01-03
 tags:
-  - Palletising
-  - Terminology resources: G
+  - "palletising"
+
 ---
 
 # Glossary of Terms (Brillopak.co.uk)

@@ -10,8 +10,8 @@ term_count: 641
 source_url: "https://superlookup.wiki/wiki/A_to_Z_of_Diamonds_Glossary_(24carat.co.uk)"
 last_updated: 2026-01-03
 tags:
-  - Diamonds
-  - Languages: en
+  - "diamonds"
+
 ---
 
 # A to Z of Diamonds Glossary (24carat.co.uk)

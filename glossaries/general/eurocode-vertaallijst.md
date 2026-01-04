@@ -10,7 +10,8 @@ term_count: 724
 source_url: "https://superlookup.wiki/wiki/Eurocode_vertaallijst"
 last_updated: 2026-01-03
 tags:
-  - Eurocode vertaallijst
+  - "Eurocode"
+
 ---
 
 # Eurocode vertaallijst

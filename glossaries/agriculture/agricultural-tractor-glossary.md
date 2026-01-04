@@ -10,9 +10,9 @@ term_count: 324
 source_url: "https://superlookup.wiki/wiki/agricultural_tractor_glossary"
 last_updated: 2026-01-03
 tags:
-  - Agriculture
-  - Tractors
-  - Agricultural machinery
+  - "agriculture"
+  - "tractors"
+
 ---
 
 # agricultural tractor glossary

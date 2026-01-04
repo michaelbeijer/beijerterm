@@ -10,8 +10,8 @@ term_count: 2001
 source_url: "https://superlookup.wiki/wiki/Textile_Glossary_(Dutch,_English,_German,_French)(‘2000-textieltermen.xls’)"
 last_updated: 2026-01-03
 tags:
-  - Textile
-  - Original has been edited
+  - "textiles"
+
 ---
 
 # Textile Glossary (Dutch, English, German, French)(‘2000-textieltermen.xls’)

@@ -11,9 +11,9 @@ author: Schiphol Group (adapted)
 license: CC-BY-4.0
 last_updated: 2025-12-15
 tags:
-  - airports
-  - travel
-  - transportation
+  - "aviation"
+  - "transport"
+
 ---
 
 # Amsterdam Airport Schiphol Glossary

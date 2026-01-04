@@ -10,7 +10,8 @@ term_count: 49
 source_url: "https://superlookup.wiki/wiki/Glossary_of_terms_–_Court_Events_(justice.gov.uk)"
 last_updated: 2026-01-03
 tags:
-  - Law
+  - "legal"
+
 ---
 
 # Glossary of terms – Court Events (justice.gov.uk)

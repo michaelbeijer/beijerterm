@@ -10,7 +10,8 @@ term_count: 169
 source_url: "https://superlookup.wiki/wiki/Diamond_Glossary_(168_Dutch-English_entries)"
 last_updated: 2026-01-03
 tags:
-  - Diamonds
+  - "diamonds"
+
 ---
 
 # Diamond Glossary (168 Dutch-English entries)

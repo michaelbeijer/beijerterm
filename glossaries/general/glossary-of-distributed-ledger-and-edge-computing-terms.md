@@ -10,9 +10,9 @@ term_count: 25
 source_url: "https://superlookup.wiki/wiki/Glossary_of_Distributed_Ledger_and_Edge_Computing_Terms_(English-Dutch)"
 last_updated: 2026-01-03
 tags:
-  - Distributed ledgers
-  - Blockchain
-  - Edge Computing
+  - "blockchain"
+  - "IT"
+
 ---
 
 # Glossary of Distributed Ledger and Edge Computing Terms (English-Dutch)

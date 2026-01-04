@@ -10,7 +10,8 @@ term_count: 186
 source_url: "https://superlookup.wiki/wiki/Insect_glossary_(79_Dutch-English-Latin_entries)"
 last_updated: 2026-01-03
 tags:
-  - Insects
+  - "entomology"
+
 ---
 
 # Insect glossary (79 Dutch-English-Latin entries)

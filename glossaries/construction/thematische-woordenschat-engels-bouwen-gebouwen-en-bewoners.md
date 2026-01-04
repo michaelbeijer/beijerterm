@@ -10,8 +10,8 @@ term_count: 114
 source_url: "https://superlookup.wiki/wiki/Thematische_woordenschat_Engels_-_Bouwen,_gebouwen_en_bewoners_(woordjesleren.nl)"
 last_updated: 2026-01-03
 tags:
-  - Construction
-  - woordjesleren.nl
+  - "construction"
+
 ---
 
 # Thematische woordenschat Engels - Bouwen, gebouwen en bewoners (woordjesleren.nl)

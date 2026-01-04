@@ -10,8 +10,8 @@ term_count: 785
 source_url: "https://superlookup.wiki/wiki/Librarylingo_(Bibliotheekwoorden_Nederlands-Engels)(Glossary_of_Dutch-English_library_related_terms)"
 last_updated: 2026-01-03
 tags:
-  - Libraries
-  - Librarylingo 
+  - "libraries"
+
 ---
 
 # Librarylingo (Bibliotheekwoorden Nederlands-Engels)(Glossary of Dutch-English library related terms)
