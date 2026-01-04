@@ -115,6 +115,27 @@ main {
     font-size: 0.9rem;
 }
 
+/* Clickable stat link */
+.stat-link {
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.stat-link:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.stat-link .stat-value {
+    color: var(--primary-color);
+}
+
+.stat-link .stat-label {
+    color: var(--text-light);
+}
+
 /* Glossary list */
 .glossary-list h2 {
     margin-bottom: 1rem;

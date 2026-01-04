@@ -817,7 +817,7 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
     return alphabet_nav, sections
 
 
-def generate_html_index(glossaries: list[dict], terms: list[dict], categories: dict) -> str:
+def generate_html_index(glossaries: list[dict], terms: list[dict], categories: dict, tag_index: dict) -> str:
     """Generate the main index.html page with tabs."""
     
     site_header = generate_site_header("home")
@@ -825,10 +825,10 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
     total_glossaries = len(glossaries)
     total_terms_pages = len(terms)
     total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
+    total_tags = len(tag_index)
 
     glossary_nav, glossary_sections = generate_table_for_items(glossaries, categories, "glossary")
     terms_nav, terms_sections = generate_table_for_items(terms, categories, "term")
-    categories_content = generate_categories_content(glossaries, terms, categories)
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -1084,8 +1084,10 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                         <span class="stat-label">Term Entries</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-value">{len(categories)}</span>
-                        <span class="stat-label">Categories</span>
+                        <a href="tags.html" class="stat-link">
+                            <span class="stat-value">{total_tags}</span>
+                            <span class="stat-label">🏷️ Tags</span>
+                        </a>
                     </div>
                 </section>
 
@@ -1096,9 +1098,6 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                         </button>
                         <button class="tab-button" onclick="showTab('terms', this)">
                             &#128214; Terms<span class="count">{total_terms_pages:,}</span>
-                        </button>
-                        <button class="tab-button" onclick="showTab('tags', this)">
-                            &#127991; Tags<span class="count">{len(categories)}</span>
                         </button>
                     </div>
 
@@ -1128,11 +1127,6 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                             {terms_nav}
                         </nav>
                         {terms_sections}
-                    </div>
-
-                    <div id="tab-tags" class="tab-content">
-                        <p class="tab-description">Browse content by tag. Each glossary is automatically tagged with its category.</p>
-                        {categories_content}
                     </div>
                 </section>
         </main>
@@ -1577,7 +1571,7 @@ def build_site():
     print(f"   Indexed {len(search_index)} entries")
 
     print("Generating HTML pages...")
-    index_html = generate_html_index(glossaries, terms, categories)
+    index_html = generate_html_index(glossaries, terms, categories, tag_index)
     with open(OUTPUT_DIR / "index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
 
