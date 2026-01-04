@@ -257,6 +257,27 @@ Parses MediaWiki markup:
 
 ## 🔄 Recent Development History
 
+### January 4, 2026 - URL Search Parameter (v1.0.4)
+
+- Added support for `?q=searchterm` URL parameter for programmatic search
+- Enables integration with external tools like Supervertaler's Superlookup
+- JavaScript detects URL param, populates search input, triggers search automatically
+- Auto-scrolls to search results when query parameter is provided
+
+### January 4, 2026 - Actionable Tag Cards (v1.0.3)
+
+- Tags tab now shows clickable links to glossaries and terms instead of just statistics
+- Each tag card displays lists of glossary and term links for that category
+- Summary line shows total entry count per tag
+- Tag card layout redesigned with dedicated sections for "📚 Glossaries" and "📄 Terms"
+- Grid layout widened from 280px to 320px minimum card width for better readability
+
+### January 4, 2026 - Folder Restructure (v1.0.2)
+
+- Moved `terms/` folder from `glossaries/terms/` to root level `terms/`
+- Updated build script to scan both directories separately
+- Cleaner separation: `glossaries/` for glossaries, `terms/` for single-term pages
+
 ### January 3, 2026 - Header/Footer Redesign
 
 - Removed sidebar layout completely
@@ -277,12 +298,6 @@ Parses MediaWiki markup:
 - Fixed source URLs pointing to old superlookup.wiki instead of GitHub
 - Bug was: `**frontmatter` unpacking overwrote generated GitHub URL
 - Fix: Set `source_url` AFTER unpacking frontmatter
-
-### January 4, 2026 - Folder Restructure (v1.0.2)
-
-- Moved `terms/` folder from `glossaries/terms/` to root level `terms/`
-- Updated build script to scan both directories separately
-- Cleaner separation: `glossaries/` for glossaries, `terms/` for single-term pages
 
 ### January 3, 2026 - File Organization
 
