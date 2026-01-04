@@ -17,9 +17,11 @@ import shutil
 
 # Configuration
 GLOSSARIES_DIR = Path("glossaries")
+TERMS_DIR = Path("terms")
 SITE_DIR = Path("site")
 OUTPUT_DIR = Path("_site")
-GITHUB_BASE_URL = "https://github.com/michaelbeijer/beijerterm/blob/main/glossaries"
+GITHUB_GLOSSARIES_URL = "https://github.com/michaelbeijer/beijerterm/blob/main/glossaries"
+GITHUB_TERMS_URL = "https://github.com/michaelbeijer/beijerterm/blob/main/terms"
 
 # Scroll to top button HTML snippet
 SCROLL_TO_TOP_HTML = '''
@@ -339,6 +341,7 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
     glossaries = []
     terms = []
 
+    # Load glossaries from glossaries/ directory
     for md_file in GLOSSARIES_DIR.rglob("*.md"):
         with open(md_file, "r", encoding="utf-8") as f:
             content = f.read()
@@ -349,7 +352,7 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
 
         # Build GitHub source URL
         relative_path = md_file.relative_to(GLOSSARIES_DIR)
-        github_url = f"{GITHUB_BASE_URL}/{relative_path}".replace("\\", "/")
+        github_url = f"{GITHUB_GLOSSARIES_URL}/{relative_path}".replace("\\", "/")
 
         item = {
             "file": str(md_file),
@@ -359,17 +362,35 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
         }
         # Override source_url with GitHub URL (frontmatter may have old wiki URL)
         item["source_url"] = github_url
+        item["type"] = "glossary"
+        item["terms"] = parse_markdown_table(body)
+        item["term_count"] = len(item["terms"])
+        glossaries.append(item)
 
-        # Determine type: ONLY files in the "terms" folder are terms
-        if md_file.parent.name == "terms":
+    # Load terms from terms/ directory (at root level)
+    if TERMS_DIR.exists():
+        for md_file in TERMS_DIR.rglob("*.md"):
+            with open(md_file, "r", encoding="utf-8") as f:
+                content = f.read()
+
+            frontmatter, body = parse_frontmatter(content)
+            if not frontmatter:
+                continue
+
+            # Build GitHub source URL for terms
+            relative_path = md_file.relative_to(TERMS_DIR)
+            github_url = f"{GITHUB_TERMS_URL}/{relative_path}".replace("\\", "/")
+
+            item = {
+                "file": str(md_file),
+                "category": "terms",
+                "body": body,
+                **frontmatter,
+            }
+            item["source_url"] = github_url
             item["type"] = "term"
             item["html_content"] = markdown_to_html(body)
             terms.append(item)
-        else:
-            item["type"] = "glossary"
-            item["terms"] = parse_markdown_table(body)
-            item["term_count"] = len(item["terms"])
-            glossaries.append(item)
 
     return glossaries, terms
 
