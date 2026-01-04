@@ -492,56 +492,68 @@ def generate_search_index(glossaries: list[dict], terms: list[dict]) -> list[dic
 
 
 def generate_categories_content(glossaries: list[dict], terms: list[dict], categories: dict) -> str:
-    """Generate the categories tab content showing all categories with their counts."""
+    """Generate the tags tab content showing all tags with their glossaries/terms as clickable links."""
     
-    # Count glossaries and terms per category
-    cat_counts = {}
+    # Group glossaries and terms by category
+    cat_items = {}
     for g in glossaries:
         cat = g.get("category", "uncategorized")
-        if cat not in cat_counts:
-            cat_counts[cat] = {"glossaries": 0, "terms": 0, "term_entries": 0}
-        cat_counts[cat]["glossaries"] += 1
-        cat_counts[cat]["term_entries"] += g.get("term_count", 0)
+        if cat not in cat_items:
+            cat_items[cat] = {"glossaries": [], "terms": [], "term_entries": 0}
+        cat_items[cat]["glossaries"].append(g)
+        cat_items[cat]["term_entries"] += g.get("term_count", 0)
     
     for t in terms:
         cat = t.get("category", "terms")
-        if cat not in cat_counts:
-            cat_counts[cat] = {"glossaries": 0, "terms": 0, "term_entries": 0}
-        cat_counts[cat]["terms"] += 1
+        if cat not in cat_items:
+            cat_items[cat] = {"glossaries": [], "terms": [], "term_entries": 0}
+        cat_items[cat]["terms"].append(t)
     
     # Build category cards
     cards_html = ""
-    for cat_slug, counts in sorted(cat_counts.items(), key=lambda x: x[0]):
+    for cat_slug, items in sorted(cat_items.items(), key=lambda x: x[0]):
         cat_info = categories.get(cat_slug, {"name": cat_slug.replace("-", " ").title(), "color": "#666", "description": ""})
         cat_name = cat_info.get("name", cat_slug.replace("-", " ").title())
         cat_color = cat_info.get("color", "#666")
-        cat_desc = cat_info.get("description", "")
         
-        glossary_count = counts["glossaries"]
-        term_count = counts["terms"]
-        entry_count = counts["term_entries"]
+        glossary_list = items["glossaries"]
+        term_list = items["terms"]
+        entry_count = items["term_entries"]
+        
+        # Build glossary links (show all, sorted by title)
+        glossary_links = ""
+        if glossary_list:
+            sorted_glossaries = sorted(glossary_list, key=lambda x: x["title"].upper())
+            links = [f'<a href="glossary/{g["slug"]}.html" class="tag-item-link">{g["title"]}</a>' for g in sorted_glossaries]
+            glossary_links = f'''
+            <div class="tag-items-section">
+                <div class="tag-items-header">📚 Glossaries ({len(glossary_list)})</div>
+                <div class="tag-items-list">{"".join(links)}</div>
+            </div>'''
+        
+        # Build term links (show all, sorted by title)
+        term_links = ""
+        if term_list:
+            sorted_terms = sorted(term_list, key=lambda x: x["title"].upper())
+            links = [f'<a href="term/{t["slug"]}.html" class="tag-item-link">{t["title"]}</a>' for t in sorted_terms]
+            term_links = f'''
+            <div class="tag-items-section">
+                <div class="tag-items-header">📖 Terms ({len(term_list)})</div>
+                <div class="tag-items-list">{"".join(links)}</div>
+            </div>'''
+        
+        # Stats summary
+        stats_summary = f'{len(glossary_list)} glossaries • {len(term_list)} terms • {entry_count:,} entries'
         
         cards_html += f'''
         <div class="category-card">
             <div class="category-card-header" style="background-color: {cat_color}">
                 <h3>{cat_name}</h3>
+                <span class="tag-stats-summary">{stats_summary}</span>
             </div>
             <div class="category-card-body">
-                <p class="category-description">{cat_desc}</p>
-                <div class="category-stats">
-                    <div class="cat-stat">
-                        <span class="cat-stat-value">{glossary_count}</span>
-                        <span class="cat-stat-label">Glossaries</span>
-                    </div>
-                    <div class="cat-stat">
-                        <span class="cat-stat-value">{term_count}</span>
-                        <span class="cat-stat-label">Terms</span>
-                    </div>
-                    <div class="cat-stat">
-                        <span class="cat-stat-value">{entry_count:,}</span>
-                        <span class="cat-stat-label">Entries</span>
-                    </div>
-                </div>
+                {glossary_links}
+                {term_links}
             </div>
         </div>'''
     
@@ -709,10 +721,10 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
             margin-bottom: 1rem;
             font-style: italic;
         }}
-        /* Category cards */
+        /* Tag cards */
         .categories-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }}
         .category-card {{
@@ -729,40 +741,53 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
         .category-card-header {{
             padding: 1rem 1.25rem;
             color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }}
         .category-card-header h3 {{
             margin: 0;
             font-size: 1.1rem;
         }}
-        .category-card-body {{
-            padding: 1rem 1.25rem;
-        }}
-        .category-description {{
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            min-height: 2.4em;
-        }}
-        .category-stats {{
-            display: flex;
-            gap: 1rem;
-            justify-content: space-around;
-            padding-top: 0.75rem;
-            border-top: 1px solid #eee;
-        }}
-        .cat-stat {{
-            text-align: center;
-        }}
-        .cat-stat-value {{
-            display: block;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #333;
-        }}
-        .cat-stat-label {{
+        .tag-stats-summary {{
             font-size: 0.75rem;
-            color: #888;
-            text-transform: uppercase;
+            opacity: 0.85;
+        }}
+        .category-card-body {{
+            padding: 0.75rem 1.25rem 1rem;
+        }}
+        .tag-items-section {{
+            margin-bottom: 0.75rem;
+        }}
+        .tag-items-section:last-child {{
+            margin-bottom: 0;
+        }}
+        .tag-items-header {{
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #eee;
+        }}
+        .tag-items-list {{
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }}
+        .tag-item-link {{
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }}
+        .tag-item-link:hover {{
+            color: #1d4ed8;
+            text-decoration: underline;
         }}
         @media (prefers-color-scheme: dark) {{
             .category-card {{
@@ -772,17 +797,15 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
             .category-card:hover {{
                 box-shadow: 0 4px 16px rgba(0,0,0,0.4);
             }}
-            .category-description {{
+            .tag-items-header {{
                 color: #9ca3af;
+                border-bottom-color: #374151;
             }}
-            .category-stats {{
-                border-top-color: #374151;
+            .tag-item-link {{
+                color: #60a5fa;
             }}
-            .cat-stat-value {{
-                color: #f3f4f6;
-            }}
-            .cat-stat-label {{
-                color: #9ca3af;
+            .tag-item-link:hover {{
+                color: #93c5fd;
             }}
         }}
     </style>
