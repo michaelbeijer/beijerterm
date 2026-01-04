@@ -1179,8 +1179,6 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
                     <dd>{glossary.get('description', 'No description available')}</dd>
                     <dt>Languages</dt>
                     <dd>{glossary.get('source_lang', '?')} → {glossary.get('target_lang', '?')}</dd>
-                    <dt>Domain</dt>
-                    <dd>{glossary.get('domain', 'general').title()}</dd>
                     <dt>Terms</dt>
                     <dd>{glossary.get('term_count', 0):,}</dd>
                     <dt>Source</dt>
@@ -1257,8 +1255,6 @@ def generate_term_page(term: dict, categories: dict) -> str:
                     <dd>{term.get('description', 'No description available')}</dd>
                     <dt>Languages</dt>
                     <dd>{term.get('source_lang', 'nl')} → {term.get('target_lang', 'en')}</dd>
-                    <dt>Domain</dt>
-                    <dd>{term.get('domain', 'general').title()}</dd>
                     <dt>Source</dt>
                     <dd><a href="{term.get('source_url', '#')}" target="_blank">{term.get('source_url', 'Unknown')}</a></dd>
                     <dt>Last Updated</dt>
