@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.8] - 2026-01-04
+
+### Changed
+- **Removed Tags tab**: Tag filtering now integrated directly into Glossaries and Terms tabs
+- **Clickable Tags stat**: Stats section "Tags" now links to tags.html reference page
+- **Renamed stat**: "Categories" → "Tags" in stats section
+
 ## [1.0.7] - 2026-01-04
 
 ### Added
