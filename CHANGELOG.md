@@ -6,16 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-
-## [1.0.2] - 2026-01-04
-
-### Added
-- **GitHub Code Search**: New web resource in Superlookup sidebar for searching terminology across all public GitHub repositories
-- **Supervertaler Integration**: GitHub Code Search also added to Supervertaler's Superlookup Web Resources tab (v1.9.77)
-
-### Technical
-- Search URL: `https://github.com/search?q={query}&type=code`
-- Great for finding how technical terms are used in real code
 ## [1.0.1] - 2026-01-03
 
 ### Added
