@@ -1,4 +1,4 @@
-# BeijerTerm - AI Agent Documentation
+# Beijerterm - AI Agent Documentation
 
 > **This is the single source of truth for AI coding assistants working on this project.**
 > **Last Updated:** January 4, 2026
@@ -7,11 +7,11 @@
 
 ## 🎯 Project Overview
 
-**BeijerTerm** is an open-source multilingual terminology database and glossary website. It provides a searchable collection of Dutch-English translation glossaries, terminology lists, and individual term definitions for professional translators.
+**Beijerterm** is an open-source multilingual terminology database and glossary website. It provides a searchable collection of Dutch-English translation glossaries, terminology lists, and individual term definitions for professional translators.
 
 | Property | Value |
 |----------|-------|
-| **Name** | BeijerTerm |
+| **Name** | Beijerterm |
 | **Type** | Static website (GitHub Pages) |
 | **Language** | Python (build scripts), HTML/CSS/JS (frontend) |
 | **Repository** | https://github.com/michaelbeijer/beijerterm |

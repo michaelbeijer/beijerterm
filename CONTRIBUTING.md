@@ -1,4 +1,4 @@
-# Contributing to BeijerTerm Glossaries
+# Contributing to Beijerterm Glossaries
 
 Thank you for your interest in contributing! This project aims to build the world's largest open-source multilingual terminology database.
 

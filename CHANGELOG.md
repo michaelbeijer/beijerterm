@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the BeijerTerm project will be documented in this file.
+All notable changes to the Beijerterm project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **Navigation bar for highlights**: Shows match count with Previous/Next navigation buttons
 - **Keyboard shortcuts**: Press N (next), P (previous), or Esc (close) to navigate between highlighted matches
 - **Auto-scroll to first match**: Page automatically scrolls to the first highlighted match
-- **Version badge**: Header now displays "BeijerTerm v1.0.1"
+- **Version badge**: Header now displays "Beijerterm v1.0.1"
 
 ### Changed
 - Minimum term count filter (10 terms) to distinguish glossaries from single-term entries
@@ -62,7 +62,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### From MediaWiki to Static Site
 
-The BeijerTerm project was migrated from a self-hosted MediaWiki instance to a static site on GitHub Pages. This provides:
+The Beijerterm project was migrated from a self-hosted MediaWiki instance to a static site on GitHub Pages. This provides:
 
 1. **Zero hosting costs** - GitHub Pages is free
 2. **Better performance** - Static HTML loads faster than dynamic wiki
@@ -105,5 +105,5 @@ Each `.md` file contains:
 
 ---
 
-*BeijerTerm - Open source multilingual terminology database*
+*Beijerterm - Open source multilingual terminology database*
 *https://michaelbeijer.github.io/beijerterm/*

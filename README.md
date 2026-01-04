@@ -116,7 +116,7 @@ npx serve _site
 
 ##  Versioning
 
-BeijerTerm uses [Semantic Versioning](https://semver.org/):
+Beijerterm uses [Semantic Versioning](https://semver.org/):
 
 - **MAJOR** (1.x.x): Breaking changes to data format or API
 - **MINOR** (x.1.x): New features (backward compatible)
