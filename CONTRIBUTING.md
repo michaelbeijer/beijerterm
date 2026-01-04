@@ -2,6 +2,14 @@
 
 Thank you for your interest in contributing! This project aims to build the world's largest open-source multilingual terminology database.
 
+## Our Philosophy
+
+**We believe terminology should be free.**
+
+Lexical data, translations, and terminology are facts about language. Facts cannot and should not be owned. By contributing to Beijerterm, you're helping build a free, open resource for translators, linguists, and language learners worldwide.
+
+All glossary data in Beijerterm is released under **CC0 (Public Domain Dedication)** — use it however you want, no attribution required.
+
 ## Ways to Contribute
 
 ### 1. Add a New Glossary
@@ -43,7 +51,7 @@ domain: category-name
 term_count: 100
 source_url: https://original-source.com/
 author: Original Author or Your Name
-license: CC-BY-4.0
+license: CC0
 last_updated: 2025-01-01
 tags:
   - relevant
@@ -76,7 +84,7 @@ Optional introductory text about the glossary.
 - `term_count`: Number of terms (auto-calculated if omitted)
 - `source_url`: Original source URL
 - `author`: Creator/compiler
-- `license`: License (default: CC-BY-4.0)
+- `license`: License (default: CC0, public domain)
 - `last_updated`: Date in YYYY-MM-DD format
 - `tags`: Array of relevant tags
 - `extra_languages`: Array of additional language codes for multilingual glossaries
@@ -113,9 +121,17 @@ color: "#3498db"
 
 ## Licensing
 
-- **Your contributions** should be licensed under CC-BY-4.0 (Creative Commons Attribution)
-- **Imported data** must have a compatible license
-- Always cite the original source in the `source_url` and `author` fields
+**All glossary data in Beijerterm is released under CC0 (Public Domain Dedication).**
+
+This means:
+- ✅ Use for any purpose (personal, commercial, academic)
+- ✅ Modify, transform, and build upon freely
+- ✅ No attribution required (though appreciated!)
+- ✅ No restrictions whatsoever
+
+**Why CC0?** Terminology is facts about language. Facts should be free. We want maximum usability for translators and language professionals worldwide.
+
+**About sources**: Many glossaries are compiled, processed, and enhanced from various online sources. We acknowledge original sources in the `source_url` field, but our processed compilations are released freely. If you believe any content should not be included, please open an issue.
 
 ## Quality Guidelines
 

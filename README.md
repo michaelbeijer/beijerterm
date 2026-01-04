@@ -1,14 +1,16 @@
 # Beijerterm
 
 [![Version](https://img.shields.io/badge/version-v1.0.9-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-CC0-green.svg)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-orange.svg)](https://michaelbeijer.github.io/beijerterm/)
 
 **An open-source, GitHub-hosted multilingual terminology database.**
 
 Every glossary is a Markdown file. Full-text search powered by Pagefind.
 
- **Live site**: [michaelbeijer.github.io/beijerterm](https://michaelbeijer.github.io/beijerterm/)
+> 💡 **We believe terminology should be free.** All glossary data is released under [CC0 (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/) — use it however you want, no attribution required.
+
+🌐 **Live site**: [michaelbeijer.github.io/beijerterm](https://michaelbeijer.github.io/beijerterm/)
 
 ##  Features
 
@@ -64,7 +66,7 @@ domain: aviation
 term_count: 2143
 source_url: https://www.schiphol.nl/
 author: Schiphol Group
-license: CC-BY-4.0
+license: CC0
 last_updated: 2025-06-15
 ---
 
@@ -127,10 +129,26 @@ Beijerterm uses [Semantic Versioning](https://semver.org/):
 
 Current version: **v1.0.9** (see [CHANGELOG.md](CHANGELOG.md))
 
-##  License
+## 📜 License & Philosophy
 
-- **Code**: MIT License
-- **Glossary data**: Various (see individual glossary files)
+**We believe terminology should be free.**
+
+Lexical data, translations, and terminology are facts about language. Facts cannot and should not be owned.
+
+- **Code** (build scripts, website): MIT License
+- **Glossary data**: [CC0 (Public Domain Dedication)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+### What CC0 means for you:
+- ✅ Use for any purpose (personal, commercial, academic)
+- ✅ Modify, transform, and build upon freely  
+- ✅ No attribution required (though appreciated!)
+- ✅ No restrictions whatsoever
+
+### About our sources
+
+Many glossaries are compiled from various online sources, including government publications, academic resources, corporate glossaries, and community contributions. We acknowledge original sources where known, but all data has been processed, cleaned, reformatted, and often enhanced.
+
+We release our compilations freely because we believe terminology should be accessible to everyone.
 
 ##  Acknowledgments
 

@@ -453,7 +453,8 @@ def generate_site_footer() -> str:
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Beijerterm</h4>
-                <p>Open-source, GitHub-hosted multilingual terminology database for translators.</p>
+                <p>Open-source multilingual terminology database for translators.</p>
+                <p style="font-size: 0.85em; opacity: 0.8; margin-top: 0.5rem;">💡 We believe terminology should be free.</p>
             </div>
             <div class="footer-section">
                 <h4>Links</h4>
@@ -465,11 +466,12 @@ def generate_site_footer() -> str:
             </div>
             <div class="footer-section">
                 <h4>License</h4>
-                <p>All data is open source and freely available.</p>
+                <p>All glossary data: <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" style="color: inherit; text-decoration: underline;">CC0 (Public Domain)</a></p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Use freely. No attribution required.</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Michael Beijer. Built with ❤️ for the translation community.</p>
+            <p>&copy; 2025-2026 Michael Beijer. Built with ❤️ for the translation community.</p>
         </div>
     </footer>'''
 
