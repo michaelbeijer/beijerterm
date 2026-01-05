@@ -10,24 +10,24 @@ last_updated: 2026-01-03
 tags: []
 ---
 
-# Ach
+see also: https://www.proz.com/kudoz/dutch-to-english/medical-general/6844799-ach.html
 
-## Terms
+- ACH = arm chest hip (index)
+- ACh = acetylcholine
+(https://www.esculaap.nl/medische-afkortingen)
 
-| Dutch | English | Notes |
-|-------|---------|-------|
-| see also | https://www.proz.com/kudoz/dutch-to-english/medical-general/6844799-ach.html |  |
-| ACH | arm chest hip (index) |  |
-| ACh | acetylcholine |  |
-| (<nowiki>https | //www.esculaap.nl/medische-afkortingen</nowiki> ) |  |
-| ACH | ambulancechauffeur |  |
-| ACh | acetylcholine (Neurotransmitter) |  |
-| (<nowiki>https | //medischeafkorting.nl/ach/2827</nowiki> ) |  |
-| ACh | acetylcholine |  |
-| (<nowiki>https | //nl.qwe.wiki/wiki/List_of_medical_abbreviations:_A</nowiki> ) |  |
-| ACh | acethylcholine |  |
-| ACh | Acetyl-choline. ACh is een transmitterstof die betrokken is bij de overdracht van neuromusculaire prikkels. |  |
-| AChE | Acetyl-cholinesterase. |  |
-| AChR | Acetylcholine-receptor. |  |
-| ACH | Arm, borstkas en heup. |  |
-| (<nowiki>http | //www.dehelianthus-haarlem.nl/newhtml/lexicon/list_A.html</nowiki> ) |  |
+- ACH = ambulancechauffeur
+- ACh = acetylcholine (Neurotransmitter)
+(https://medischeafkorting.nl/ach/2827 )
+
+- ACh = acetylcholine
+(https://nl.qwe.wiki/wiki/List_of_medical_abbreviations:_A)
+
+- ACh = acethylcholine
+(Neurologie voor verpleegkundigen, By H.J. Gelmers)
+
+- ACh = Acetyl-choline. ACh is een transmitterstof die betrokken is bij de overdracht van neuromusculaire prikkels.
+- AChE = Acetyl-cholinesterase.
+- AChR = Acetylcholine-receptor.
+- ACH = Arm, borstkas en heup.
+(http://www.dehelianthus-haarlem.nl/newhtml/lexicon/list_A.html)
