@@ -17,16 +17,16 @@ tags:
 ## Dutch
 
 **vergisting**  
-Process waarbij organisch (biologisch) materiaal door micro-organismen wordt afgebroken, doorgaans onder **anaerobe** omstandigheden, met vorming van onder meer **digestaat** en vaak **biogas** (methaanrijk gas).
+Proces waarbij organisch (biologisch) materiaal door micro-organismen wordt afgebroken, doorgaans onder anaerobe omstandigheden, met vorming van onder meer digestaat en vaak biogas (methaanrijk gas).
 
-### Related terms
-- vergisting → digestion
+### Related terms (NL → EN)
+
+- vergisting → (anaerobic) digestion
 - vergisten (v.) → to digest / is digested
 - vergister → digester
 - vergistingstank → digestion tank
-- betonnen tank voor vergisting → concrete tank for digestion
-- vergisting van biomassa → digestion of biomass
 - anaerobe vergisting → anaerobic digestion
+- vergisting van biomassa → digestion of biomass
 
 ---
 
@@ -34,32 +34,27 @@ Process waarbij organisch (biologisch) materiaal door micro-organismen wordt afg
 
 ### Preferred translations (context-dependent)
 
-- **anaerobic digestion**  
+- **anaerobic digestion**
 - **digestion** (short form, acceptable where the anaerobic nature is clear from context)
 
 ### Other possible renderings (use with caution)
 
-- **anaerobic biodegradation**  
+- **anaerobic biodegradation**
 - **anaerobic degradation**
 
-These may be suitable in **scientific or descriptive contexts**, but are **less standard** in patent, regulatory and engineering texts relating to biogas installations.
+These may be suitable in scientific or descriptive contexts, but are less standard in patent, regulatory and engineering texts relating to biogas installations.
 
 ### Abbreviation
 
-- **AD** – widely used shorthand for *anaerobic digestion* in technical literature and patents
+- **AD** – common shorthand for *anaerobic digestion* in technical literature and patents
 
 ---
 
 ## Usage notes
 
-In **English-language patents, engineering documentation, and wastewater/biogas literature**, the process described by *vergisting* of biomass (e.g. manure, organic waste, sludge) is **most precisely and idiomatically rendered as _anaerobic digestion_**.
+In English-language patents, engineering documentation and wastewater/biogas literature, the process described by *vergisting* of biomass (e.g. manure, organic waste, sludge) is most precisely and idiomatically rendered as **anaerobic digestion**.[^1][^2]
 
-Although the broader microbiological term **fermentation** can sometimes be defended scientifically, it is:
-- less specific,
-- less standard in this industrial context, and
-- potentially misleading where methane production and digestate formation are central.
-
-Accordingly, **anaerobic digestion** is generally preferred unless applicant or project-specific terminology dictates otherwise.
+Although the broader microbiological term **fermentation** can sometimes be defended scientifically,[^3] it is less specific and can be misleading where methane production and digestate formation are central. For biogas and wastewater contexts, **anaerobic digestion** is therefore normally preferred unless applicant or project-specific terminology dictates otherwise.
 
 ---
 
@@ -83,6 +78,11 @@ Accordingly, **anaerobic digestion** is generally preferred unless applicant or 
 
 ## References
 
-[^1]: IEA Bioenergy, *Anaerobic Digestion*, technical overview  
-[^2]: European Commission, Bioenergy and biogas documentation  
-[^3]: Common usage in EU and international patent literature relating to biomass and wastewater treatment
+[^1]: IEA Bioenergy – Anaerobic digestion  
+https://www.ieabioenergy.com/topics/anaerobic-digestion/
+
+[^2]: European Commission – Biogas and biomethane  
+https://energy.ec.europa.eu/topics/renewable-energy/bioenergy/biogas-and-biomethane_en
+
+[^3]: IUPAC Gold Book – Fermentation (microbiological definition)  
+https://goldbook.iupac.org/terms/view/F02329
