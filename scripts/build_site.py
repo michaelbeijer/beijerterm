@@ -449,12 +449,15 @@ def generate_site_header(current_page: str = "home") -> str:
 
 def generate_site_footer() -> str:
     """Generate the site footer."""
-    return '''<footer class="site-footer">
+    from datetime import datetime
+    last_updated = datetime.now().strftime("%B %d, %Y")
+    return f'''<footer class="site-footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Beijerterm</h4>
                 <p>Open-source multilingual terminology database for translators.</p>
                 <p style="font-size: 0.85em; opacity: 0.8; margin-top: 0.5rem;">💡 We believe terminology should be free.</p>
+                <p style="font-size: 0.8em; opacity: 0.6; margin-top: 0.5rem;">Last rebuilt: {last_updated}</p>
             </div>
             <div class="footer-section">
                 <h4>Links</h4>
@@ -1505,22 +1508,8 @@ def generate_term_page(term: dict, categories: dict) -> str:
                 {html_content}
             </section>
 
-            <section class="term-info">
-                <h3>About this term</h3>
-                <dl>
-                    <dt>Title</dt>
-                    <dd>{term.get('title', 'Unknown')}</dd>
-                    <dt>Description</dt>
-                    <dd>{term.get('description', 'No description available')}</dd>
-                    <dt>Languages</dt>
-                    <dd>{term.get('source_lang', 'nl')} → {term.get('target_lang', 'en')}</dd>
-                    <dt>Tags</dt>
-                    <dd>{', '.join(tags) if tags else '—'}</dd>
-                    <dt>Source</dt>
-                    <dd><a href="{term.get('source_url', '#')}" target="_blank">{term.get('source_url', 'Unknown')}</a></dd>
-                    <dt>Last Updated</dt>
-                    <dd>{term.get('last_updated', 'Unknown')}</dd>
-                </dl>
+            <section class="term-source">
+                <p>📝 <a href="{term.get('source_url', '#')}" target="_blank">Edit this term on GitHub</a> · Last updated: {term.get('last_updated', 'Unknown')}</p>
             </section>
         </main>
     </div>

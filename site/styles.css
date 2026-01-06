@@ -1167,30 +1167,47 @@ main {
 
 /* Term content styling */
 .term-content {
-    line-height: 1.7;
+    line-height: 1.8;
+    max-width: 800px;
 }
 
-/* Section headers with shading */
+/* Language section headers (h2) - clean, prominent */
 .term-content h2 {
-    font-size: 1.4rem;
-    color: var(--text-color);
-    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 2.5rem;
     margin-bottom: 1rem;
-    padding: 0.75rem 1rem;
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border-left: 4px solid var(--primary-color);
-    border-radius: 0 8px 8px 0;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid var(--primary-color);
 }
 
+/* First h2 doesn't need top margin */
+.term-content h2:first-of-type {
+    margin-top: 0.5rem;
+}
+
+/* Subsection headers (h3) - subtle, functional */
 .term-content h3 {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 1.75rem;
     margin-bottom: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: #f8fafc;
-    border-left: 3px solid #94a3b8;
-    border-radius: 0 4px 4px 0;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+/* Horizontal rules as language separators */
+.term-content hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), transparent);
+    margin: 2.5rem 0;
 }
 
 /* Lists with proper indentation */
@@ -1277,7 +1294,20 @@ main {
     text-decoration: underline;
 }
 
-/* Term info box */
+/* Term source link (simplified from term-info box) */
+.term-source {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.term-source a {
+    color: var(--primary-color);
+}
+
+/* Legacy term info box (can remove after migration) */
 .term-info {
     background: var(--bg-secondary);
     padding: 1.5rem;
@@ -1316,13 +1346,16 @@ main {
     }
     
     .term-content h2 {
-        background: linear-gradient(135deg, #1e293b, #334155);
-        border-left-color: #60a5fa;
+        color: #60a5fa;
+        border-bottom-color: #60a5fa;
     }
     
     .term-content h3 {
-        background: #1e293b;
-        border-left-color: #64748b;
+        color: #94a3b8;
+    }
+
+    .term-content hr {
+        background: linear-gradient(to right, #60a5fa, transparent);
     }
     
     .term-content th {
@@ -1335,6 +1368,10 @@ main {
     
     .term-content code {
         background: #374151;
+    }
+
+    .term-source {
+        border-top-color: #374151;
     }
 }
 
