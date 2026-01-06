@@ -1369,6 +1369,93 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
 </html>'''
 
 
+def generate_glossaries_index(glossaries: list[dict], categories: dict, tag_index: dict) -> str:
+    """Generate the /glossaries/ index page listing all glossaries."""
+    site_header = generate_site_header("glossaries_index")
+    site_footer = generate_site_footer()
+    
+    glossary_nav, glossary_sections = generate_table_for_items(glossaries, categories, "glossary")
+    
+    total_glossaries = len(glossaries)
+    total_terms = sum(g.get('term_count', 0) for g in glossaries)
+    
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Glossaries - Beijerterm</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    {site_header}
+
+    <div class="page-container">
+        <div class="page-header">
+            <nav class="breadcrumb"><a href="../index.html">&larr; Back to home</a></nav>
+            <h1>📚 All Glossaries</h1>
+            <p class="page-description">{total_glossaries:,} glossaries containing {total_terms:,} term entries</p>
+        </div>
+
+        <main>
+            <nav class="letter-nav">
+                {glossary_nav}
+            </nav>
+            
+            {glossary_sections}
+        </main>
+    </div>
+
+    {site_footer}
+{SCROLL_TO_TOP_HTML}
+</body>
+</html>'''
+
+
+def generate_terms_index(terms: list[dict], categories: dict) -> str:
+    """Generate the /terms/ index page listing all term pages."""
+    site_header = generate_site_header("terms_index")
+    site_footer = generate_site_footer()
+    
+    terms_nav, terms_sections = generate_table_for_items(terms, categories, "term")
+    
+    total_terms = len(terms)
+    
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Terms - Beijerterm</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    {site_header}
+
+    <div class="page-container">
+        <div class="page-header">
+            <nav class="breadcrumb"><a href="../index.html">&larr; Back to home</a></nav>
+            <h1>📖 All Terms</h1>
+            <p class="page-description">{total_terms:,} detailed term pages with translations, usage notes, and examples</p>
+        </div>
+
+        <main>
+            <nav class="letter-nav">
+                {terms_nav}
+            </nav>
+            
+            {terms_sections}
+        </main>
+    </div>
+
+    {site_footer}
+{SCROLL_TO_TOP_HTML}
+</body>
+</html>'''
+
+
 def generate_glossary_page(glossary: dict, categories: dict) -> str:
     """Generate an individual glossary page."""
     cat_info = categories.get(glossary["category"], {"name": glossary["category"], "color": "#666"})
@@ -1571,6 +1658,20 @@ def build_site():
     index_html = generate_html_index(glossaries, terms, categories, tag_index)
     with open(OUTPUT_DIR / "index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
+
+    # Generate /glossaries/ index page
+    glossaries_index_html = generate_glossaries_index(glossaries, categories, tag_index)
+    glossaries_index_dir = OUTPUT_DIR / "glossaries"
+    glossaries_index_dir.mkdir(parents=True, exist_ok=True)
+    with open(glossaries_index_dir / "index.html", "w", encoding="utf-8") as f:
+        f.write(glossaries_index_html)
+
+    # Generate /terms/ index page
+    terms_index_html = generate_terms_index(terms, categories)
+    terms_index_dir = OUTPUT_DIR / "terms"
+    terms_index_dir.mkdir(parents=True, exist_ok=True)
+    with open(terms_index_dir / "index.html", "w", encoding="utf-8") as f:
+        f.write(terms_index_html)
 
     for glossary in glossaries:
         page_html = generate_glossary_page(glossary, categories)
