@@ -394,12 +394,15 @@ a:hover {
 }
 
 .glossary-description {
-    margin-bottom: 1rem;
     line-height: 1.6;
 }
 
 .glossary-description p {
     margin-bottom: 0.5rem;
+}
+
+.glossary-description p:last-child {
+    margin-bottom: 0;
 }
 
 .glossary-description a {

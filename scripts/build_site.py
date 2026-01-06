@@ -1421,6 +1421,7 @@ def generate_glossaries_index(glossaries: list[dict], terms: list[dict], categor
     <title>All Glossaries - Beijerterm</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
 </head>
 <body>
     {site_header}
@@ -1503,6 +1504,7 @@ def generate_terms_index(terms: list[dict], glossaries: list[dict], categories: 
     <title>All Terms - Beijerterm</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
 </head>
 <body>
     {site_header}
@@ -1719,8 +1721,9 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
         <main>
             <section class="glossary-info">
                 <h3>About this glossary</h3>
-                <div class="glossary-description">{description_html}</div>
                 <dl class="glossary-meta-list">
+                    <dt>Description</dt>
+                    <dd class="glossary-description">{description_html}</dd>
                     <dt>Languages</dt>
                     <dd>{glossary.get('source_lang', '?')} → {glossary.get('target_lang', '?')}</dd>
                     <dt>Terms</dt>
