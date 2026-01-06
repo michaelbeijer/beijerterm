@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-01-06
+
+### Added
+- **Clickable footnotes**: References like `[^1]` now link to footnotes and back
+  - Added `footnotes` extension to Markdown processor
+  - Back-reference arrows (↩) scroll correctly past fixed header
+- **Last rebuilt date**: Footer now shows "Last rebuilt: [date]" auto-updated on build
+- **Term source link**: Simplified "Edit on GitHub" link replaces verbose About box
+
+### Changed
+- **Cleaner term page layout**: Less boxy, more readable design
+  - h2 headers: Blue underline instead of gray background boxes
+  - h3 headers: Plain bold text, no background
+  - Horizontal rules: Gradient fade from blue to transparent
+  - Max content width: 800px for better readability
+  - Line height: Increased to 1.8 for breathing room
+- **Removed verbose "About this term" box**: Replaced with minimal edit link
+
+### Fixed
+- **Footnote scroll offset**: `scroll-margin-top: 5rem` prevents anchors landing behind fixed header
+
 ## [1.1.0] - 2026-01-04
 
 ### Changed
