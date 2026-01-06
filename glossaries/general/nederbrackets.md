@@ -1,110 +1,230 @@
 ---
-title: nederbrackets
+title: (Neder)brackets
 slug: nederbrackets
-description: Terminology from nederbrackets
-type: glossary
+description: Dutch bracket usage in technical and legal texts and how to interpret and translate it correctly into English
 source_lang: nl
 target_lang: en
-term_count: 88
-source_url: "https://superlookup.wiki/wiki/nederbrackets"
-last_updated: 2026-01-03
+last_updated: 2026-01-06
 tags:
-  - "Dunglish"
-  - "translation"
+  - Dutch-English
+  - translation pitfalls
+  - legal drafting
+  - technical writing
+  - Dunglish
+  - (Neder)brackets
+---
+
+# (Neder)brackets
+
+Dutch authors have a particular way of **(ab)using brackets** in technical, legal and semi-technical writing.  
+This page documents and analyses these constructions, which I refer to as **(Neder)brackets**.
+
+They are a frequent source of ambiguity and mistranslation when Dutch texts are rendered into English.
+
+The clearest discussion of this phenomenon can be found in *‘Righting English that’s gone Dutch’* by **Joy Burrough-Boenisch**, in the chapter *‘Bracket (ab)use’*.
 
 ---
 
-# nederbrackets
+## Brackets in English vs Dutch
 
-## Terms
+### English usage (normal)
 
-| Dutch | English | Notes |
-|--------|---------|-------|
-| (afval)water | water (specifically wastewater) |  |
-| (af)leverdatum | ???, delivery date; date of delivery |  |
-| (lever)termijn | delivery period |  |
-| (bank)administratie | bank records or other records, bank records |  |
-| (bedrijfs)standaarden | corporate and other standards, corporate standards |  |
-| (bepaalde) bezoekers | all or specific visitors, specific visitors |  |
-| (bij)bestellen | order and/or reorder, reorder |  |
-| (bij)gebouwen | outbuildings and other buildings |  |
-| (bij)scholing | training or further training, further training |  |
-| (bio)brandstoffen | fuels and/or biofuels, biofuels |  |
-| (blinde) geleidehonden | guide dogs |  |
-| (bouwkundige) kosten | construction costs and/or other costs |  |
-| (brand)risico | brandrisico en/or risico, fire risk |  |
-| (brand)verzekering | fire insurance |  |
-| (brom)fietsers | bicycles and motorcycles; bicycles and/or motorcycles |  |
-| (co-) financieren; (co-) financiering | financing and co-financing |  |
-| (controle)proces | audit process or other processes (???) |  |
-| (controle)teamleden | audit team members and other team members (???) |  |
-| (deel)betaling | payment (or partial payment) |  |
-| (deel)onderwerp | topic and/or sub topic |  |
-| (deel)product | products and/or subproducts |  |
-| (deel)projecten | – projects and/or partial projects, – subproject |  |
-| (digitaal) personeelsdossier | – personnel file (digital or otherwise), digital personnel file |  |
-| (dreigende) terroristische handelingen | terrorist acts, or threat of terrorist acts |  |
-| (druk)fouten | printing or other errors, printing errors |  |
-| (een deel van) het totale beschikbare bedrag | all or part of the total available amount |  |
-| (lokale) regelgeving | regulations (local or otherwise), local regulations |  |
-| (electro) technische | technical or electrical |  |
-| (financiële) gegevens | financial information and other data |  |
-| (fiscale) wetgeving | tax and other forms of legislation |  |
-| (gedeeltelijk) kunstgebit | kunstgebit of gedeeltelijk kunstgebit, partial or full dentures, (partial) dentures [i.e., dentures that are partial, rather than full] |  |
-| (gedeeltelijke) sloop | partial demolition |  |
-| (her)configureerbaar | configurable or reconfigurable |  |
-| (her)configureren | configure or reconfigure |  |
-| (her)configureren | configure or re-configure |  |
-| (huis)dieren | animals or pets; animals and/or pets |  |
-| (huur)auto's | cars and/or rental cars |  |
-| (indirecte) aandeelhouders | direct and/or indirect shareholders |  |
-| instel(wens)waarde | desired setpoint value |  |
-| (inter)nationale | national and international |  |
-| (internationale) bedrijfsbezoeken | If the author is using the brackets in "(internationale) bedrijfsbezoeken" in the Dutch manner (to indicate optional items), this would be translated as: "national and international company visits". However,  if the author is using the brackets in English manner, this would be translated as: "(international) company visits", or just "international company visits". |  |
-| (kantoor)interieur | home or office interior |  |
-| (kern)waarden | just "core values", something else, like "values (core and otherwise)"? |  |
-| (kinder)porno | pornography and/or child pornography |  |
-| (klant)inzicht | inzicht en/of klantinzicht |  |
-| (kleuren)inkten | black and coloured inks, coloured inks |  |
-| (kunst)geschiedenis | history of art or history; history or art history |  |
-| (laser)lassen | welding and/or laser welding |  |
-| (lever)termijnen | termijnen en/of levertermijnen, periods and/or delivery periods, delivery periods |  |
-| (lucht)transport | luchttransport en/of transport, transport by air or otherwise |  |
-| (milieu-) eisen of maatregelen | environmental requirements or measures |  |
-| (na)bloeiend | ??? |  |
-| (mogelijk) probleem | – potential or actual problem, potential problem |  |
-| (natuur)geweld | natural disasters or violence |  |
-| (non)verbale communicatie | verbal and nonverbal communication |  |
-| (nood)uitgang | Exit or emergency exit |  |
-| (on)belangrijk | – important and/or unimportant |  |
-| (on)rechtstreeks | either directly or indirectly |  |
-| (on)veiligheidsgevoel | sense of security or insecurity |  |
-| (oplever)data | data and/of opleverdata, dates and/or delivery dates, delivery dates |  |
-| (warm) water | question (open-ended or otherwise) |  |
-| (overheids)bevel | government order, or order by another body |  |
-| (petro)chemische industrie | chemical and petrochemical industries |  |
-| (potentiële) (interne) klant | internal or external customer (potential or otherwise) |  |
-| (pre)contractuele relatie | contractual or pre-contractual relationship |  |
-| (rechts)persoon | natural or legal person |  |
-| (rechts)personen | legal or natural persons |  |
-| (roer)bakken | frying and/or stir-frying; frying and/or stir-frying |  |
-| (semi-)autonome mappingfunctionaliteit | autonome mappingfunctionaliteit en/of semi-autonome mappingfunctionaliteit, autonomous mapping functionality and/or semi-autonomous mapping functionality, autonomous mapping functionality, specifically: semi-autonomous mapping functionality |  |
-| (service)kosten | costs, service-related and otherwise |  |
-| (tijdige) annulering | cancellation, within the specified time or otherwise |  |
-| (toegang tot) effectieve zorg | effective care and its access; effective care and access to effective care |  |
-| (toekomstige) bewoners | present and/or future residents |  |
-| (verdere) dienstverlening | services (or further services) |  |
-| (Ver)Huurder | Verhuurder/Huurder, Lessor/Lessee, Lessor/Lessee |  |
-| (verpleeg-)adres | address or address where the employee is being treated |  |
-| (warm) water | hot or cold water, hot water |  |
-| (zaken-) partner | partner (whether business partner or otherwise) |  |
-| (zonne)brillen | glasses or sunglasses |  |
-| aanstelling(-skeuring) | appointment or pre-employment medical examination |  |
-| arbeids(on)geschikt | fit or unfit for work |  |
-| bij (volledig) bewustzijn | either partially or fully conscious |  |
-| breed (her)inzetbaar | versatile and reusable |  |
-| Indien u werkzaam bent in een (semi-)ambulante functie | If your job requires you to travel |  |
-| medewerk(st)er | – male and/or female employee |  |
-| nabestaande (partner) | surviving relative or partner |  |
-| partij(en) | party and/or parties |  |
-| prijs(wijzigingen) | prices and price changes |  |
+In English, brackets are used to:
+
+- explain  
+- clarify  
+- comment  
+
+They are **parenthetical and secondary**. Removing the bracketed text should leave a complete and coherent sentence.
+
+Example:
+> *mapping functionality (semi-autonomous)*
+
+This means:
+- mapping functionality  
+- with a clarification: it is semi-autonomous
+
+---
+
+### Dutch usage (problematic)
+
+In Dutch technical writing, brackets are often used to **save space**, not to clarify.
+
+They frequently pack **two meanings into one term**, for example:
+
+- alternatives  
+- scope extensions  
+- optional inclusions  
+
+This is where problems arise in translation.
+
+Example:
+> *(semi-)autonome mappingfunctionaliteit*
+
+This does **not** necessarily mean the same thing as the English parenthetical form.
+
+---
+
+## The two possible interpretations
+
+Every instance of a Nederbracket must be analysed using **two competing interpretations**:
+
+### 1. Dutch-style interpretation  
+*(two meanings packed into one term)*
+
+The bracketed element is **optional or additive**, meaning:
+
+- X and/or Y  
+- X or Y  
+- X including Y  
+
+### 2. English-style interpretation  
+*(bracket as clarification)*
+
+The bracketed element **narrows or explains** the main term.
+
+The translator’s task is to determine **which interpretation the author intended**.
+
+---
+
+## Worked examples
+
+### Example 1: `(semi-)autonome mappingfunctionaliteit`
+
+**Dutch-style (most common in patents):**
+- autonome mappingfunctionaliteit **en/of** semi-autonome mappingfunctionaliteit  
+
+**English translation:**
+- *autonomous mapping functionality and/or semi-autonomous mapping functionality*  
+- *autonomous or semi-autonomous mapping functionality*
+
+**English-style (less common):**
+- mapping functionality, specifically semi-autonomous  
+
+**English translation:**
+- *autonomous mapping functionality, specifically semi-autonomous mapping functionality*
+
+---
+
+### Example 2: `(roer)bakken`
+
+**Dutch-style:**
+- bakken en/of roerbakken  
+
+**English translation:**
+- *frying and/or stir-frying*
+
+**English-style:**
+- bakken, specifically roerbakken  
+
+**English translation:**
+- *frying; specifically stir-frying*
+
+---
+
+### Example 3: `(afval)water`
+
+This is extremely common in environmental and wastewater texts.
+
+**Dutch-style (very common):**
+- afval en/of afvalwater  
+
+**Correct English resolution:**
+- *waste and/or wastewater*
+
+**English-style (rare in practice):**
+- water, specifically wastewater  
+
+**Translation:**
+- *water (specifically wastewater)*
+
+👉 In technical English, **explicitly spelling out the scope** is almost always preferable.
+
+---
+
+## Typical Nederbracket patterns and safe resolutions
+
+### Scope-expanding brackets
+
+| Dutch | Intended meaning | Safe English |
+|------|------------------|--------------|
+| (afval)water | waste and/or wastewater | waste and/or wastewater |
+| (bio)brandstoffen | fuels and/or biofuels | biofuels (if clearly intended) |
+| (internationale) bedrijfsbezoeken | national and/or international visits | national and international company visits |
+| (her)configureren | configure or reconfigure | configure or reconfigure |
+
+---
+
+### Narrowing / clarifying brackets
+
+| Dutch | Intended meaning | English |
+|------|------------------|--------|
+| (gedeeltelijke) sloop | sloop, maar gedeeltelijk | partial demolition |
+| (lokale) regelgeving | regelgeving, lokaal | local regulations |
+| (financiële) gegevens | gegevens, financieel | financial information |
+
+---
+
+### Ambiguous or dangerous cases
+
+These require **careful contextual analysis** and often cannot be resolved mechanically:
+
+- `(kern)waarden`
+- `(mogelijk) probleem`
+- `(on)belangrijk`
+- `(on)veiligheidsgevoel`
+- `(na)bloeiend`
+
+In such cases, translators should:
+1. Analyse the surrounding context  
+2. Decide whether scope is being expanded or narrowed  
+3. Rewrite explicitly in English  
+
+---
+
+## Translation strategy (recommended)
+
+### General rule
+
+> **If a Dutch bracket expands scope, spell it out explicitly in English.**  
+> **If it clarifies or narrows meaning, rephrase without brackets.**
+
+### What to avoid in English
+
+- copying Dutch brackets verbatim  
+- constructions like *waste(water)* or *semi(-)autonomous*  
+- relying on the reader to infer scope  
+
+These are **unidiomatic** and sometimes legally risky.
+
+---
+
+## Practical takeaway
+
+Dutch Nederbrackets are:
+- compact
+- ambiguous
+- context-dependent
+
+English translations must be:
+- explicit
+- unpacked
+- legally and technically precise
+
+When in doubt, **spell it out**.
+
+---
+
+## See also
+
+- Joy Burrough-Boenisch, *Righting English that’s gone Dutch*, chapter *Bracket (ab)use*
+- Beijerterm entries on: *afvalwater*, *vergisting*, *screening vs filtration*
+
+---
+
+## Categories
+
+- Dutch–English translation
+- Dunglish
+- Technical terminology
+- Legal drafting

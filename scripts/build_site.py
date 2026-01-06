@@ -685,7 +685,7 @@ def generate_categories_content(glossaries: list[dict], terms: list[dict], categ
         term_links = ""
         if term_list:
             sorted_terms = sorted(term_list, key=lambda x: x["title"].upper())
-            links = [f'<a href="term/{t["slug"]}.html" class="tag-item-link">{t["title"]}</a>' for t in sorted_terms]
+            links = [f'<a href="/terms/{t["slug"]}/" class="tag-item-link">{t["title"]}</a>' for t in sorted_terms]
             term_links = f'''
             <div class="tag-items-section">
                 <div class="tag-items-header">📖 Terms ({len(term_list)})</div>
@@ -799,7 +799,7 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
                     <tbody>'''
             
             for item in by_letter[letter]:
-                link = f"term/{item['slug']}.html"
+                link = f"/terms/{item['slug']}/"
                 # Generate tag badges for all tags
                 tags = item.get('tags', [])
                 tags_data_attr = ','.join(t.lower() for t in tags) if tags else ''
@@ -1531,7 +1531,7 @@ def build_site():
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir(parents=True)
     (OUTPUT_DIR / "glossary").mkdir()
-    (OUTPUT_DIR / "term").mkdir()
+    # Note: term pages now use /terms/{slug}/index.html for clean URLs
 
     print("Loading content...")
     categories = load_categories()
@@ -1576,7 +1576,10 @@ def build_site():
 
     for term in terms:
         page_html = generate_term_page(term, categories)
-        output_path = OUTPUT_DIR / "term" / f"{term['slug']}.html"
+        # Clean URLs: /terms/vergisting/ instead of /term/vergisting.html
+        term_dir = OUTPUT_DIR / "terms" / term['slug']
+        term_dir.mkdir(parents=True, exist_ok=True)
+        output_path = term_dir / "index.html"
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(page_html)
 
@@ -1587,6 +1590,10 @@ def build_site():
         shutil.copy(SITE_DIR / "mb-icon.svg", OUTPUT_DIR / "mb-icon.svg")
     if (SITE_DIR / "MB.ico").exists():
         shutil.copy(SITE_DIR / "MB.ico", OUTPUT_DIR / "favicon.ico")
+    
+    # Create CNAME file for custom domain
+    with open(OUTPUT_DIR / "CNAME", "w", encoding="utf-8") as f:
+        f.write("beijerterm.com")
 
     print(f"Site built successfully in {OUTPUT_DIR}/")
     print(f"\nSummary:")
