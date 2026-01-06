@@ -8,6 +8,7 @@ description: |
   Special attention is given to terms that are frequently mistranslated.
   
   **Sources:**
+  
   - RIVM terminology database
   - EU environmental glossary
   
