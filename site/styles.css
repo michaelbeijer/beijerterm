@@ -1294,6 +1294,29 @@ main {
     text-decoration: underline;
 }
 
+/* Footnotes styling */
+.term-content .footnote {
+    scroll-margin-top: 5rem;  /* Offset for fixed header */
+}
+
+.term-content sup[id^="fnref"] {
+    scroll-margin-top: 5rem;  /* Back-reference anchor offset */
+}
+
+/* Footnote list at bottom */
+.term-content .footnote ol {
+    padding-left: 1.5rem;
+}
+
+.term-content .footnote li {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.term-content .footnote hr {
+    margin: 2rem 0 1rem;
+}
+
 /* Term source link (simplified from term-info box) */
 .term-source {
     margin-top: 3rem;
