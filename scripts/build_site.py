@@ -425,14 +425,12 @@ def load_all_content() -> tuple[list[dict], list[dict]]:
 def generate_site_header(current_page: str = "home") -> str:
     """Generate the site header with navigation."""
     # Pages in root directory: home, tags
-    # Pages one level deep: glossary (in /glossary/)
-    # Pages two levels deep: term (in /terms/slug/)
+    # Pages two levels deep: glossary (in /glossaries/slug/), term (in /terms/slug/)
     if current_page in ("home", "tags"):
         asset_prefix = ""
-    elif current_page == "term":
-        asset_prefix = "../../"
     else:
-        asset_prefix = "../"
+        # glossary and term pages are both 2 levels deep
+        asset_prefix = "../../"
     home_active = 'class="active"' if current_page == "home" else ''
     tagline = '<span class="header-tagline">Open-source, multilingual terminology database</span>'
     return f'''<header class="site-header">
@@ -768,7 +766,7 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
                     <tbody>'''
             
             for item in by_letter[letter]:
-                link = f"glossary/{item['slug']}.html"
+                link = f"/glossaries/{item['slug']}/"
                 # Generate tag badges for all tags
                 tags = item.get('tags', [])
                 tags_data_attr = ','.join(t.lower() for t in tags) if tags else ''
@@ -1176,7 +1174,7 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
             // Intercept ALL link clicks to pass search query (Pagefind uses shadow DOM)
             document.addEventListener('click', function(e) {{
                 const link = e.target.closest('a');
-                if (link && link.href && link.href.includes('/glossary/') || link && link.href && link.href.includes('/term/')) {{
+                if (link && link.href && link.href.includes('/glossaries/') || link && link.href && link.href.includes('/terms/')) {{
                     const searchInput = document.querySelector('.pagefind-ui__search-input');
                     if (searchInput && searchInput.value.trim()) {{
                         e.preventDefault();
@@ -1404,16 +1402,16 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{glossary['title']} - Beijerterm</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../pagefind/pagefind-ui.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../pagefind/pagefind-ui.css">
 </head>
 <body>
     {site_header}
 
     <div class="page-container">
         <div class="page-header">
-            <nav class="breadcrumb"><a href="../index.html">&larr; Back to all glossaries</a></nav>
+            <nav class="breadcrumb"><a href="../../index.html">&larr; Back to all glossaries</a></nav>
             <h1>{glossary['title']}</h1>
             <p class="page-description">{glossary.get('description', '')}</p>
         </div>
@@ -1461,7 +1459,7 @@ def generate_glossary_page(glossary: dict, categories: dict) -> str:
 
     {site_footer}
 
-    <script src="../pagefind/pagefind-ui.js"></script>
+    <script src="../../pagefind/pagefind-ui.js"></script>
 {SEARCH_HIGHLIGHT_HTML}
 {SCROLL_TO_TOP_HTML}
 </body>
@@ -1537,8 +1535,7 @@ def build_site():
     if OUTPUT_DIR.exists():
         shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir(parents=True)
-    (OUTPUT_DIR / "glossary").mkdir()
-    # Note: term pages now use /terms/{slug}/index.html for clean URLs
+    # Note: glossary and term pages use clean URLs: /glossaries/{slug}/ and /terms/{slug}/
 
     print("Loading content...")
     categories = load_categories()
@@ -1577,7 +1574,10 @@ def build_site():
 
     for glossary in glossaries:
         page_html = generate_glossary_page(glossary, categories)
-        output_path = OUTPUT_DIR / "glossary" / f"{glossary['slug']}.html"
+        # Clean URLs: /glossaries/slug/ instead of /glossary/slug.html
+        glossary_dir = OUTPUT_DIR / "glossaries" / glossary['slug']
+        glossary_dir.mkdir(parents=True, exist_ok=True)
+        output_path = glossary_dir / "index.html"
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(page_html)
 
