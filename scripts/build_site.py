@@ -1106,12 +1106,12 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
 
                 <section class="content-browser">
                     <div class="tabs">
-                        <button class="tab-button active" onclick="showTab('glossaries', this)">
+                        <a href="/glossaries/" class="tab-button active">
                             &#128218; Glossaries<span class="count">{total_glossaries}</span>
-                        </button>
-                        <button class="tab-button" onclick="showTab('terms', this)">
+                        </a>
+                        <a href="/terms/" class="tab-button">
                             &#128214; Terms<span class="count">{total_terms_pages:,}</span>
-                        </button>
+                        </a>
                     </div>
 
                     <div id="tab-glossaries" class="tab-content active">
@@ -1370,7 +1370,7 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
 </html>'''
 
 
-def generate_glossaries_index(glossaries: list[dict], categories: dict, tag_index: dict) -> str:
+def generate_glossaries_index(glossaries: list[dict], terms: list[dict], categories: dict, tag_index: dict) -> str:
     """Generate the /glossaries/ index page listing all glossaries."""
     site_header = generate_site_header("glossaries_index")
     site_footer = generate_site_footer()
@@ -1378,7 +1378,9 @@ def generate_glossaries_index(glossaries: list[dict], categories: dict, tag_inde
     glossary_nav, glossary_sections = generate_table_for_items(glossaries, categories, "glossary")
     
     total_glossaries = len(glossaries)
-    total_terms = sum(g.get('term_count', 0) for g in glossaries)
+    total_terms_pages = len(terms)
+    total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
+    total_tags = len(tag_index)
     
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -1393,35 +1395,74 @@ def generate_glossaries_index(glossaries: list[dict], categories: dict, tag_inde
     {site_header}
 
     <div class="page-container">
-        <div class="page-header">
-            <nav class="breadcrumb"><a href="../index.html">&larr; Back to home</a></nav>
-            <h1>📚 All Glossaries</h1>
-            <p class="page-description">{total_glossaries:,} glossaries containing {total_terms:,} term entries</p>
-        </div>
-
         <main>
-            <nav class="letter-nav">
-                {glossary_nav}
-            </nav>
-            
-            {glossary_sections}
+            <section class="search-section">
+                <div id="search"></div>
+            </section>
+
+            <section class="stats">
+                <div class="stat">
+                    <span class="stat-value">{total_glossaries}</span>
+                    <span class="stat-label">Glossaries</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">{total_terms_pages:,}</span>
+                    <span class="stat-label">Term Pages</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">{total_term_entries:,}</span>
+                    <span class="stat-label">Term Entries</span>
+                </div>
+                <div class="stat">
+                    <a href="../tags.html" class="stat-link">
+                        <span class="stat-value">{total_tags}</span>
+                        <span class="stat-label">🏷️ Tags</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="content-browser">
+                <div class="tabs">
+                    <a href="/glossaries/" class="tab-button active">
+                        &#128218; Glossaries<span class="count">{total_glossaries}</span>
+                    </a>
+                    <a href="/terms/" class="tab-button">
+                        &#128214; Terms<span class="count">{total_terms_pages:,}</span>
+                    </a>
+                </div>
+
+                <div class="tab-content active">
+                    <p class="tab-description">Terminology lists and glossaries with multiple term entries each. Click any tag to filter.</p>
+                    <nav class="alphabet-nav">
+                        {glossary_nav}
+                    </nav>
+                    {glossary_sections}
+                </div>
+            </section>
         </main>
     </div>
 
     {site_footer}
+    <script src="../pagefind/pagefind-ui.js"></script>
+    <script>
+        new PagefindUI({{ element: "#search", showSubResults: true }});
+    </script>
 {SCROLL_TO_TOP_HTML}
 </body>
 </html>'''
 
 
-def generate_terms_index(terms: list[dict], categories: dict) -> str:
+def generate_terms_index(terms: list[dict], glossaries: list[dict], categories: dict, tag_index: dict) -> str:
     """Generate the /terms/ index page listing all term pages."""
     site_header = generate_site_header("terms_index")
     site_footer = generate_site_footer()
     
     terms_nav, terms_sections = generate_table_for_items(terms, categories, "term")
     
-    total_terms = len(terms)
+    total_glossaries = len(glossaries)
+    total_terms_pages = len(terms)
+    total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
+    total_tags = len(tag_index)
     
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -1436,22 +1477,58 @@ def generate_terms_index(terms: list[dict], categories: dict) -> str:
     {site_header}
 
     <div class="page-container">
-        <div class="page-header">
-            <nav class="breadcrumb"><a href="../index.html">&larr; Back to home</a></nav>
-            <h1>📖 All Terms</h1>
-            <p class="page-description">{total_terms:,} detailed term pages with translations, usage notes, and examples</p>
-        </div>
-
         <main>
-            <nav class="letter-nav">
-                {terms_nav}
-            </nav>
-            
-            {terms_sections}
+            <section class="search-section">
+                <div id="search"></div>
+            </section>
+
+            <section class="stats">
+                <div class="stat">
+                    <span class="stat-value">{total_glossaries}</span>
+                    <span class="stat-label">Glossaries</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">{total_terms_pages:,}</span>
+                    <span class="stat-label">Term Pages</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">{total_term_entries:,}</span>
+                    <span class="stat-label">Term Entries</span>
+                </div>
+                <div class="stat">
+                    <a href="../tags.html" class="stat-link">
+                        <span class="stat-value">{total_tags}</span>
+                        <span class="stat-label">🏷️ Tags</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="content-browser">
+                <div class="tabs">
+                    <a href="/glossaries/" class="tab-button">
+                        &#128218; Glossaries<span class="count">{total_glossaries}</span>
+                    </a>
+                    <a href="/terms/" class="tab-button active">
+                        &#128214; Terms<span class="count">{total_terms_pages:,}</span>
+                    </a>
+                </div>
+
+                <div class="tab-content active">
+                    <p class="tab-description">Individual term pages with definitions, examples, and reference links. Click any tag to filter.</p>
+                    <nav class="alphabet-nav">
+                        {terms_nav}
+                    </nav>
+                    {terms_sections}
+                </div>
+            </section>
         </main>
     </div>
 
     {site_footer}
+    <script src="../pagefind/pagefind-ui.js"></script>
+    <script>
+        new PagefindUI({{ element: "#search", showSubResults: true }});
+    </script>
 {SCROLL_TO_TOP_HTML}
 </body>
 </html>'''
@@ -1661,14 +1738,14 @@ def build_site():
         f.write(index_html)
 
     # Generate /glossaries/ index page
-    glossaries_index_html = generate_glossaries_index(glossaries, categories, tag_index)
+    glossaries_index_html = generate_glossaries_index(glossaries, terms, categories, tag_index)
     glossaries_index_dir = OUTPUT_DIR / "glossaries"
     glossaries_index_dir.mkdir(parents=True, exist_ok=True)
     with open(glossaries_index_dir / "index.html", "w", encoding="utf-8") as f:
         f.write(glossaries_index_html)
 
     # Generate /terms/ index page
-    terms_index_html = generate_terms_index(terms, categories)
+    terms_index_html = generate_terms_index(terms, glossaries, categories, tag_index)
     terms_index_dir = OUTPUT_DIR / "terms"
     terms_index_dir.mkdir(parents=True, exist_ok=True)
     with open(terms_index_dir / "index.html", "w", encoding="utf-8") as f:
