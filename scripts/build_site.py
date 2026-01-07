@@ -507,7 +507,23 @@ def generate_site_footer() -> str:
 def generate_search_index(glossaries: list[dict], terms: list[dict]) -> list[dict]:
     """Generate search index for all content."""
     index = []
+    
+    # Add glossary pages themselves as searchable entities
     for glossary in glossaries:
+        glossary_entry = {
+            "type": "glossary",
+            "title": glossary["title"],
+            "slug": glossary["slug"],
+            "category": glossary["category"],
+            "description": glossary.get("description", ""),
+            "source_lang": glossary.get("source_lang", ""),
+            "target_lang": glossary.get("target_lang", ""),
+            "term_count": glossary.get("term_count", 0),
+            "tags": glossary.get("tags", []),
+        }
+        index.append(glossary_entry)
+        
+        # Add individual terms from this glossary
         for term in glossary.get("terms", []):
             entry = {
                 "type": "glossary_term",
