@@ -41,6 +41,7 @@ Example:
 > *mapping functionality (semi-autonomous)*
 
 This means:
+
 - mapping functionality  
 - with a clarification: it is semi-autonomous
 
@@ -92,16 +93,20 @@ The translator’s task is to determine **which interpretation the author intend
 ### Example 1: `(semi-)autonome mappingfunctionaliteit`
 
 **Dutch-style (most common in patents):**
+
 - autonome mappingfunctionaliteit **en/of** semi-autonome mappingfunctionaliteit  
 
 **English translation:**
+
 - *autonomous mapping functionality and/or semi-autonomous mapping functionality*  
 - *autonomous or semi-autonomous mapping functionality*
 
 **English-style (less common):**
+
 - mapping functionality, specifically semi-autonomous  
 
 **English translation:**
+
 - *autonomous mapping functionality, specifically semi-autonomous mapping functionality*
 
 ---
@@ -109,15 +114,19 @@ The translator’s task is to determine **which interpretation the author intend
 ### Example 2: `(roer)bakken`
 
 **Dutch-style:**
+
 - bakken en/of roerbakken  
 
 **English translation:**
+
 - *frying and/or stir-frying*
 
 **English-style:**
+
 - bakken, specifically roerbakken  
 
 **English translation:**
+
 - *frying; specifically stir-frying*
 
 ---
@@ -127,15 +136,19 @@ The translator’s task is to determine **which interpretation the author intend
 This is extremely common in environmental and wastewater texts.
 
 **Dutch-style (very common):**
+
 - afval en/of afvalwater  
 
 **Correct English resolution:**
+
 - *waste and/or wastewater*
 
 **English-style (rare in practice):**
+
 - water, specifically wastewater  
 
 **Translation:**
+
 - *water (specifically wastewater)*
 
 👉 In technical English, **explicitly spelling out the scope** is almost always preferable.
@@ -176,6 +189,7 @@ These require **careful contextual analysis** and often cannot be resolved mecha
 - `(na)bloeiend`
 
 In such cases, translators should:
+
 1. Analyse the surrounding context  
 2. Decide whether scope is being expanded or narrowed  
 3. Rewrite explicitly in English  
@@ -202,11 +216,13 @@ These are **unidiomatic** and sometimes legally risky.
 ## Practical takeaway
 
 Dutch Nederbrackets are:
+
 - compact
 - ambiguous
 - context-dependent
 
 English translations must be:
+
 - explicit
 - unpacked
 - legally and technically precise
