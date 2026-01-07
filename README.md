@@ -1,6 +1,6 @@
 # Beijerterm
 
-[![Version](https://img.shields.io/badge/version-v1.2.0-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
+[![Version](https://img.shields.io/badge/version-v1.3.0-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
 [![License](https://img.shields.io/badge/license-CC0-green.svg)](LICENSE.md)
 [![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-orange.svg)](https://michaelbeijer.github.io/beijerterm/)
 
@@ -26,24 +26,23 @@ Every glossary is a Markdown file. Full-text search powered by Pagefind.
 
 ```
 Beijerterm/
-├── glossaries/               # Multi-term glossary files
-│   ├── automotive/
-│   │   ├── _category.yaml   # Category metadata
-│   │   ├── land-rover-dictionary.md
-│   │   └── autowoordenboek.md
-│   ├── aviation/
-│   │   ├── _category.yaml
-│   │   ├── schiphol-glossary.md
-│   │   └── easa-glossary.md
-│   └── medical/
-│       └── ...
-├── terms/                    # Single-term definition pages
-│   ├── soepel.md
-│   ├── track-tracking.md
-│   └── ...
+├── content/
+│   ├── glossaries/           # Multi-term glossary files
+│   │   ├── automotive/
+│   │   │   ├── _category.yaml
+│   │   │   └── autowoordenboek.md
+│   │   ├── aviation/
+│   │   │   └── schiphol-glossary.md
+│   │   └── medical/
+│   │       └── ...
+│   ├── terms/                # Single-term definition pages
+│   │   ├── vergisting.md
+│   │   └── ...
+│   └── resources/            # Articles and reference materials
+│       └── nederbrackets.md
 ├── site/
 │   ├── styles.css
-│   └── sv-icon.svg
+│   └── mb-icon.svg
 ├── scripts/
 │   └── build_site.py        # Generates HTML from Markdown
 └── .github/
@@ -127,7 +126,7 @@ Beijerterm uses [Semantic Versioning](https://semver.org/):
 - **MINOR** (x.1.x): New features (backward compatible)
 - **PATCH** (x.x.1): Bug fixes and minor improvements
 
-Current version: **v1.1.0** (see [CHANGELOG.md](CHANGELOG.md))
+Current version: **v1.3.0** (see [CHANGELOG.md](CHANGELOG.md))
 
 ## 📜 License & Philosophy
 

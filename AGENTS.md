@@ -1,7 +1,7 @@
 # Beijerterm - AI Agent Documentation
 
 > **This is the single source of truth for AI coding assistants working on this project.**
-> **Last Updated:** January 4, 2026 | **Version:** v1.0.7
+> **Last Updated:** January 7, 2026 | **Version:** v1.3.0
 
 ---
 
@@ -15,27 +15,39 @@
 | **Type** | Static website (GitHub Pages) |
 | **Language** | Python (build scripts), HTML/CSS/JS (frontend) |
 | **Repository** | https://github.com/michaelbeijer/beijerterm |
-| **Live Site** | https://michaelbeijer.github.io/beijerterm/ |
+| **Live Site** | https://beijerterm.com |
 | **Build System** | Python + Pagefind (search indexing) |
 | **Hosting** | GitHub Pages via GitHub Actions |
+| **Custom Domain** | beijerterm.com |
 | **Related Project** | [Supervertaler](https://supervertaler.com) - Desktop translation app |
 
 ### Key Statistics
 
 | Metric | Count |
 |--------|-------|
-| **Glossaries** | ~207 |
-| **Term Pages** | ~141 |
-| **Total Term Entries** | ~584,000 |
+| **Glossaries** | ~206 |
+| **Term Pages** | ~2 |
+| **Resources** | ~1 |
+| **Total Term Entries** | ~583,000 |
 | **Categories** | 14 |
+| **Tags** | ~102 |
 | **Languages** | Dutch ↔ English (primarily) |
+
+### Content Types
+
+| Type | Location | Description |
+|------|----------|-------------|
+| **Glossaries** | `content/glossaries/` | Multi-term lists with Markdown tables |
+| **Terms** | `content/terms/` | Individual term definition pages |
+| **Resources** | `content/resources/` | Articles, guides, reference materials |
 
 ### Key Capabilities
 
 - **Full-text Search**: Pagefind-powered search across all glossaries and terms
-- **Tabbed Interface**: Separate tabs for Glossaries (multi-term lists) vs Terms (individual entries)
+- **Three Content Tabs**: Glossaries, Terms, and Resources
 - **A-Z Navigation**: Alphabetical browsing with sticky navigation bar
-- **Category Filtering**: 14 domain categories (IT, Medical, Legal, Technical, etc.)
+- **Tag Filtering**: 102 tags for cross-category filtering
+- **Markdown Descriptions**: Glossary descriptions support full markdown (bold, lists, links)
 - **Responsive Design**: Mobile-friendly layout with header/footer navigation
 - **Source Attribution**: Links to original sources (GitHub repository)
 
@@ -44,58 +56,51 @@
 ## 📁 Project Structure
 
 ```
-superlookup-glossaries/
+beijerterm/
 ├── AGENTS.md                  # This file - AI agent documentation
 ├── CHANGELOG.md               # Version history
 ├── README.md                  # User-facing documentation
 │
-├── glossaries/                # Source content (Markdown files)
-│   ├── _category.yaml         # Root category config (optional)
-│   ├── agriculture/           # Category folders
-│   │   ├── _category.yaml     # Category metadata
-│   │   └── *.md               # Glossary files
-│   ├── automotive/
-│   ├── aviation/
-│   ├── chemistry/
-│   ├── construction/
-│   ├── energy/
-│   ├── financial/
-│   ├── food/
-│   ├── general/               # Largest category
-│   ├── it/
-│   ├── legal/
-│   ├── medical/
-│   ├── technical/
-│   ├── textile/
-│   └── terms/                 # Individual term pages (<10 entries)
+├── content/                   # Source content (Markdown files)
+│   ├── glossaries/            # Multi-term glossary files
+│   │   ├── agriculture/
+│   │   ├── automotive/
+│   │   ├── aviation/
+│   │   ├── chemistry/
+│   │   ├── construction/
+│   │   ├── energy/
+│   │   ├── financial/
+│   │   ├── food/
+│   │   ├── general/
+│   │   ├── it/
+│   │   ├── legal/
+│   │   ├── medical/
+│   │   ├── technical/
+│   │   └── textile/
+│   ├── terms/                 # Individual term pages
+│   │   └── vergisting.md
+│   └── resources/             # Articles & reference materials
+│       └── nederbrackets.md
 │
-├── scripts/                   # Build and export tools
-│   ├── build_site.py          # Main static site generator (~700 lines)
-│   ├── convert_to_static.py   # Wiki → Markdown converter
-│   ├── full_export.py         # MediaWiki API export
-│   ├── wiki_parser.py         # Wiki markup parser
-│   └── reexport_failed.py     # Re-export failed pages
+├── scripts/                   # Build tools
+│   └── build_site.py          # Main static site generator (~2000 lines)
 │
 ├── site/                      # Static assets (copied to _site/)
 │   ├── styles.css             # Main stylesheet
-│   ├── sv-icon.svg            # Site logo
-│   ├── favicon.ico            # Browser icon
-│   └── sidebar.md             # (deprecated - no longer used)
+│   ├── mb-icon.svg            # Site logo
+│   └── favicon.ico            # Browser icon
 │
 ├── _site/                     # Generated output (gitignored)
 │   ├── index.html             # Home page
-│   ├── glossary/              # Generated glossary pages
-│   ├── term/                  # Generated term pages
+│   ├── glossaries/            # /glossaries/ index + individual pages
+│   ├── terms/                 # /terms/ index + individual pages
+│   ├── resources/             # /resources/ index + individual pages
 │   ├── pagefind/              # Search index
 │   └── *.css, *.svg, etc.     # Copied assets
 │
-├── .github/
-│   └── workflows/
-│       └── deploy.yaml        # GitHub Actions build & deploy
-│
-└── data/                      # Raw export data (gitignored partially)
-    ├── glossaries/            # Exported glossary JSON
-    └── terms/                 # Exported term JSON
+└── .github/
+    └── workflows/
+        └── deploy.yaml        # GitHub Actions build & deploy
 ```
 
 ---
@@ -106,16 +111,16 @@ superlookup-glossaries/
 
 The site is built by `scripts/build_site.py`:
 
-1. **Load Content**: Reads all `.md` files from `glossaries/` and `terms/` folders
-2. **Parse Frontmatter**: Extracts YAML metadata (title, slug, languages, etc.)
-3. **Categorize**: Files in `terms/` folder → Terms tab; files in `glossaries/` → Glossaries tab
-4. **Generate HTML**: Creates index.html, glossary/*.html, term/*.html
+1. **Load Content**: Reads all `.md` files from `content/glossaries/`, `content/terms/`, and `content/resources/`
+2. **Parse Frontmatter**: Extracts YAML metadata (title, slug, languages, tags, description, etc.)
+3. **Categorize**: Files sorted into three content types with separate index pages
+4. **Generate HTML**: Creates index pages and individual pages for each content type
 5. **Copy Assets**: Copies styles.css, favicon, logo to `_site/`
 6. **Search Index**: Pagefind indexes all pages for full-text search
 
 ### Content Format
 
-Each glossary/term file is Markdown with YAML frontmatter:
+Each glossary/term/resource file is Markdown with YAML frontmatter:
 
 ```markdown
 ---

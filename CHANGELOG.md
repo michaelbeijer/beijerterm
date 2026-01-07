@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-01-07
+
+### Added
+- **Resources content type**: New category for articles, guides, and reference materials
+  - Separate `/resources/` index page with card-based layout
+  - Individual resource pages with full markdown rendering
+  - Resources tab visible on all index pages (home, glossaries, terms)
+- **Markdown in glossary descriptions**: Description field now supports full markdown
+  - Bold, italic, links, and bullet lists in "About this glossary" box
+  - Use YAML multiline syntax (`description: |`) for rich descriptions
+- **Resources tab everywhere**: 📄 Resources tab now appears alongside Glossaries and Terms on all index pages
+
+### Changed
+- **Folder structure**: Content now organized under `content/` directory
+  - `content/glossaries/` - Multi-term glossary files
+  - `content/terms/` - Single-term definition pages  
+  - `content/resources/` - Articles and reference materials
+
+### Fixed
+- **Bullet list indentation**: Lists in resource pages now properly indented within content margins
+
 ## [1.2.0] - 2026-01-06
 
 ### Added
