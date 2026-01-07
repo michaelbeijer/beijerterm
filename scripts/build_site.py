@@ -861,13 +861,14 @@ def generate_table_for_items(items: list[dict], categories: dict, item_type: str
     return alphabet_nav, sections
 
 
-def generate_html_index(glossaries: list[dict], terms: list[dict], categories: dict, tag_index: dict) -> str:
+def generate_html_index(glossaries: list[dict], terms: list[dict], resources: list[dict], categories: dict, tag_index: dict) -> str:
     """Generate the main index.html page with tabs."""
     
     site_header = generate_site_header("home")
     site_footer = generate_site_footer()
     total_glossaries = len(glossaries)
     total_terms_pages = len(terms)
+    total_resources = len(resources)
     total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
     total_tags = len(tag_index)
 
@@ -1143,6 +1144,9 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
                         <a href="/terms/" class="tab-button">
                             &#128214; Terms<span class="count">{total_terms_pages:,}</span>
                         </a>
+                        <a href="/resources/" class="tab-button">
+                            &#128196; Resources<span class="count">{total_resources}</span>
+                        </a>
                     </div>
 
                     <div id="tab-glossaries" class="tab-content active">
@@ -1401,7 +1405,7 @@ def generate_html_index(glossaries: list[dict], terms: list[dict], categories: d
 </html>'''
 
 
-def generate_glossaries_index(glossaries: list[dict], terms: list[dict], categories: dict, tag_index: dict) -> str:
+def generate_glossaries_index(glossaries: list[dict], terms: list[dict], resources: list[dict], categories: dict, tag_index: dict) -> str:
     """Generate the /glossaries/ index page listing all glossaries."""
     site_header = generate_site_header("glossaries_index")
     site_footer = generate_site_footer()
@@ -1410,6 +1414,7 @@ def generate_glossaries_index(glossaries: list[dict], terms: list[dict], categor
     
     total_glossaries = len(glossaries)
     total_terms_pages = len(terms)
+    total_resources = len(resources)
     total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
     total_tags = len(tag_index)
     
@@ -1461,6 +1466,9 @@ def generate_glossaries_index(glossaries: list[dict], terms: list[dict], categor
                     <a href="/terms/" class="tab-button">
                         &#128214; Terms<span class="count">{total_terms_pages:,}</span>
                     </a>
+                    <a href="/resources/" class="tab-button">
+                        &#128196; Resources<span class="count">{total_resources}</span>
+                    </a>
                 </div>
 
                 <div class="tab-content active">
@@ -1484,7 +1492,7 @@ def generate_glossaries_index(glossaries: list[dict], terms: list[dict], categor
 </html>'''
 
 
-def generate_terms_index(terms: list[dict], glossaries: list[dict], categories: dict, tag_index: dict) -> str:
+def generate_terms_index(terms: list[dict], glossaries: list[dict], resources: list[dict], categories: dict, tag_index: dict) -> str:
     """Generate the /terms/ index page listing all term pages."""
     site_header = generate_site_header("terms_index")
     site_footer = generate_site_footer()
@@ -1493,6 +1501,7 @@ def generate_terms_index(terms: list[dict], glossaries: list[dict], categories: 
     
     total_glossaries = len(glossaries)
     total_terms_pages = len(terms)
+    total_resources = len(resources)
     total_term_entries = sum(g.get('term_count', 0) for g in glossaries)
     total_tags = len(tag_index)
     
@@ -1543,6 +1552,9 @@ def generate_terms_index(terms: list[dict], glossaries: list[dict], categories: 
                     </a>
                     <a href="/terms/" class="tab-button active">
                         &#128214; Terms<span class="count">{total_terms_pages:,}</span>
+                    </a>
+                    <a href="/resources/" class="tab-button">
+                        &#128196; Resources<span class="count">{total_resources}</span>
                     </a>
                 </div>
 
@@ -1920,19 +1932,19 @@ def build_site():
     print(f"   Indexed {len(search_index)} entries")
 
     print("Generating HTML pages...")
-    index_html = generate_html_index(glossaries, terms, categories, tag_index)
+    index_html = generate_html_index(glossaries, terms, resources, categories, tag_index)
     with open(OUTPUT_DIR / "index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
 
     # Generate /glossaries/ index page
-    glossaries_index_html = generate_glossaries_index(glossaries, terms, categories, tag_index)
+    glossaries_index_html = generate_glossaries_index(glossaries, terms, resources, categories, tag_index)
     glossaries_index_dir = OUTPUT_DIR / "glossaries"
     glossaries_index_dir.mkdir(parents=True, exist_ok=True)
     with open(glossaries_index_dir / "index.html", "w", encoding="utf-8") as f:
         f.write(glossaries_index_html)
 
     # Generate /terms/ index page
-    terms_index_html = generate_terms_index(terms, glossaries, categories, tag_index)
+    terms_index_html = generate_terms_index(terms, glossaries, resources, categories, tag_index)
     terms_index_dir = OUTPUT_DIR / "terms"
     terms_index_dir.mkdir(parents=True, exist_ok=True)
     with open(terms_index_dir / "index.html", "w", encoding="utf-8") as f:
