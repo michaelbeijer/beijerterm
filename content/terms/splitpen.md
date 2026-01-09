@@ -1,5 +1,4 @@
 ---
-
 title: splitpen
 slug: splitpen
 description: Dutch mechanical fastening term ‘splitpen’ and its standard English equivalents in mechanical engineering, transport equipment and safety locking applications
@@ -13,7 +12,6 @@ tags:
 * safety components
 * transport equipment
 * mechanical engineering
-
 ---
 
 # splitpen
