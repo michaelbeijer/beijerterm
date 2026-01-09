@@ -6,12 +6,11 @@ source_lang: nl
 target_lang: en
 last_updated: 2026-01-08
 tags:
-
-* mechanical fastening
-* locking devices
-* safety components
-* transport equipment
-* mechanical engineering
+  - mechanical fastening
+  - locking devices
+  - safety components
+  - transport equipment
+  - mechanical engineering
 ---
 
 # splitpen
