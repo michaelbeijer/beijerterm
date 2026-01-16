@@ -1,11 +1,11 @@
 ---
-title: "Hotel Abbreviations"
+title: "Abbreviations Used In Hotels"
 slug: "hotel-abbreviations"
 description: "Common abbreviations used in the hotel and hospitality industry."
 source_lang: "abbreviation"
 target_lang: "en"
 tags: ["hospitality", "hotels", "abbreviations"]
-last_updated: "2026-01-15"
+last_updated: "2026-01-16"
 source_url: "http://hotelstudies.in/abbreviations-used-in-hotels/"
 term_count: 38
 ---
