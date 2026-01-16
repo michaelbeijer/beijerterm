@@ -4,6 +4,23 @@ slug: "whats-new"
 description: "Recent additions to Beijerterm - new glossaries, terms, and content"
 ---
 
+<!--
+TEMPLATE FOR ADDING NEW ENTRIES:
+
+## [Month] [Year]
+
+### New Terms Added
+- **[term-slug](/terms/term-slug)** (NL→EN) - Brief description
+
+### New Glossaries Added
+- **[Glossary Name](/glossaries/glossary-slug)** - Description (X entries)
+
+### Updated Glossaries
+- **Glossary Name** - What was added/changed
+
+TIP: Run `python scripts/add_whats_new_entry.py` for interactive entry creation!
+-->
+
 # 📰 What's New in Beijerterm
 
 This page tracks **new glossaries, terms, and content** added to Beijerterm. For website code changes, see the [GitHub changelog](https://github.com/michaelbeijer/beijerterm/blob/main/CHANGELOG.md).
