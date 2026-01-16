@@ -3,7 +3,7 @@
 :root {
     --primary-color: #2563eb;
     --primary-dark: #1d4ed8;
-    --text-color: #0f172a;
+    --text-color: #1f2937;
     --text-light: #6b7280;
     --bg-color: #ffffff;
     --bg-secondary: #f3f4f6;
@@ -611,7 +611,7 @@ footer p {
         --text-color: #f3f4f6;
         --text-light: #9ca3af;
         --bg-color: #111827;
-        --bg-secondary: #0f172a;
+        --bg-secondary: #1f2937;
         --border-color: #374151;
     }
     
@@ -627,7 +627,7 @@ footer p {
 /* Search term highlighting */
 .search-highlight {
     background-color: #fef08a;
-    color: #0f172a;
+    color: #1f2937;
     padding: 0.1em 0.2em;
     border-radius: 2px;
     font-weight: 500;
@@ -636,7 +636,7 @@ footer p {
 @media (prefers-color-scheme: dark) {
     .search-highlight {
         background-color: #facc15;
-        color: #0f172a;
+        color: #1f2937;
     }
 }
 
@@ -1601,7 +1601,7 @@ main {
     }
     
     .term-content tbody tr:nth-child(even) {
-        background: #0f172a;
+        background: #1f2937;
     }
     
     .term-content code {
@@ -1859,7 +1859,7 @@ main {
 
 .theme-name {
     flex: 1;
-    color: #0f172a;
+    color: #1f2937;
     font-weight: 500;
 }
 
