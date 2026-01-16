@@ -1,7 +1,7 @@
 # Beijerterm - AI Agent Documentation
 
 > **This is the single source of truth for AI coding assistants working on this project.**
-> **Last Updated:** January 16, 2026 | **Version:** v1.5.0
+> **Last Updated:** January 16, 2026 | **Version:** v1.5.1
 
 ---
 
@@ -40,6 +40,7 @@
 | **Glossaries** | `content/glossaries/` | Multi-term lists with Markdown tables |
 | **Terms** | `content/terms/` | Individual term definition pages |
 | **Resources** | `content/resources/` | Articles, guides, reference materials |
+| **What's New** | `content/resources/whats-new.md` | User-facing content changelog |
 
 ### Key Capabilities
 
@@ -238,7 +239,15 @@ Parses MediaWiki markup:
 - Text Light: `#6b7280`
 - Background: `#ffffff`
 - Background Secondary: `#f3f4f6`
-- Footer Background: `#0f172a` (very dark slate)
+- Footer Background: `#1a1a1a` (dark charcoal - updated Jan 16, 2026)
+
+### Site Identity
+
+- **Icon**: 🌐 globe emoji (as of v1.5.1)
+  - Replaced B logo SVG (`b-icon.svg`)
+  - Displayed via `.site-icon` CSS class
+- **Navigation**: Michael Beijer, What's New, GitHub icon (SVG)
+- **Version Badge**: Shows current site version in header
 
 ---
 
@@ -431,6 +440,32 @@ npx pagefind --site _site
 cd _site
 python -m http.server 8080
 # Open http://localhost:8080
+```
+
+### Update What's New page:
+
+**Option 1: Interactive helper script (recommended)**
+```bash
+python scripts/add_whats_new_entry.py
+```
+The script will:
+- Auto-create current month section if needed
+- Prompt for term/glossary details
+- Insert entries in correct location
+- Remind you to rebuild and push
+
+**Option 2: Manual edit**
+Edit `content/resources/whats-new.md` using the template comment at the top.
+
+**Workflow after adding entries:**
+```bash
+# Rebuild site
+python scripts/build_site.py
+
+# Commit and push
+git add content/resources/whats-new.md
+git commit -m "docs: Add [term/glossary] to What's New"
+git push
 ```
 
 ---

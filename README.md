@@ -1,6 +1,6 @@
 # Beijerterm
 
-[![Version](https://img.shields.io/badge/version-v1.3.1-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
+[![Version](https://img.shields.io/badge/version-v1.5.1-blue.svg)](https://github.com/michaelbeijer/beijerterm/releases)
 [![License](https://img.shields.io/badge/license-CC0-green.svg)](LICENSE.md)
 [![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-orange.svg)](https://michaelbeijer.github.io/beijerterm/)
 

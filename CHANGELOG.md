@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.5.1] - 2026-01-16
+
+### Added
+- **What's New page** (`/resources/whats-new`) - User-facing content changelog for glossary/term additions
+- **What's New helper script** (`scripts/add_whats_new_entry.py`) - Interactive tool for adding entries
+- **Template comments** in What's New page showing entry format
+
+### Changed
+- **Site icon**: Replaced B logo with 🌐 globe emoji
+- **Header navigation**: Now shows "Michael Beijer", "What's New", and GitHub icon
+- **Footer background**: Changed from #f3f4f6 to #1a1a1a (dark charcoal)
+- **Navigation simplification**: Removed Supervertaler from header (kept in footer)
+
+### Technical
+- Added CSS styling for emoji icon and GitHub SVG icon
+- GitHub icon matches style from supervertaler.com
+
 ## [1.3.1] - 2026-01-07
 
 ### Added
