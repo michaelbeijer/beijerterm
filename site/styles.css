@@ -670,14 +670,14 @@ footer p {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    text-decoration: none;
+    text-decoration: none !important;
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .site-brand:hover {
-    opacity: 0.9;
+    opacity: 0.9;    text-decoration: none !important;
 }
 
 .site-brand .site-logo {
@@ -696,6 +696,12 @@ footer p {
     vertical-align: middle;
 }
 
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .header-nav {
     display: flex;
     gap: 1.5rem;
@@ -703,7 +709,7 @@ footer p {
 
 .header-nav a {
     color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 500;
     padding: 0.5rem 0;
     transition: color 0.2s;
@@ -711,7 +717,7 @@ footer p {
 
 .header-nav a:hover,
 .header-nav a.active {
-    color: white;
+    color: white;    text-decoration: none !important;
 }
 
 /* Page Container */
@@ -886,14 +892,14 @@ main {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    text-decoration: none;
+    text-decoration: none !important;
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .site-brand:hover {
-    opacity: 0.9;
+    opacity: 0.9;    text-decoration: none !important;
 }
 
 .site-brand .site-logo {
@@ -912,6 +918,12 @@ main {
     vertical-align: middle;
 }
 
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .header-nav {
     display: flex;
     gap: 1.5rem;
@@ -919,7 +931,7 @@ main {
 
 .header-nav a {
     color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 500;
     padding: 0.5rem 0;
     transition: color 0.2s;
@@ -927,7 +939,7 @@ main {
 
 .header-nav a:hover,
 .header-nav a.active {
-    color: white;
+    color: white;    text-decoration: none !important;
 }
 
 /* Page Container */
@@ -1102,14 +1114,14 @@ main {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    text-decoration: none;
+    text-decoration: none !important;
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .site-brand:hover {
-    opacity: 0.9;
+    opacity: 0.9;    text-decoration: none !important;
 }
 
 .site-brand .site-logo {
@@ -1128,6 +1140,12 @@ main {
     vertical-align: middle;
 }
 
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .header-nav {
     display: flex;
     gap: 1.5rem;
@@ -1135,7 +1153,7 @@ main {
 
 .header-nav a {
     color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 500;
     padding: 0.5rem 0;
     transition: color 0.2s;
@@ -1143,7 +1161,7 @@ main {
 
 .header-nav a:hover,
 .header-nav a.active {
-    color: white;
+    color: white;    text-decoration: none !important;
 }
 
 /* Page Container */
@@ -1771,3 +1789,4 @@ main {
 .header-nav a.github-icon svg {
     display: block;
 }
+
