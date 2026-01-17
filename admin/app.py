@@ -226,6 +226,13 @@ def glossaries():
     return render_template('glossaries.html', glossaries=glossaries_data)
 
 
+@app.route('/glossaries/new')
+@require_auth
+def new_glossary():
+    """Create a new glossary"""
+    return render_template('glossary_new.html')
+
+
 @app.route('/glossaries/<filename>')
 @require_auth
 def edit_glossary(filename):
@@ -285,6 +292,48 @@ def api_glossary(filename):
         return jsonify({'success': True})
 
 
+@app.route('/api/glossaries/create', methods=['POST'])
+@require_auth
+def create_glossary():
+    """Create a new glossary"""
+    data = request.json
+    filename = data.get('filename', '').strip()
+    subdirectory = data.get('subdirectory', '').strip()
+    title = data.get('title', '').strip()
+    source_lang = data.get('source_lang', 'nl')
+    target_lang = data.get('target_lang', 'en')
+    
+    if not filename or not title:
+        return jsonify({'error': 'Filename and title are required'}), 400
+    
+    # Determine file path
+    if subdirectory:
+        file_path = GLOSSARIES_DIR / subdirectory / f'{filename}.md'
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+    else:
+        file_path = GLOSSARIES_DIR / f'{filename}.md'
+    
+    # Check if file already exists
+    if file_path.exists():
+        return jsonify({'error': 'Glossary already exists'}), 400
+    
+    # Create initial glossary with empty table
+    content = f"""---
+title: "{title}"
+source_lang: {source_lang}
+target_lang: {target_lang}
+---
+
+| {source_lang.upper()} | {target_lang.upper()} | Notes |
+|------|------|-------|
+"""
+    
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    
+    return jsonify({'success': True})
+
+
 @app.route('/terms')
 @require_auth
 def terms():
@@ -307,6 +356,13 @@ def terms():
                     })
     
     return render_template('terms.html', terms=terms_data)
+
+
+@app.route('/terms/new')
+@require_auth
+def new_term():
+    """Create a new term page"""
+    return render_template('term_new.html')
 
 
 @app.route('/terms/<filename>')
@@ -377,6 +433,13 @@ def resources():
             })
     
     return render_template('resources.html', resources=resources_data)
+
+
+@app.route('/resources/new')
+@require_auth
+def new_resource():
+    """Create a new resource page"""
+    return render_template('resource_new.html')
 
 
 @app.route('/resources/<filename>')

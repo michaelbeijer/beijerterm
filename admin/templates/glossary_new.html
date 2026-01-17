@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}New Glossary - Beijerterm Admin{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>📚 New Glossary</h1>
+</div>
+
+<div class="card">
+    <form id="newGlossaryForm">
+        <div class="form-group">
+            <label for="filename">Filename (URL slug)</label>
+            <input type="text" id="filename" name="filename" required 
+                   placeholder="e.g., agriculture-glossary" pattern="[a-z0-9\-]+"
+                   title="Lowercase letters, numbers, and hyphens only">
+            <small>Will be saved as <code id="filenamePreview">filename.md</code></small>
+        </div>
+
+        <div class="form-group">
+            <label for="subdirectory">Subdirectory (Category)</label>
+            <input type="text" id="subdirectory" name="subdirectory" 
+                   placeholder="e.g., agriculture (optional)" pattern="[a-z0-9\-]*"
+                   title="Lowercase letters, numbers, and hyphens only">
+            <small>Leave empty to save in root glossaries folder</small>
+        </div>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required 
+                   placeholder="e.g., Agriculture Glossary">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label for="source_lang">Source Language</label>
+                <input type="text" id="source_lang" name="source_lang" value="nl" required 
+                       placeholder="e.g., nl">
+            </div>
+
+            <div class="form-group">
+                <label for="target_lang">Target Language</label>
+                <input type="text" id="target_lang" name="target_lang" value="en" required 
+                       placeholder="e.g., en">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">
+                ✅ Create Glossary
+            </button>
+            <a href="{{ url_for('glossaries') }}" class="btn">
+                ❌ Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+<script>
+// Update filename preview
+document.getElementById('filename').addEventListener('input', function(e) {
+    const subdirectory = document.getElementById('subdirectory').value;
+    const filename = e.target.value;
+    const path = subdirectory ? `${subdirectory}/${filename}.md` : `${filename}.md`;
+    document.getElementById('filenamePreview').textContent = path;
+});
+
+document.getElementById('subdirectory').addEventListener('input', function(e) {
+    const subdirectory = e.target.value;
+    const filename = document.getElementById('filename').value;
+    const path = subdirectory ? `${subdirectory}/${filename}.md` : `${filename}.md`;
+    document.getElementById('filenamePreview').textContent = path;
+});
+
+// Handle form submission
+document.getElementById('newGlossaryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const filename = document.getElementById('filename').value;
+    const subdirectory = document.getElementById('subdirectory').value;
+    const title = document.getElementById('title').value;
+    const source_lang = document.getElementById('source_lang').value;
+    const target_lang = document.getElementById('target_lang').value;
+    
+    try {
+        const response = await fetch('/api/glossaries/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                filename: filename,
+                subdirectory: subdirectory,
+                title: title,
+                source_lang: source_lang,
+                target_lang: target_lang
+            })
+        });
+        
+        if (response.ok) {
+            alert('✅ Glossary created successfully!');
+            window.location.href = `/glossaries/${filename}`;
+        } else {
+            const error = await response.json();
+            alert('❌ Error: ' + (error.error || 'Failed to create glossary'));
+        }
+    } catch (error) {
+        alert('❌ Error: ' + error.message);
+    }
+});
+</script>
+{% endblock %}

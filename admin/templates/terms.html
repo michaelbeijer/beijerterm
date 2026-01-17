@@ -5,9 +5,9 @@
 {% block content %}
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
     <h1>📝 Term Pages</h1>
-    <button class="btn btn-primary" onclick="alert('Create term page coming soon!')">
+    <a href="{{ url_for('new_term') }}" class="btn btn-primary">
         ✏️ + New Term Page
-    </button>
+    </a>
 </div>
 
 {% if terms %}

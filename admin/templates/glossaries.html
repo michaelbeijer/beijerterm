@@ -5,9 +5,9 @@
 {% block content %}
 <div class="page-header">
     <h1>📚 Glossaries</h1>
-    <button class="btn-primary" onclick="alert('Create new glossary - Coming soon!')">
+    <a href="{{ url_for('new_glossary') }}" class="btn-primary">
         + New Glossary
-    </button>
+    </a>
 </div>
 
 <div class="content-list">

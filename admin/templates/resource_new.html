@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}New Resource - Beijerterm Admin{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>📰 New Resource</h1>
+</div>
+
+<div class="card">
+    <form id="newResourceForm">
+        <div class="form-group">
+            <label for="filename">Filename (URL slug)</label>
+            <input type="text" id="filename" name="filename" required 
+                   placeholder="e.g., whats-new" pattern="[a-z0-9\-]+"
+                   title="Lowercase letters, numbers, and hyphens only">
+            <small>Will be saved as <code id="filenamePreview">filename.md</code></small>
+        </div>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required 
+                   placeholder="e.g., What's New">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content (Markdown)</label>
+            <textarea id="content" name="content" rows="15" 
+                      placeholder="Write your resource content here..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">
+                ✅ Create Resource
+            </button>
+            <a href="{{ url_for('resources') }}" class="btn">
+                ❌ Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+<script>
+// Update filename preview
+document.getElementById('filename').addEventListener('input', function(e) {
+    document.getElementById('filenamePreview').textContent = e.target.value + '.md';
+});
+
+// Handle form submission
+document.getElementById('newResourceForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const filename = document.getElementById('filename').value;
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    
+    // Build frontmatter + content
+    const fullContent = `---
+title: "${title}"
+---
+
+${content}`;
+    
+    try {
+        const response = await fetch(`/api/resources/${filename}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: fullContent })
+        });
+        
+        if (response.ok) {
+            alert('✅ Resource created successfully!');
+            window.location.href = `/resources/${filename}`;
+        } else {
+            alert('❌ Error creating resource');
+        }
+    } catch (error) {
+        alert('❌ Error: ' + error.message);
+    }
+});
+</script>
+{% endblock %}

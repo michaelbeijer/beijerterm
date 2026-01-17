@@ -5,9 +5,9 @@
 {% block content %}
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
     <h1>📰 Resources</h1>
-    <button class="btn btn-primary" onclick="alert('Create resource coming soon!')">
+    <a href="{{ url_for('new_resource') }}" class="btn btn-primary">
         📰 + New Resource
-    </button>
+    </a>
 </div>
 
 {% if resources %}
