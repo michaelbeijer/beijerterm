@@ -230,9 +230,13 @@ def glossaries():
 @require_auth
 def edit_glossary(filename):
     """Edit a specific glossary"""
-    file_path = GLOSSARIES_DIR / f'{filename}.md'
+    # Search recursively for the glossary file in subdirectories
+    file_path = None
+    for md_file in GLOSSARIES_DIR.rglob(f'{filename}.md'):
+        file_path = md_file
+        break
     
-    if not file_path.exists():
+    if not file_path or not file_path.exists():
         return 'Glossary not found', 404
     
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -250,10 +254,14 @@ def edit_glossary(filename):
 @require_auth
 def api_glossary(filename):
     """Get or update a specific glossary (JSON)"""
-    file_path = GLOSSARIES_DIR / filename
+    # Search recursively for the glossary file in subdirectories
+    file_path = None
+    for md_file in GLOSSARIES_DIR.rglob(f'{filename}.md'):
+        file_path = md_file
+        break
     
     if request.method == 'GET':
-        if not file_path.exists():
+        if not file_path or not file_path.exists():
             return jsonify({'error': 'Glossary not found'}), 404
         
         with open(file_path, 'r', encoding='utf-8') as f:
