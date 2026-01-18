@@ -403,9 +403,13 @@ def load_all_content() -> tuple[list[dict], list[dict], list[dict]]:
             relative_path = md_file.relative_to(TERMS_DIR)
             github_url = f"{GITHUB_TERMS_URL}/{relative_path}".replace("\\", "/")
 
+            # Generate slug from filename if not present
+            slug = frontmatter.get("slug", md_file.stem)
+
             item = {
                 "file": str(md_file),
                 "category": "terms",
+                "slug": slug,
                 "body": body,
                 **frontmatter,
             }
@@ -428,9 +432,13 @@ def load_all_content() -> tuple[list[dict], list[dict], list[dict]]:
             relative_path = md_file.relative_to(RESOURCES_DIR)
             github_url = f"{GITHUB_RESOURCES_URL}/{relative_path}".replace("\\", "/")
 
+            # Generate slug from filename if not present
+            slug = frontmatter.get("slug", md_file.stem)
+
             item = {
                 "file": str(md_file),
                 "category": "resources",
+                "slug": slug,
                 "body": body,
                 **frontmatter,
             }
@@ -462,25 +470,20 @@ def generate_site_header(current_page: str = "home") -> str:
                 <a href="/" class="site-brand" title="Beijerterm homepage">
                     <span class="site-icon">🌐</span>
                     <span>Beijerterm</span>
-                    <span class="version-badge">v1.5.0</span>
+                    <span class="version-badge">v1.6.1</span>
                 </a>
                 {tagline}
             </div>
             <nav class="header-nav">
                 <a href="https://michaelbeijer.co.uk" target="_blank" title="Author's website">Michael Beijer</a>
                 <a href="{asset_prefix}resources/whats-new" title="Recent glossary and term additions">What's New</a>
-                <a href="https://beijerterm-production.up.railway.app" target="_blank" title="Admin panel (authentication required)" class="admin-link">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;">
-                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                    Admin
-                </a>
                 <a href="https://github.com/michaelbeijer/beijerterm" target="_blank" title="View source code and contribute" class="github-icon">
                     <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
                     </svg>
                 </a>
+                <span class="nav-separator">|</span>
+                <a href="https://beijerterm-production.up.railway.app" target="_blank" title="Admin panel (requires authentication)" class="admin-link">Admin</a>
             </nav>
         </div>
     </header>'''
@@ -1796,6 +1799,8 @@ def generate_glossary_page(glossary: dict) -> str:
                     <dd><a href="{glossary.get('github_url', '#')}" target="_blank">{glossary.get('github_filename', 'View on GitHub')}</a></dd>
                     <dt>Source</dt>
                     <dd><a href="{glossary.get('source_url', '#')}" target="_blank">{glossary.get('source_url', 'Unknown')}</a>{' (retrieved ' + glossary.get('source_retrieved', '') + ')' if glossary.get('source_retrieved') else ''}</dd>
+                    <dt>Edit</dt>
+                    <dd>Edit this glossary on <a href="{glossary.get('github_url', '#')}" target="_blank">GitHub</a> or <a href="https://beijerterm-production.up.railway.app/glossaries/{glossary.get('github_filename', '')}" target="_blank">Admin panel</a></dd>
                 </dl>
             </section>
 
@@ -1877,8 +1882,8 @@ def generate_term_page(term: dict) -> str:
                     <dd>{', '.join(tags) if tags else '—'}</dd>
                     <dt>Last Updated</dt>
                     <dd>{term.get('last_updated', 'Unknown')}</dd>
-                    <dt>Source</dt>
-                    <dd><a href="{term.get('source_url', '#')}" target="_blank">Edit this term on GitHub</a></dd>
+                    <dt>Edit</dt>
+                    <dd>Edit this term on <a href="{term.get('source_url', '#')}" target="_blank">GitHub</a> or <a href="https://beijerterm-production.up.railway.app/terms/{term.get('slug', '')}" target="_blank">Admin panel</a></dd>
                 </dl>
             </section>
         </main>
@@ -1938,7 +1943,7 @@ def generate_resource_page(resource: dict) -> str:
             </section>
 
             <section class="resource-source">
-                <p>📝 <a href="{resource.get('source_url', '#')}" target="_blank">Edit this page on GitHub</a> · Last updated: {resource.get('last_updated', 'Unknown')}</p>
+                <p>📝 Edit this resource on <a href="{resource.get('source_url', '#')}" target="_blank">GitHub</a> or <a href="https://beijerterm-production.up.railway.app/resources/{resource.get('slug', '')}" target="_blank">Admin panel</a> · Last updated: {resource.get('last_updated', 'Unknown')}</p>
             </section>
         </main>
     </div>

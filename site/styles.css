@@ -677,7 +677,17 @@ footer p {
 }
 
 .site-brand:hover {
-    opacity: 0.9;    text-decoration: none !important;
+    opacity: 0.9;
+    text-decoration: none !important;
+}
+
+/* Remove underlines from all site brand link states */
+.site-brand, 
+.site-brand:hover, 
+.site-brand:visited, 
+.site-brand:active,
+.site-brand:focus {
+    text-decoration: none !important;
 }
 
 .site-brand .site-logo {
@@ -899,7 +909,17 @@ main {
 }
 
 .site-brand:hover {
-    opacity: 0.9;    text-decoration: none !important;
+    opacity: 0.9;
+    text-decoration: none !important;
+}
+
+/* Remove underlines from all site brand link states */
+.site-brand, 
+.site-brand:hover, 
+.site-brand:visited, 
+.site-brand:active,
+.site-brand:focus {
+    text-decoration: none !important;
 }
 
 .site-brand .site-logo {
@@ -1121,7 +1141,17 @@ main {
 }
 
 .site-brand:hover {
-    opacity: 0.9;    text-decoration: none !important;
+    opacity: 0.9;
+    text-decoration: none !important;
+}
+
+/* Remove underlines from all site brand link states */
+.site-brand, 
+.site-brand:hover, 
+.site-brand:visited, 
+.site-brand:active,
+.site-brand:focus {
+    text-decoration: none !important;
 }
 
 .site-brand .site-logo {
@@ -1790,3 +1820,14 @@ main {
     display: block;
 }
 
+/* Navigation separator */
+.nav-separator {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 300;
+    user-select: none;
+}
+
+/* Align header nav items */
+.header-nav {
+    align-items: center;
+}

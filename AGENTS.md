@@ -1,7 +1,7 @@
 # Beijerterm - AI Agent Documentation
 
 > **This is the single source of truth for AI coding assistants working on this project.**
-> **Last Updated:** January 16, 2026 | **Version:** v1.6.0
+> **Last Updated:** January 17, 2026 | **Version:** v1.6.1
 
 ---
 
@@ -246,8 +246,14 @@ Parses MediaWiki markup:
 - **Icon**: 🌐 globe emoji (as of v1.5.1)
   - Replaced B logo SVG (`b-icon.svg`)
   - Displayed via `.site-icon` CSS class
-- **Navigation**: Michael Beijer, What's New, GitHub icon (SVG)
+- **Navigation**: Michael Beijer | What's New | GitHub icon | **|** | Admin
+  - Visual separator (|) between main nav and admin area (v1.6.1)
+  - Admin link positioned at far right (authentication-required)
+  - All links have no underlines on hover (fixed v1.6.1)
 - **Version Badge**: Shows current site version in header
+- **Edit Links**: All content pages have dual edit links (v1.6.1)
+  - "Edit this [item] on GitHub or Admin panel"
+  - Links open directly to specific editor in admin panel
 
 ---
 
@@ -270,6 +276,25 @@ Parses MediaWiki markup:
 ---
 
 ## 🔄 Recent Development History
+
+### January 17, 2026 - Navigation & Edit Links (v1.6.1)
+
+**Admin panel integration and navigation improvements:**
+
+- **Admin panel edit links**: Added to all content pages (glossaries, terms, resources)
+  - Format: "Edit this [item] on **GitHub** or **Admin panel**"
+  - Links open directly to the specific item in the admin panel editor
+  - Admin URLs: `/glossaries/{filename}`, `/terms/{slug}`, `/resources/{slug}`
+- **Navigation reorganization**: Moved Admin link to far right after GitHub icon
+  - Visual separator (|) between main navigation and admin area
+  - Better separation of public links vs authentication-required links
+- **Hover underline fix**: Removed underlines from site icon and title on all link states
+- **Auto-slug generation**: Terms and resources now auto-generate slugs from filename if missing
+
+**Files Modified:**
+- `scripts/build_site.py` - Updated `generate_glossary_page()`, `generate_term_page()`, `generate_resource_page()`, `load_all_content()`, `generate_site_header()`
+- `site/styles.css` - Added `.nav-separator` styles, comprehensive link state rules
+- Version badge: v1.6.0 → v1.6.1
 
 ### January 4, 2026 - Tag Reference System (v1.0.6)
 

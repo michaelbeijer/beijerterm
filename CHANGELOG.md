@@ -6,6 +6,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-01-17
+
+### Added
+- **Admin panel edit links** on all content pages
+  - Glossary pages: "Edit this glossary on GitHub or Admin panel"
+  - Term pages: "Edit this term on GitHub or Admin panel"
+  - Resource pages: "Edit this resource on GitHub or Admin panel"
+  - Links open directly to the specific item in the admin panel editor
+
+### Changed
+- **Navigation layout improvements**
+  - Moved Admin link to far right (after GitHub icon)
+  - Added visual separator (|) between main navigation and admin area
+  - Simplified Admin link text (removed icon, now just "Admin")
+  - Better visual hierarchy separating public links from authentication-required links
+
+### Fixed
+- **Removed underlines** from site icon and "Beijerterm" title on hover
+- **Auto-generated slugs** for terms and resources missing slug in frontmatter
+- Added CSS rules to prevent text-decoration on all link states (hover, visited, active, focus)
+
+### Technical
+- Added `.nav-separator` CSS styling for navigation divider
+- Updated `generate_glossary_page()`, `generate_term_page()`, `generate_resource_page()` functions
+- Auto-generate slugs from filename if not present in YAML frontmatter
+- Version badge updated to v1.6.0 → v1.6.1
+
 ## [1.6.0] - 2026-01-16
 
 ### Added
