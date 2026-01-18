@@ -12,7 +12,7 @@
         <div class="header-left">
             <a href="{{ url_for('glossaries') }}" class="back-link">← Back to Glossaries</a>
             <h1>{{ glossary.title }}</h1>
-            <a href="https://github.com/michaelbeijer/beijerterm/blob/main/content/glossaries/{{ glossary.category }}/{{ filename }}" 
+            <a href="https://github.com/michaelbeijer/beijerterm/blob/main/content/glossaries/{{ glossary.category }}/{{ filename }}.md" 
                target="_blank" 
                style="color: #0969da; text-decoration: none; font-size: 14px; margin-left: 10px;">
                 📄 View on GitHub →
@@ -26,10 +26,10 @@
                 ↷ Redo
             </button>
             <button class="btn-primary" data-action="save">
-                💾 Save Changes
+                💾 Save Draft
             </button>
             <button class="btn" data-action="commit-push" style="background: #28a745; color: white;">
-                🚀 Commit & Push
+                🚀 Publish to GitHub
             </button>
         </div>
     </div>

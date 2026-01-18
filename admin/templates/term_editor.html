@@ -53,7 +53,7 @@
         <div>
             <a href="{{ url_for('terms') }}" style="color: #666; text-decoration: none;">← Back to Terms</a>
             <h1 style="margin: 10px 0;">Edit Term: {{ filename }}</h1>
-            <a href="https://github.com/michaelbeijer/beijerterm/blob/main/content/terms/{{ filename }}" 
+            <a href="https://github.com/michaelbeijer/beijerterm/blob/main/content/terms/{{ filename }}.md" 
                target="_blank" 
                style="color: #0969da; text-decoration: none; font-size: 14px; margin-left: 5px;">
                 📄 View on GitHub →
@@ -61,8 +61,8 @@
         </div>
         <div>
             <button class="btn" onclick="window.location.href='{{ url_for('terms') }}'">Cancel</button>
-            <button class="btn btn-primary" onclick="saveTerm()">💾 Save Changes</button>
-            <button class="btn" onclick="showCommitDialog()" style="background: #28a745; color: white;">🚀 Commit & Push</button>
+            <button class="btn btn-primary" onclick="saveTerm()">💾 Save Draft</button>
+            <button class="btn" onclick="showCommitDialog()" style="background: #28a745; color: white;">🚀 Publish to GitHub</button>
         </div>
     </div>
 
