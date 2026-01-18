@@ -30,6 +30,33 @@
         </div>
 
         <div class="form-group">
+            <label for="source_lang">Source Language</label>
+            <select id="source_lang" name="source_lang" required>
+                <option value="nl">nl (Dutch)</option>
+                <option value="en">en (English)</option>
+                <option value="de">de (German)</option>
+                <option value="fr">fr (French)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="target_lang">Target Language</label>
+            <select id="target_lang" name="target_lang" required>
+                <option value="en" selected>en (English)</option>
+                <option value="nl">nl (Dutch)</option>
+                <option value="de">de (German)</option>
+                <option value="fr">fr (French)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="tags">Tags (comma-separated)</label>
+            <input type="text" id="tags" name="tags" 
+                   placeholder="e.g., biogas, anaerobic digestion, wastewater treatment">
+            <small>Separate multiple tags with commas</small>
+        </div>
+
+        <div class="form-group">
             <label for="content">Content (Markdown)</label>
             <textarea id="content" name="content" rows="15" 
                       placeholder="Write your term explanation here..."></textarea>
@@ -59,13 +86,35 @@ document.getElementById('newTermForm').addEventListener('submit', async function
     const filename = document.getElementById('filename').value;
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
+    const source_lang = document.getElementById('source_lang').value;
+    const target_lang = document.getElementById('target_lang').value;
+    const tagsInput = document.getElementById('tags').value;
     const content = document.getElementById('content').value;
     
+    // Parse tags from comma-separated string
+    const tags = tagsInput.split(',').map(t => t.trim()).filter(t => t.length > 0);
+    
+    // Get current date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
+    
     // Build frontmatter + content
-    const fullContent = `---
-title: "${title}"
-description: "${description}"
----
+    let fullContent = `---
+title: ${title}
+slug: ${filename}
+description: ${description}
+source_lang: ${source_lang}
+target_lang: ${target_lang}
+last_updated: ${today}`;
+    
+    // Add tags if present
+    if (tags.length > 0) {
+        fullContent += '\ntags:\n';
+        tags.forEach(tag => {
+            fullContent += `  - ${tag}\n`;
+        });
+    }
+    
+    fullContent += `---
 
 ${content}`;
     
