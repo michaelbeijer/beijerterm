@@ -6,13 +6,14 @@ import os
 import sys
 import json
 import yaml
-import subprocess
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
+from github import Github, GithubException
+import base64
 
 # Add parent directory to path to import build script utilities
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
@@ -61,50 +62,60 @@ def require_auth(f):
     return wrapper
 
 
-def run_git_command(command: List[str]) -> tuple[bool, str]:
-    """Run a git command and return success status and output"""
+def git_commit_and_push(file_path: str, commit_message: str) -> tuple[bool, str]:
+    """Add, commit, and push a file to GitHub using GitHub API"""
+    # Get GitHub token from session
+    github_token = get_github_token()
+    if not github_token:
+        return False, "GitHub authentication required"
+    
     try:
-        result = subprocess.run(
-            command,
-            cwd=BASE_DIR,
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        return True, result.stdout
-    except subprocess.CalledProcessError as e:
-        return False, f"Git error: {e.stderr}"
+        # Initialize GitHub API client
+        g = Github(github_token)
+        repo = g.get_repo(f"{GITHUB_REPO_OWNER}/{GITHUB_REPO_NAME}")
+        
+        # Make file_path relative to BASE_DIR
+        try:
+            rel_path = Path(file_path).relative_to(BASE_DIR)
+        except ValueError:
+            return False, "File path is not within repository"
+        
+        # Convert Windows path separators to forward slashes for GitHub
+        github_path = str(rel_path).replace('\\', '/')
+        
+        # Read the file content
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Try to get the existing file to update it
+        try:
+            file_contents = repo.get_contents(github_path, ref="main")
+            # Update existing file
+            repo.update_file(
+                path=github_path,
+                message=commit_message,
+                content=content,
+                sha=file_contents.sha,
+                branch="main"
+            )
+            return True, f"Successfully updated {github_path} on GitHub!"
+        except GithubException as e:
+            if e.status == 404:
+                # File doesn't exist, create it
+                repo.create_file(
+                    path=github_path,
+                    message=commit_message,
+                    content=content,
+                    branch="main"
+                )
+                return True, f"Successfully created {github_path} on GitHub!"
+            else:
+                raise
+        
+    except GithubException as e:
+        return False, f"GitHub API error: {e.data.get('message', str(e))}"
     except Exception as e:
         return False, f"Error: {str(e)}"
-
-
-def git_commit_and_push(file_path: str, commit_message: str) -> tuple[bool, str]:
-    """Add, commit, and push a file to GitHub"""
-    # Make file_path relative to BASE_DIR
-    try:
-        rel_path = Path(file_path).relative_to(BASE_DIR)
-    except ValueError:
-        return False, "File path is not within repository"
-    
-    # Git add
-    success, output = run_git_command(['git', 'add', str(rel_path)])
-    if not success:
-        return False, f"Failed to add file: {output}"
-    
-    # Git commit
-    success, output = run_git_command(['git', 'commit', '-m', commit_message])
-    if not success:
-        # Check if it's just "nothing to commit"
-        if 'nothing to commit' in output.lower():
-            return False, "No changes to commit"
-        return False, f"Failed to commit: {output}"
-    
-    # Git push
-    success, output = run_git_command(['git', 'push', 'origin', 'main'])
-    if not success:
-        return False, f"Failed to push: {output}"
-    
-    return True, "Successfully committed and pushed to GitHub!"
 
 
 def parse_glossary_markdown(content: str) -> Dict:
