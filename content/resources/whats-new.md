@@ -31,6 +31,8 @@ This page tracks **new glossaries, terms, and content** added to Beijerterm. For
 
 ### New Terms Added
 
+- **[animal feed](/terms/animal-feed)** (EN→NL) - Animal feed terminology and regulatory definitions
+- **['s avonds](/terms/s-avonds)** (NL→EN) - Dutch term for "in the evening"
 - **[splitpen](/terms/splitpen)** (NL→EN) - Splitting pen (patent drafting tool)
 - **[vergisting](/terms/vergisting)** (NL→EN) - Fermentation, digestion (biogas/organic waste processing)
 
