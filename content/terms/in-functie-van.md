@@ -12,7 +12,6 @@ tags:
   - translation pitfalls
   - technical translation
   - patents
----
 
 # in functie van
 
@@ -52,15 +51,11 @@ Afhankelijk van de context betekent *in functie van* onder meer:
 - ifv  
 - i.f.v.  
 
----
-
 ## French
 
 - **en fonction de**
 
 (The direct French equivalent, and the source of the gallicism in Dutch usage.)
-
----
 
 ## English
 
@@ -69,8 +64,6 @@ Afhankelijk van de context betekent *in functie van* onder meer:
 The literal translation **_in function of_** is **incorrect English** and should not be used.
 
 The common translation **_as a function of_** is **only correct in specific technical contexts** (see below).
-
----
 
 ### Correct English translations (context-dependent)
 
@@ -100,8 +93,6 @@ Examples:
 - *in functie van het bekomen van stabiliteit*  
   → **to provide stability**
 
----
-
 #### Technical / scientific contexts (use with care)
 
 - **as a function of** ✔️  
@@ -119,8 +110,6 @@ Examples (✘ incorrect):
   ✘ *as a function of the artworks*  
   ✔ **according to / depending on the artworks**
 
----
-
 ## Usage guidance for translators
 
 - Do **not** translate *in functie van* automatically as **as a function of**
@@ -132,8 +121,6 @@ If not:
 
 In **patents and technical documentation**, **as a function of** is acceptable **only** where variables genuinely control or determine other variables.
 
----
-
 ## Examples
 
 | Dutch | English |
@@ -142,15 +129,11 @@ In **patents and technical documentation**, **as a function of** is acceptable *
 | Lichtsterkte varieert in functie van de werken | Light intensity varies according to the artworks |
 | Kosten worden bepaald in functie van het gebruik | Costs are determined based on usage |
 
----
-
 ## External references
 
 - https://www.proz.com/kudoz/dutch-to-english/mechanics-mech-engineering/779398-in-functie-van.html  
 - https://www.proz.com/kudoz/dutch-to-english/bus-financial/13655-in-functie-van.html  
 - https://www.proz.com/kudoz/dutch-to-french/other/5929564-in-functie-van.html  
-
----
 
 ## See also
 
